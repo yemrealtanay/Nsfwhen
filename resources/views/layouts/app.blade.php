@@ -129,9 +129,9 @@
     <!-- Footer with TMDb attribution -->
     <footer class="site-footer">
         <div class="footer-inner">
-            <div class="tmdb-badge">
-                TMDB ATTRIBUTION
-            </div>
+            <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer" class="tmdb-badge" title="The Movie Database (TMDB)">
+                <img src="{{ asset('tmdb_logo.png') }}" alt="TMDB" style="height: 26px; width: auto; max-width: 60px; object-fit: contain;" loading="lazy">
+            </a>
             <p style="max-width: 720px; line-height: 1.5; color: #767e87; font-size: 12.5px;">
                 {{ __('messages.tmdb_attribution') }}
             </p>

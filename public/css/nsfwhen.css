@@ -414,12 +414,13 @@ input, select, textarea, button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 4px 8px;
-  border: 1px dashed var(--border-strong);
-  border-radius: 2px;
-  font: 600 10px/1 var(--font-mono);
-  color: var(--text-secondary);
-  letter-spacing: 0.06em;
+  flex: none;
+  opacity: 0.9;
+  transition: opacity 0.15s ease;
+}
+
+.tmdb-badge:hover {
+  opacity: 1;
 }
 
 /* Modal */

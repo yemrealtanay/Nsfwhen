@@ -413,9 +413,9 @@
     <!-- TMDB ATTRIBUTION & SCENE DATA NOTICE BAND (Screen 1i) -->
     <section class="welcome-section" style="display: flex; gap: 40px; align-items: flex-start; padding: 26px 40px; border-top: 1px solid var(--border-subtle); background: #101317; flex-wrap: wrap;">
         <div style="display: flex; gap: 16px; align-items: flex-start; max-width: 620px;">
-            <div style="width: 92px; height: 26px; flex: none; border: 1px dashed #3a424a; border-radius: 3px; display: flex; align-items: center; justify-content: center;">
-                <span style="font: 500 10px/1 var(--font-mono); color: #5c646d; letter-spacing: 0.08em;">TMDB LOGO</span>
-            </div>
+            <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer" style="flex: none; display: inline-flex; align-items: center; margin-top: 2px;" title="The Movie Database (TMDB)">
+                <img src="{{ asset('tmdb_logo.png') }}" alt="TMDB" style="height: 34px; width: auto; max-width: 80px; object-fit: contain;" loading="lazy">
+            </a>
             <div style="display: flex; flex-direction: column; gap: 6px;">
                 <span style="font: 400 13.5px/1.7 var(--font-sans); color: #b4bcc4;">
                     {{ __('welcome.footer_tmdb_line1') }}

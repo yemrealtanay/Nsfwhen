@@ -23,6 +23,7 @@ class PageRenderTest extends TestCase
         $response->assertSee(__('welcome.how_it_works_title'));
         $response->assertSee(__('welcome.never_do_title'));
         $response->assertSee(__('welcome.clean_shelf_title'));
+        $response->assertSee('tmdb_logo.png');
     }
 
     public function test_home_page_renders_with_seeded_films(): void
@@ -31,7 +32,7 @@ class PageRenderTest extends TestCase
         $response->assertOk();
         $response->assertSee('Poor Things');
         $response->assertSee('NSFW');
-        $response->assertSee('TMDB ATTRIBUTION');
+        $response->assertSee('tmdb_logo.png');
     }
 
     public function test_home_page_supports_different_views(): void
