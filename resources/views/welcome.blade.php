@@ -1,0 +1,434 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="welcome-container" style="max-width: 1280px; margin: 0 auto; font-family: var(--font-sans); color: var(--text-primary);">
+
+    <!-- HERO SECTION (Screen 1i) -->
+    <section style="padding: 64px 40px 52px; border-bottom: 1px solid var(--border-subtle); display: flex; gap: 56px; align-items: flex-start; flex-wrap: wrap;">
+        
+        <!-- Hero Left Column -->
+        <div style="flex: 1; min-width: 320px; max-width: 660px; display: flex; flex-direction: column; gap: 20px;">
+            <div style="font: 500 10px/1 var(--font-mono); color: var(--text-muted); letter-spacing: 0.14em; text-transform: uppercase;">
+                {{ __('messages.welcome_eyebrow') }}
+            </div>
+
+            <h1 style="margin: 0; font: 700 58px/1.04 var(--font-serif); color: #f6f7f8; letter-spacing: -0.025em; text-wrap: pretty;">
+                {!! __('messages.welcome_hero_title') !!}
+            </h1>
+
+            <p style="margin: 0; font: 400 15px/1.65 var(--font-sans); color: #b4bcc4; max-width: 540px; text-wrap: pretty;">
+                {!! __('messages.welcome_hero_desc') !!}
+            </p>
+
+            <!-- Big Search Form -->
+            <form action="{{ route('home') }}" method="GET" style="display: flex; align-items: center; gap: 10px; max-width: 560px; background: var(--bg-card-alt); border: 1px solid var(--border-strong); border-radius: 3px; padding: 10px 14px; margin-top: 4px;">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#98a0a8" stroke-width="1.5" style="flex: none;">
+                    <circle cx="7" cy="7" r="4.5"></circle>
+                    <path d="M10.5 10.5L14 14"></path>
+                </svg>
+                <input 
+                    type="text" 
+                    name="q" 
+                    placeholder="{{ __('messages.welcome_search_placeholder', ['count' => number_format($totalFilms ?: 14882, 0, ',', ' ')]) }}"
+                    style="flex: 1; background: transparent; border: none; outline: none; font-size: 14px; color: var(--text-primary);"
+                >
+                <button type="submit" class="btn btn-primary" style="padding: 7px 14px; font-size: 12px; font-weight: 600; flex: none;">
+                    {{ __('messages.welcome_lookup_btn') }}
+                </button>
+            </form>
+
+            <!-- TRY: suggestions -->
+            <div style="display: flex; flex-wrap: wrap; gap: 6px; align-items: center;">
+                <span style="font: 400 10px/1 var(--font-mono); color: var(--text-muted); margin-right: 2px;">
+                    {{ __('messages.welcome_try') }}
+                </span>
+                @php
+                    $samples = $tryFilms && $tryFilms->isNotEmpty() ? $tryFilms : [
+                        (object)['title' => 'Poor Things', 'id' => 1],
+                        (object)['title' => 'The Favourite', 'id' => 2],
+                        (object)['title' => 'Babylon', 'id' => 3],
+                        (object)['title' => 'Portrait of a Lady on Fire', 'id' => 4],
+                    ];
+                @endphp
+                @foreach($samples as $sample)
+                    <a href="{{ isset($sample->id) && $sample->id ? route('films.show', $sample->id) : route('home', ['q' => $sample->title]) }}" 
+                       style="font: 400 11px/1 var(--font-sans); padding: 5px 9px; border: 1px solid var(--border-subtle); border-radius: 2px; background: var(--bg-surface); color: var(--text-secondary); transition: border-color 0.1s ease;">
+                        {{ $sample->title }}
+                    </a>
+                @endforeach
+            </div>
+
+            <!-- Disclaimer note -->
+            <div style="display: flex; align-items: center; gap: 8px; margin-top: 4px;">
+                <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#6a737c" stroke-width="1.4" style="flex: none;">
+                    <circle cx="8" cy="8" r="6.3"></circle>
+                    <path d="M8 7.3v4M8 4.7v.9"></path>
+                </svg>
+                <span style="font: 400 11px/1.6 var(--font-sans); color: var(--text-muted);">
+                    {{ __('messages.welcome_disclaimer') }}
+                </span>
+            </div>
+        </div>
+
+        <!-- Hero Right Column: What an answer looks like (Preview Card) -->
+        <div style="width: 420px; flex: none; max-width: 100%; border: 1px solid var(--border-default); border-radius: 3px; background: var(--bg-card); padding: 20px;">
+            <div style="display: flex; align-items: baseline; gap: 9px; margin-bottom: 14px;">
+                <span style="font: 600 12px/1 var(--font-sans); color: var(--text-primary);">
+                    {{ __('messages.welcome_preview_title') }}
+                </span>
+                <span style="margin-left: auto; font: 400 9px/1 var(--font-mono); color: var(--text-muted); letter-spacing: 0.05em;">
+                    POOR THINGS · 2:21:00
+                </span>
+            </div>
+
+            <!-- Mini Timeline Scrubber Bar -->
+            <div style="position: relative; height: 34px; background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: 2px; overflow: hidden;">
+                <!-- Grid Lines (Every 15 min / 141 min total) -->
+                @foreach([10.6, 21.3, 31.9, 42.5, 53.2, 63.8, 74.5, 85.1, 95.7] as $leftPct)
+                    <span style="position: absolute; top: 0; bottom: 0; width: 1px; background: #22262c; left: {{ $leftPct }}%;"></span>
+                @endforeach
+
+                <!-- Timeline Segments -->
+                <!-- 00:18:40 - 00:19:25 Suggestive (Amber) Verified -->
+                <span style="position: absolute; top: 0; bottom: 0; left: 13.2%; width: 1.2%; background: var(--color-suggestive); border-radius: 1px;" title="00:18:40 – 00:19:25 Suggestive"></span>
+                <!-- 00:31:10 - 00:33:05 Nudity (Orange) Verified -->
+                <span style="position: absolute; top: 0; bottom: 0; left: 22.1%; width: 1.8%; background: var(--color-nudity); border-radius: 1px;" title="00:31:10 – 00:33:05 Nudity"></span>
+                <!-- 00:47:22 - 00:49:58 Sex Scene (Red) Verified -->
+                <span style="position: absolute; top: 0; bottom: 0; left: 33.6%; width: 2.2%; background: var(--color-sex); border-radius: 1px;" title="00:47:22 – 00:49:58 Sex scene"></span>
+                <!-- 00:58:05 - 00:59:12 Nudity (Orange) Community Dashed -->
+                <span style="position: absolute; top: 0; bottom: 0; left: 41.2%; width: 1.2%; background: transparent; border: 1px dashed var(--color-nudity); border-radius: 1px;" title="00:58:05 – 00:59:12 Nudity (Community)"></span>
+                <!-- 01:02:14 - 01:04:48 Sex Scene (Red) Verified -->
+                <span style="position: absolute; top: 0; bottom: 0; left: 44.1%; width: 2.1%; background: var(--color-sex); border-radius: 1px;" title="01:02:14 – 01:04:48 Sex scene"></span>
+                <!-- 01:15:30 - 01:16:44 Suggestive (Amber) Community Dashed -->
+                <span style="position: absolute; top: 0; bottom: 0; left: 53.5%; width: 1.1%; background: transparent; border: 1px dashed var(--color-suggestive); border-radius: 1px;" title="01:15:30 – 01:16:44 Suggestive"></span>
+                <!-- 01:41:08 - 01:43:20 Sex Scene (Red) Verified -->
+                <span style="position: absolute; top: 0; bottom: 0; left: 71.7%; width: 1.9%; background: var(--color-sex); border-radius: 1px;" title="01:41:08 – 01:43:20 Sex scene"></span>
+            </div>
+
+            <!-- Ticks under bar -->
+            <div style="position: relative; height: 18px; margin-bottom: 10px;">
+                <span style="position: absolute; top: 4px; left: 0%; font: 400 8px/1 var(--font-mono); color: #565e67;">0:00</span>
+                <span style="position: absolute; top: 4px; left: 21.3%; transform: translateX(-50%); font: 400 8px/1 var(--font-mono); color: #565e67;">0:30</span>
+                <span style="position: absolute; top: 4px; left: 42.5%; transform: translateX(-50%); font: 400 8px/1 var(--font-mono); color: #565e67;">1:00</span>
+                <span style="position: absolute; top: 4px; left: 63.8%; transform: translateX(-50%); font: 400 8px/1 var(--font-mono); color: #565e67;">1:30</span>
+                <span style="position: absolute; top: 4px; left: 85.1%; transform: translateX(-50%); font: 400 8px/1 var(--font-mono); color: #565e67;">2:00</span>
+                <span style="position: absolute; top: 4px; right: 0%; font: 400 8px/1 var(--font-mono); color: #565e67;">2:21</span>
+            </div>
+
+            <!-- Preview Marks List -->
+            <div style="display: flex; flex-direction: column; gap: 1px; border-top: 1px solid var(--border-subtle);">
+                <!-- Mark 1: Suggestive Verified -->
+                <div style="display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--border-subtle);">
+                    <span style="width: 3px; height: 15px; flex: none; background: var(--color-suggestive); border-radius: 1px;"></span>
+                    <span style="font: 500 12px/1 var(--font-mono); color: var(--text-primary);">00:18:40 – 00:19:25</span>
+                    <span style="font: 500 10px/1 var(--font-sans); color: var(--color-suggestive);">{{ __('categories.suggestive') }}</span>
+                    <span style="margin-left: auto; font: 500 9px/1 var(--font-mono); letter-spacing: 0.04em; padding: 3px 6px; border: 1px solid #2e4a36; border-radius: 2px; background: #16211a; color: #7cc08a;">
+                        VERIFIED
+                    </span>
+                </div>
+                <!-- Mark 2: Nudity Verified -->
+                <div style="display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--border-subtle);">
+                    <span style="width: 3px; height: 15px; flex: none; background: var(--color-nudity); border-radius: 1px;"></span>
+                    <span style="font: 500 12px/1 var(--font-mono); color: var(--text-primary);">00:31:10 – 00:33:05</span>
+                    <span style="font: 500 10px/1 var(--font-sans); color: var(--color-nudity);">{{ __('categories.nudity') }}</span>
+                    <span style="margin-left: auto; font: 500 9px/1 var(--font-mono); letter-spacing: 0.04em; padding: 3px 6px; border: 1px solid #2e4a36; border-radius: 2px; background: #16211a; color: #7cc08a;">
+                        VERIFIED
+                    </span>
+                </div>
+                <!-- Mark 3: Sex Scene Verified -->
+                <div style="display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--border-subtle);">
+                    <span style="width: 3px; height: 15px; flex: none; background: var(--color-sex); border-radius: 1px;"></span>
+                    <span style="font: 500 12px/1 var(--font-mono); color: var(--text-primary);">00:47:22 – 00:49:58</span>
+                    <span style="font: 500 10px/1 var(--font-sans); color: var(--color-sex);">{{ __('categories.sex_scene') }}</span>
+                    <span style="margin-left: auto; font: 500 9px/1 var(--font-mono); letter-spacing: 0.04em; padding: 3px 6px; border: 1px solid #2e4a36; border-radius: 2px; background: #16211a; color: #7cc08a;">
+                        VERIFIED
+                    </span>
+                </div>
+                <!-- Mark 4: Nudity Community -->
+                <div style="display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--border-subtle);">
+                    <span style="width: 3px; height: 15px; flex: none; background: var(--color-nudity); border-radius: 1px;"></span>
+                    <span style="font: 500 12px/1 var(--font-mono); color: var(--text-primary);">00:58:05 – 00:59:12</span>
+                    <span style="font: 500 10px/1 var(--font-sans); color: var(--color-nudity);">{{ __('categories.nudity') }}</span>
+                    <span style="margin-left: auto; font: 500 9px/1 var(--font-mono); letter-spacing: 0.04em; padding: 3px 6px; border: 1px solid #303740; border-radius: 2px; background: #1b1f24; color: #98a0a8;">
+                        COMMUNITY
+                    </span>
+                </div>
+            </div>
+
+            <div style="font: 400 10px/1.6 var(--font-sans); color: var(--text-muted); padding-top: 10px;">
+                {{ __('messages.welcome_preview_note') }}
+            </div>
+        </div>
+    </section>
+
+    <!-- 5 METRIC STATS ROW (Screen 1i) -->
+    <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); border-bottom: 1px solid var(--border-subtle);">
+        <div style="padding: 22px 36px; border-right: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 5px;">
+            <span style="font: 500 26px/1 var(--font-mono); color: #f2f4f6; letter-spacing: -0.02em;">
+                {{ number_format($totalFilms ?: 14882, 0, ',', ' ') }}
+            </span>
+            <span style="font: 400 11px/1.4 var(--font-sans); color: var(--text-muted);">
+                {{ __('messages.welcome_stat_films') }}
+            </span>
+        </div>
+
+        <div style="padding: 22px 36px; border-right: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 5px;">
+            <span style="font: 500 26px/1 var(--font-mono); color: #f2f4f6; letter-spacing: -0.02em;">
+                {{ number_format($totalMarks ?: 63109, 0, ',', ' ') }}
+            </span>
+            <span style="font: 400 11px/1.4 var(--font-sans); color: var(--text-muted);">
+                {{ __('messages.welcome_stat_marks') }}
+            </span>
+        </div>
+
+        <div style="padding: 22px 36px; border-right: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 5px;">
+            <span style="font: 500 26px/1 var(--font-mono); color: #f2f4f6; letter-spacing: -0.02em;">
+                {{ number_format($verifiedMarks ?: 9341, 0, ',', ' ') }}
+            </span>
+            <span style="font: 400 11px/1.4 var(--font-sans); color: var(--text-muted);">
+                {{ __('messages.welcome_stat_editor_verified') }}
+            </span>
+        </div>
+
+        <div style="padding: 22px 36px; border-right: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 5px;">
+            <span style="font: 500 26px/1 var(--font-mono); color: #f2f4f6; letter-spacing: -0.02em;">
+                {{ number_format($cleanVerifiedFilms ?: 2664, 0, ',', ' ') }}
+            </span>
+            <span style="font: 400 11px/1.4 var(--font-sans); color: var(--text-muted);">
+                {{ __('messages.welcome_stat_clean_verified') }}
+            </span>
+        </div>
+
+        <div style="padding: 22px 36px; display: flex; flex-direction: column; gap: 5px;">
+            <span style="font: 500 26px/1 var(--font-mono); color: #f2f4f6; letter-spacing: -0.02em;">
+                41s
+            </span>
+            <span style="font: 400 11px/1.4 var(--font-sans); color: var(--text-muted);">
+                {{ __('messages.welcome_stat_median_time') }}
+            </span>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS (Screen 1i) -->
+    <section id="how-it-works" style="padding: 48px 40px; border-bottom: 1px solid var(--border-subtle);">
+        <div style="font: 500 10px/1 var(--font-mono); color: var(--text-muted); letter-spacing: 0.14em; margin-bottom: 26px; text-transform: uppercase;">
+            {{ __('messages.welcome_how_it_works') }}
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
+            <!-- Step 01 -->
+            <div style="display: flex; flex-direction: column; gap: 9px; padding-top: 14px; border-top: 1px solid var(--border-medium);">
+                <span style="font: 500 11px/1 var(--font-mono); color: var(--color-sex); letter-spacing: 0.08em;">
+                    {{ __('messages.welcome_step1_num') }}
+                </span>
+                <span style="font: 600 19px/1.25 var(--font-serif); color: #f2f4f6;">
+                    {{ __('messages.welcome_step1_title') }}
+                </span>
+                <span style="font: 400 13px/1.7 var(--font-sans); color: #98a0a8; text-wrap: pretty;">
+                    {{ __('messages.welcome_step1_desc') }}
+                </span>
+            </div>
+
+            <!-- Step 02 -->
+            <div style="display: flex; flex-direction: column; gap: 9px; padding-top: 14px; border-top: 1px solid var(--border-medium);">
+                <span style="font: 500 11px/1 var(--font-mono); color: var(--color-sex); letter-spacing: 0.08em;">
+                    {{ __('messages.welcome_step2_num') }}
+                </span>
+                <span style="font: 600 19px/1.25 var(--font-serif); color: #f2f4f6;">
+                    {{ __('messages.welcome_step2_title') }}
+                </span>
+                <span style="font: 400 13px/1.7 var(--font-sans); color: #98a0a8; text-wrap: pretty;">
+                    {{ __('messages.welcome_step2_desc') }}
+                </span>
+            </div>
+
+            <!-- Step 03 -->
+            <div style="display: flex; flex-direction: column; gap: 9px; padding-top: 14px; border-top: 1px solid var(--border-medium);">
+                <span style="font: 500 11px/1 var(--font-mono); color: var(--color-sex); letter-spacing: 0.08em;">
+                    {{ __('messages.welcome_step3_num') }}
+                </span>
+                <span style="font: 600 19px/1.25 var(--font-serif); color: #f2f4f6;">
+                    {{ __('messages.welcome_step3_title') }}
+                </span>
+                <span style="font: 400 13px/1.7 var(--font-sans); color: #98a0a8; text-wrap: pretty;">
+                    {{ __('messages.welcome_step3_desc') }}
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT WE WILL NEVER DO (Screen 1i Manifesto) -->
+    <section style="padding: 48px 40px; border-bottom: 1px solid var(--border-subtle); display: flex; gap: 56px; align-items: flex-start; flex-wrap: wrap;">
+        <div style="width: 300px; flex: none; display: flex; flex-direction: column; gap: 10px;">
+            <span style="font: 500 10px/1 var(--font-mono); color: var(--text-muted); letter-spacing: 0.14em; text-transform: uppercase;">
+                {{ __('messages.welcome_never_title') }}
+            </span>
+            <span style="font: 600 24px/1.25 var(--font-serif); color: #f2f4f6; text-wrap: pretty;">
+                {{ __('messages.welcome_never_subtitle') }}
+            </span>
+        </div>
+
+        <div style="flex: 1; min-width: 320px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px 36px;">
+            <!-- Never 1 -->
+            <div style="display: flex; gap: 11px;">
+                <span style="width: 14px; height: 14px; flex: none; margin-top: 3px; border: 1px solid #4a3033; border-radius: 2px; background: #231a1b; position: relative;">
+                    <span style="position: absolute; top: 6px; left: 3px; width: 8px; height: 1.5px; background: #e8938e;"></span>
+                </span>
+                <span style="font: 400 13px/1.6 var(--font-sans); color: #b4bcc4;">
+                    {{ __('messages.welcome_never_1') }}
+                </span>
+            </div>
+
+            <!-- Never 2 -->
+            <div style="display: flex; gap: 11px;">
+                <span style="width: 14px; height: 14px; flex: none; margin-top: 3px; border: 1px solid #4a3033; border-radius: 2px; background: #231a1b; position: relative;">
+                    <span style="position: absolute; top: 6px; left: 3px; width: 8px; height: 1.5px; background: #e8938e;"></span>
+                </span>
+                <span style="font: 400 13px/1.6 var(--font-sans); color: #b4bcc4;">
+                    {{ __('messages.welcome_never_2') }}
+                </span>
+            </div>
+
+            <!-- Never 3 -->
+            <div style="display: flex; gap: 11px;">
+                <span style="width: 14px; height: 14px; flex: none; margin-top: 3px; border: 1px solid #4a3033; border-radius: 2px; background: #231a1b; position: relative;">
+                    <span style="position: absolute; top: 6px; left: 3px; width: 8px; height: 1.5px; background: #e8938e;"></span>
+                </span>
+                <span style="font: 400 13px/1.6 var(--font-sans); color: #b4bcc4;">
+                    {{ __('messages.welcome_never_3') }}
+                </span>
+            </div>
+
+            <!-- Never 4 -->
+            <div style="display: flex; gap: 11px;">
+                <span style="width: 14px; height: 14px; flex: none; margin-top: 3px; border: 1px solid #4a3033; border-radius: 2px; background: #231a1b; position: relative;">
+                    <span style="position: absolute; top: 6px; left: 3px; width: 8px; height: 1.5px; background: #e8938e;"></span>
+                </span>
+                <span style="font: 400 13px/1.6 var(--font-sans); color: #b4bcc4;">
+                    {{ __('messages.welcome_never_4') }}
+                </span>
+            </div>
+
+            <!-- Will 1 (Audit trail) -->
+            <div style="display: flex; gap: 11px;">
+                <span style="width: 14px; height: 14px; flex: none; margin-top: 3px; border: 1px solid #2e4a36; border-radius: 2px; background: #16211a; display: flex; align-items: center; justify-content: center;">
+                    <svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="#7cc08a" stroke-width="2">
+                        <path d="M1.6 5.2 3.9 7.5 8.4 2.5"></path>
+                    </svg>
+                </span>
+                <span style="font: 400 13px/1.6 var(--font-sans); color: #b4bcc4;">
+                    {{ __('messages.welcome_will_1') }}
+                </span>
+            </div>
+
+            <!-- Will 2 (Clean verify) -->
+            <div style="display: flex; gap: 11px;">
+                <span style="width: 14px; height: 14px; flex: none; margin-top: 3px; border: 1px solid #2e4a36; border-radius: 2px; background: #16211a; display: flex; align-items: center; justify-content: center;">
+                    <svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="#7cc08a" stroke-width="2">
+                        <path d="M1.6 5.2 3.9 7.5 8.4 2.5"></path>
+                    </svg>
+                </span>
+                <span style="font: 400 13px/1.6 var(--font-sans); color: #b4bcc4;">
+                    {{ __('messages.welcome_will_2') }}
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLEAN-VERIFIED SHELF (Screen 1i) -->
+    <section style="padding: 40px 40px 44px; border-bottom: 1px solid var(--border-subtle);">
+        <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 18px; flex-wrap: wrap;">
+            <span style="font: 600 14px/1 var(--font-sans); color: var(--text-primary);">
+                {{ __('messages.welcome_clean_shelf_title') }}
+            </span>
+            <span style="font: 400 10px/1 var(--font-mono); color: var(--text-muted); letter-spacing: 0.04em;">
+                {{ __('messages.welcome_clean_shelf_sub') }}
+            </span>
+            <a href="{{ route('home', ['category' => 'clean']) }}" style="margin-left: auto; font: 500 11px/1 var(--font-sans); color: var(--color-blue-link);">
+                {{ __('messages.welcome_clean_shelf_browse', ['count' => number_format($cleanVerifiedFilms ?: 2664, 0, ',', ' ')]) }}
+            </a>
+        </div>
+
+        <!-- 8-Film Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 16px;">
+            @php
+                $cleanShelf = $cleanFilms && $cleanFilms->isNotEmpty() ? $cleanFilms : collect([
+                    (object)['title' => 'Arrival', 'release_date' => '2016-11-11', 'poster_url' => null, 'id' => null],
+                    (object)['title' => 'Dune: Part Two', 'release_date' => '2024-03-01', 'poster_url' => null, 'id' => null],
+                    (object)['title' => 'Past Lives', 'release_date' => '2023-06-02', 'poster_url' => null, 'id' => null],
+                    (object)['title' => 'Sicario', 'release_date' => '2015-10-02', 'poster_url' => null, 'id' => null],
+                    (object)['title' => 'The Zone of Interest', 'release_date' => '2023-12-15', 'poster_url' => null, 'id' => null],
+                    (object)['title' => 'Aftersun', 'release_date' => '2022-10-21', 'poster_url' => null, 'id' => null],
+                    (object)['title' => 'Prisoners', 'release_date' => '2013-09-20', 'poster_url' => null, 'id' => null],
+                    (object)['title' => 'Paddington 2', 'release_date' => '2017-11-10', 'poster_url' => null, 'id' => null],
+                ]);
+            @endphp
+            @foreach($cleanShelf->take(8) as $film)
+                <a href="{{ isset($film->id) && $film->id ? route('films.show', $film->id) : route('home', ['q' => $film->title]) }}" 
+                   style="display: flex; flex-direction: column; gap: 7px; text-decoration: none;">
+                    <div style="position: relative; aspect-ratio: 2/3; background: repeating-linear-gradient(135deg,#1b1f24 0 5px,#171b20 5px 10px); border: 1px solid var(--border-default); border-radius: 2px; overflow: hidden;">
+                        @if(!empty($film->poster_url))
+                            <img src="{{ $film->poster_url }}" alt="{{ $film->title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                        @endif
+                        <!-- Solid Clean Green Bar -->
+                        <span style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--color-clean);"></span>
+                    </div>
+                    <div style="font: 600 12px/1.25 var(--font-serif); color: #d6dbe0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                        {{ $film->title }}
+                    </div>
+                    <div style="font: 400 9px/1 var(--font-mono); color: var(--text-muted);">
+                        {{ $film->release_date ? substr($film->release_date, 0, 4) : '—' }}
+                    </div>
+                </a>
+            @endforeach
+        </div>
+    </section>
+
+    <!-- TWO-FIELD CONTRIBUTION BANNER (Screen 1i) -->
+    <section style="padding: 48px 40px; display: flex; align-items: flex-end; gap: 40px; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 320px;">
+            <div style="font: 600 28px/1.25 var(--font-serif); color: #f2f4f6; max-width: 520px; text-wrap: pretty; margin-bottom: 10px;">
+                {{ __('messages.welcome_cta_title') }}
+            </div>
+            <div style="font: 400 13px/1.7 var(--font-sans); color: #98a0a8; max-width: 480px;">
+                {{ __('messages.welcome_cta_desc') }}
+            </div>
+        </div>
+
+        <div style="flex: none; display: flex; gap: 12px; flex-wrap: wrap;">
+            <a href="{{ route('register') }}" class="btn btn-primary" style="padding: 12px 20px; font-size: 13px; font-weight: 600;">
+                {{ __('messages.welcome_cta_register') }}
+            </a>
+            <a href="{{ route('onboarding') }}" class="btn btn-secondary" style="padding: 12px 20px; font-size: 13px; font-weight: 500;">
+                {{ __('messages.welcome_cta_guidelines') }}
+            </a>
+        </div>
+    </section>
+
+    <!-- TMDB ATTRIBUTION & SCENE DATA NOTICE BAND (Screen 1i) -->
+    <section style="display: flex; gap: 40px; align-items: flex-start; padding: 26px 40px; border-top: 1px solid var(--border-subtle); background: #101317; flex-wrap: wrap;">
+        <div style="display: flex; gap: 16px; align-items: flex-start; max-width: 620px;">
+            <div style="width: 92px; height: 26px; flex: none; border: 1px dashed #3a424a; border-radius: 3px; display: flex; align-items: center; justify-content: center;">
+                <span style="font: 500 8px/1 var(--font-mono); color: #5c646d; letter-spacing: 0.08em;">TMDB LOGO</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+                <span style="font: 400 12px/1.7 var(--font-sans); color: #b4bcc4;">
+                    {{ __('messages.tmdb_attribution') }}
+                </span>
+                <span style="font: 400 11px/1.7 var(--font-sans); color: var(--text-muted);">
+                    Film titles, runtimes, cast and posters come from The Movie Database. Scene marks are ours and our contributors'.
+                </span>
+            </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 6px; max-width: 320px;">
+            <span style="font: 500 9px/1 var(--font-mono); color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase;">
+                {{ __('messages.welcome_scene_data_title') }}
+            </span>
+            <span style="font: 400 11px/1.7 var(--font-sans); color: #98a0a8;">
+                {{ __('messages.welcome_scene_data_desc') }}
+            </span>
+        </div>
+    </section>
+
+</div>
+@endsection

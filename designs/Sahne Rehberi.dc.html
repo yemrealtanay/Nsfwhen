@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;600;700&display=swap" rel="stylesheet"><style>
+body{margin:0;background:#efece7;font-family:'IBM Plex Sans',system-ui,sans-serif}
+a{color:#2a6fc4;text-decoration:none}a:hover{color:#1b4f92;text-decoration:underline}
+.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 18px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tid:hover{color:#fff;text-decoration:none}
+.dv-tname{font:600 13px/1.2 'IBM Plex Sans',sans-serif;color:#1a1a1a}
+.dv-opts{display:flex;flex-wrap:wrap;gap:30px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}
+.dv-oid:hover{color:#1a1a1a;text-decoration:none;background:rgba(0,0,0,.16)}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.55)}
+.dv-card{max-width:100%;background:#0e1013;border:1px solid rgba(0,0,0,.18);border-radius:5px;box-shadow:0 1px 3px rgba(0,0,0,.12);overflow:hidden}
+.dv-opt:target .dv-oid{background:#2a6fc4;color:#fff}
+.dv-next{margin:22px 0 0;font:12px/1.7 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.5)}
+.dv-note{margin:0 0 24px;max-width:830px;font:13px/1.7 'IBM Plex Sans',sans-serif;color:rgba(0,0,0,.6)}
+.dv-note b{color:#1a1a1a;font-weight:600}
+</style></helmet>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">NSFWhen — film content advisory · first pass</span></div>
+<p class="dv-note"><b>Assumptions:</b> desktop only (1280px), English copy with a TR/EN toggle top-right, static hi-fi. Zero animation or transition; hover is a background shift on interactive rows and nothing else. Type: <b>IBM Plex Sans</b> for UI, <b>IBM Plex Mono</b> for every number and timestamp, <b>Source Serif 4</b> for film titles — Wikipedia's seriousness with Letterboxd's typographic warmth. The name does the joke so the interface doesn't have to: everything below is deadpan reference-desk. Colour carries exactly four meanings, nothing decorative — <span style="color:#b3453f;font-weight:600">red = sex scene</span>, <span style="color:#a4622f;font-weight:600">orange = nudity</span>, <span style="color:#8a6a19;font-weight:600">amber = suggestive</span>, <span style="color:#3f7a4c;font-weight:600">green = clean-verified</span>. Posters are TMDb-fed; striped placeholders here. Real film titles, invented mark data. Home has three directions — <a class="dv-oid" href="#1a">1a</a> <a class="dv-oid" href="#1b">1b</a> <a class="dv-oid" href="#1c">1c</a>; detail, dashboard, profile and onboarding are single proposals. Age gate, spoiler-hiding, intensity meter and the "why this exists" band are all in.</p>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a"><div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Home — persistent filter rail, dense poster grid</div>
+<div class="dv-card" style="width:1280px">
+<div style="background:#0e1013;color:#e6e8eb;font-family:'IBM Plex Sans',sans-serif">
+
+<header style="display:flex;align-items:center;gap:22px;padding:9px 18px;border-bottom:1px solid #262b31;background:#13161a">
+<div style="display:flex;align-items:baseline;gap:8px;flex:none"><div style="display:flex;flex-direction:column;align-items:stretch;gap:2px;flex:none"><div style="font:600 19px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.035em;color:#f2f4f6">NSFW<span style="color:#e05a5a">hen</span></div><div style="position:relative;height:5px"><span style="position:absolute;top:2px;left:0;right:0;height:1px;background:#434b54"></span><span style="position:absolute;top:0;left:59%;width:5px;height:5px;border-radius:50%;background:#e05a5a"></span></div></div><span style="font:400 9px/1 'IBM Plex Mono',monospace;color:#6a737c;letter-spacing:.1em">BETA</span></div>
+<nav style="display:flex;gap:16px;font:500 12px/1 'IBM Plex Sans',sans-serif;flex:none;align-items:center"><span style="color:#e6e8eb;border-bottom:2px solid #6fa8dc;padding-bottom:4px">Browse</span><span style="color:#98a0a8">Contribute</span><span style="color:#98a0a8">Guidelines</span><span style="color:#98a0a8">Stats</span></nav>
+<div style="flex:1;max-width:420px;display:flex;align-items:center;gap:8px;background:#1b1f24;border:1px solid #303740;border-radius:3px;padding:6px 10px">
+<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#828a93" stroke-width="1.5"><circle cx="7" cy="7" r="4.5"></circle><path d="M10.5 10.5L14 14"></path></svg>
+<span style="font:400 12px/1 'IBM Plex Sans',sans-serif;color:#7b838c">Search title, cast or director…</span>
+<span style="margin-left:auto;font:400 9px/1 'IBM Plex Mono',monospace;color:#5c646d;border:1px solid #303740;border-radius:2px;padding:2px 5px">/</span>
+</div>
+<div style="margin-left:auto;display:flex;align-items:center;gap:12px;flex:none">
+<div style="display:flex;border:1px solid #303740;border-radius:3px;overflow:hidden;font:500 10px/1 'IBM Plex Mono',monospace"><span style="padding:6px 8px;color:#7b838c">TR</span><span style="padding:6px 8px;background:#2c333b;color:#e6e8eb">EN</span></div>
+<span style="font:500 11px/1 'IBM Plex Sans',sans-serif;color:#98a0a8">Sign in</span>
+<span style="display:block;width:24px;height:24px;border-radius:2px;background:#2c333b;border:1px solid #3a424a"></span>
+</div>
+</header>
+
+<div style="display:flex;align-items:center;gap:8px;padding:8px 18px;background:#15181c;border-bottom:1px solid #22262c">
+<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#6fa8dc" stroke-width="1.4" style="flex:none"><circle cx="8" cy="8" r="6.3"></circle><path d="M8 7.3v4M8 4.7v.9"></path></svg>
+<span style="font:400 11px/1.45 'IBM Plex Sans',sans-serif;color:#98a0a8">A timestamped, sourced index of sexual content in films — so you can skip it, prepare for it, or skip the film. <b style="color:#c3cad1;font-weight:500">No images or video of any such content are hosted here.</b></span>
+<a href="#1a" style="font:500 11px/1.45 'IBM Plex Sans',sans-serif;color:#6fa8dc;margin-left:2px">How it works →</a>
+<span style="margin-left:auto;font:400 10px/1 'IBM Plex Mono',monospace;color:#5c646d">DISMISS ×</span>
+</div>
+
+<div style="display:flex;align-items:flex-start">
+
+<aside style="width:214px;flex:none;border-right:1px solid #22262c;padding:14px 14px 26px;background:#111418">
+<div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:13px"><span style="font:600 10px/1 'IBM Plex Sans',sans-serif;letter-spacing:.08em;color:#e6e8eb">FILTERS</span><span style="font:400 10px/1 'IBM Plex Sans',sans-serif;color:#6fa8dc">Reset</span></div>
+
+<div style="font:500 9px/1 'IBM Plex Mono',monospace;color:#767e87;letter-spacing:.09em;margin-bottom:9px">CONTENT CATEGORY</div>
+<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px">
+<sc-for list="{{ catFilters }}" as="c" hint-placeholder-count="4">
+<label style="display:flex;align-items:center;gap:8px;font:400 12px/1 'IBM Plex Sans',sans-serif;color:#e6e8eb">
+<span style="width:12px;height:12px;flex:none;border:1px solid {{ c.box }};background:{{ c.fill }};border-radius:2px;display:flex;align-items:center;justify-content:center">
+<svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="#0e1013" stroke-width="2.2" style="opacity:{{ c.tick }}"><path d="M1.8 5.2 4 7.4 8.2 2.6"></path></svg>
+</span>{{ c.label }}<span style="margin-left:auto;font:400 10px 'IBM Plex Mono',monospace;color:#6a737c">{{ c.count }}</span></label>
+</sc-for>
+</div>
+
+<div style="font:500 9px/1 'IBM Plex Mono',monospace;color:#767e87;letter-spacing:.09em;margin-bottom:9px">INTENSITY</div>
+<div style="display:flex;border:1px solid #303740;border-radius:3px;overflow:hidden;margin-bottom:8px;font:500 11px/1 'IBM Plex Sans',sans-serif">
+<span style="flex:1;text-align:center;padding:7px 0;color:#98a0a8;border-right:1px solid #303740">Light</span>
+<span style="flex:1;text-align:center;padding:7px 0;background:#2c333b;color:#e6e8eb;border-right:1px solid #303740">Moderate</span>
+<span style="flex:1;text-align:center;padding:7px 0;background:#2c333b;color:#e6e8eb">Heavy</span>
+</div>
+<div style="font:400 10px/1.45 'IBM Plex Sans',sans-serif;color:#6a737c;margin-bottom:20px">Intensity is set by editor consensus, not by vote count.</div>
+
+<div style="font:500 9px/1 'IBM Plex Mono',monospace;color:#767e87;letter-spacing:.09em;margin-bottom:9px">VERIFICATION</div>
+<div style="display:flex;flex-direction:column;gap:9px;margin-bottom:20px">
+<label style="display:flex;align-items:center;gap:8px;font:400 12px/1 'IBM Plex Sans',sans-serif;color:#e6e8eb"><span style="width:26px;height:14px;flex:none;border-radius:8px;background:#6fa8dc;position:relative"><span style="position:absolute;top:2px;right:2px;width:10px;height:10px;border-radius:50%;background:#0e1013"></span></span>Editor-verified only</label>
+<label style="display:flex;align-items:center;gap:8px;font:400 12px/1 'IBM Plex Sans',sans-serif;color:#98a0a8"><span style="width:26px;height:14px;flex:none;border-radius:8px;background:#2c333b;border:1px solid #3a424a;position:relative"><span style="position:absolute;top:1px;left:1px;width:10px;height:10px;border-radius:50%;background:#6a737c"></span></span>Hide spoiler context</label>
+</div>
+
+<div style="font:500 9px/1 'IBM Plex Mono',monospace;color:#767e87;letter-spacing:.09em;margin-bottom:9px">GENRE</div>
+<div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:20px">
+<sc-for list="{{ genres }}" as="g" hint-placeholder-count="10">
+<span style="font:400 11px/1 'IBM Plex Sans',sans-serif;padding:5px 8px;border:1px solid {{ g.bd }};border-radius:2px;background:{{ g.bg }};color:{{ g.fg }}">{{ g.name }}</span>
+</sc-for>
+</div>
+
+<div style="font:500 9px/1 'IBM Plex Mono',monospace;color:#767e87;letter-spacing:.09em;margin-bottom:9px">RELEASE YEAR</div>
+<div style="display:flex;align-items:center;gap:7px;font:400 11px 'IBM Plex Mono',monospace;color:#98a0a8"><span style="border:1px solid #303740;border-radius:2px;padding:5px 7px;background:#1b1f24">1958</span><span style="color:#5c646d">—</span><span style="border:1px solid #303740;border-radius:2px;padding:5px 7px;background:#1b1f24">2026</span></div>
+</aside>
+
+<main style="flex:1;min-width:0;padding:14px 18px 26px">
+<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:12px;border-bottom:1px solid #22262c;padding-bottom:10px">
+<h1 style="margin:0;font:600 15px/1 'IBM Plex Sans',sans-serif;color:#e6e8eb">All films</h1>
+<span style="font:400 11px/1 'IBM Plex Mono',monospace;color:#767e87">14 882 indexed · 9 341 editor-verified</span>
+<div style="margin-left:auto;display:flex;align-items:center;gap:14px;font:400 11px/1 'IBM Plex Sans',sans-serif;color:#98a0a8">
+<span>Sort: <b style="color:#e6e8eb;font-weight:500">Recently verified ▾</b></span>
+<div style="display:flex;border:1px solid #303740;border-radius:3px;overflow:hidden"><span style="padding:4px 7px;background:#2c333b;color:#e6e8eb;font:400 10px 'IBM Plex Mono',monospace">GRID</span><span style="padding:4px 7px;color:#7b838c;font:400 10px 'IBM Plex Mono',monospace">LIST</span></div>
+</div>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;align-items:center">
+<span style="font:400 10px/1 'IBM Plex Mono',monospace;color:#6a737c;margin-right:2px">ACTIVE:</span>
+<span style="font:400 11px/1 'IBM Plex Sans',sans-serif;padding:5px 7px;border:1px solid #4a3033;border-radius:2px;background:#231a1b;color:#e8938e">Sex scene ×</span>
+<span style="font:400 11px/1 'IBM Plex Sans',sans-serif;padding:5px 7px;border:1px solid #4a4130;border-radius:2px;background:#221f1a;color:#e0c078">Suggestive ×</span>
+<span style="font:400 11px/1 'IBM Plex Sans',sans-serif;padding:5px 7px;border:1px solid #303740;border-radius:2px;background:#1b1f24;color:#c3cad1">Drama ×</span>
+<span style="font:400 11px/1 'IBM Plex Sans',sans-serif;padding:5px 7px;border:1px solid #303740;border-radius:2px;background:#1b1f24;color:#c3cad1">Moderate + Heavy ×</span>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:16px 12px;margin-bottom:24px">
+<sc-for list="{{ films }}" as="f" hint-placeholder-count="14">
+<div style="display:flex;flex-direction:column;gap:5px">
+<div style="position:relative;aspect-ratio:2/3;background:repeating-linear-gradient(135deg,#1b1f24 0 5px,#171b20 5px 10px);border:1px solid #262b31;border-radius:2px;display:flex;align-items:flex-end;padding:6px;overflow:hidden">
+<span style="position:absolute;top:0;left:0;right:0;height:3px;background:{{ f.color }}"></span>
+<span style="font:400 8px/1.2 'IBM Plex Mono',monospace;color:#565e67;letter-spacing:.04em">POSTER</span>
+<span style="position:absolute;top:8px;right:6px;font:500 9px/1 'IBM Plex Mono',monospace;color:#c3cad1;background:rgba(14,16,19,.85);border:1px solid #303740;border-radius:2px;padding:2px 4px">{{ f.intensityShort }}</span>
+</div>
+<div style="font:600 12px/1.25 'Source Serif 4',Georgia,serif;color:#e6e8eb">{{ f.title }}</div>
+<div style="display:flex;gap:7px;font:400 10px/1 'IBM Plex Mono',monospace;color:#767e87"><span>{{ f.year }}</span><span>{{ f.runtime }}</span></div>
+<div style="display:flex;align-items:center;gap:5px">
+<span style="width:7px;height:7px;flex:none;border-radius:1px;background:{{ f.color }}"></span>
+<span style="font:500 10px/1.2 'IBM Plex Sans',sans-serif;color:{{ f.color }}">{{ f.tagLabel }}</span>
+<span style="margin-left:auto;font:400 9px/1 'IBM Plex Mono',monospace;color:#6a737c">{{ f.marks }}</span>
+</div>
+</div>
+</sc-for>
+</div>
+
+<div style="border-top:1px solid #22262c;padding-top:16px">
+<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:12px"><h2 style="margin:0;font:600 13px/1 'IBM Plex Sans',sans-serif;color:#e6e8eb">Recommended for you</h2><span style="font:400 10px/1 'IBM Plex Mono',monospace;color:#6a737c">BASED ON: DRAMA · SCI-FI · YOUR CLEAN-VERIFIED LIST</span></div>
+<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:12px">
+<sc-for list="{{ recs }}" as="f" hint-placeholder-count="7">
+<div style="display:flex;gap:8px;padding:7px;border:1px solid #22262c;border-radius:3px;background:#121519">
+<div style="width:34px;flex:none;aspect-ratio:2/3;background:repeating-linear-gradient(135deg,#1b1f24 0 5px,#171b20 5px 10px);border:1px solid #262b31;border-radius:2px"></div>
+<div style="min-width:0;display:flex;flex-direction:column;gap:3px">
+<div style="font:600 11px/1.25 'Source Serif 4',Georgia,serif;color:#e6e8eb">{{ f.title }}</div>
+<div style="font:400 9px/1 'IBM Plex Mono',monospace;color:#767e87">{{ f.year }}</div>
+<div style="display:flex;align-items:center;gap:4px"><span style="width:6px;height:6px;flex:none;border-radius:1px;background:{{ f.color }}"></span><span style="font:500 9px/1.2 'IBM Plex Sans',sans-serif;color:{{ f.color }}">{{ f.tagLabel }}</span></div>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</main>
+</div>
+<div style="display:flex;align-items:center;gap:14px;padding:12px 18px;border-top:1px solid #1c2026;background:#0b0d0f">
+<div style="width:56px;height:16px;flex:none;border:1px dashed #3a424a;border-radius:2px;display:flex;align-items:center;justify-content:center"><span style="font:500 7px/1 'IBM Plex Mono',monospace;color:#5c646d;letter-spacing:.06em">TMDB LOGO</span></div>
+<span style="font:400 10px/1.6 'IBM Plex Sans',sans-serif;color:#6a737c;max-width:660px">This website uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB.</span>
+<span style="margin-left:auto;display:flex;gap:14px;font:400 10px/1 'IBM Plex Sans',sans-serif;color:#767e87"><span>About &amp; credits</span><span>Guidelines</span><span>Privacy</span><span>API</span></span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1b"><div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Home — reference-index rows: per-category counts visible without opening the film</div>
+<div class="dv-card" style="width:1280px">
+<div style="background:#0e1013;color:#e6e8eb;font-family:'IBM Plex Sans',sans-serif">
+
+<header style="display:flex;align-items:center;gap:22px;padding:9px 18px;border-bottom:1px solid #262b31;background:#13161a">
+<div style="display:flex;align-items:baseline;gap:8px;flex:none"><div style="display:flex;flex-direction:column;align-items:stretch;gap:2px;flex:none"><div style="font:600 19px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.035em;color:#f2f4f6">NSFW<span style="color:#e05a5a">hen</span></div><div style="position:relative;height:5px"><span style="position:absolute;top:2px;left:0;right:0;height:1px;background:#434b54"></span><span style="position:absolute;top:0;left:59%;width:5px;height:5px;border-radius:50%;background:#e05a5a"></span></div></div><span style="font:400 9px/1 'IBM Plex Mono',monospace;color:#6a737c;letter-spacing:.1em">BETA</span></div>
+<nav style="display:flex;gap:16px;font:500 12px/1 'IBM Plex Sans',sans-serif;flex:none;align-items:center"><span style="color:#e6e8eb;border-bottom:2px solid #6fa8dc;padding-bottom:4px">Browse</span><span style="color:#98a0a8">Contribute</span><span style="color:#98a0a8">Guidelines</span><span style="color:#98a0a8">Stats</span></nav>
+<div style="flex:1;max-width:420px;display:flex;align-items:center;gap:8px;background:#1b1f24;border:1px solid #303740;border-radius:3px;padding:6px 10px">
+<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#828a93" stroke-width="1.5"><circle cx="7" cy="7" r="4.5"></circle><path d="M10.5 10.5L14 14"></path></svg>
+<span style="font:400 12px/1 'IBM Plex Sans',sans-serif;color:#7b838c">Search title, cast or director…</span>
+</div>
+<div style="margin-left:auto;display:flex;align-items:center;gap:12px;flex:none">
+<div style="display:flex;border:1px solid #303740;border-radius:3px;overflow:hidden;font:500 10px/1 'IBM Plex Mono',monospace"><span style="padding:6px 8px;color:#7b838c">TR</span><span style="padding:6px 8px;background:#2c333b;color:#e6e8eb">EN</span></div>
+<span style="font:500 11px/1 'IBM Plex Sans',sans-serif;color:#98a0a8">Sign in</span>
+<span style="display:block;width:24px;height:24px;border-radius:2px;background:#2c333b;border:1px solid #3a424a"></span>
+</div>
+</header>
+
+<div style="display:flex;align-items:center;gap:8px;padding:8px 18px;background:#15181c;border-bottom:1px solid #22262c">
+<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#6fa8dc" stroke-width="1.4" style="flex:none"><circle cx="8" cy="8" r="6.3"></circle><path d="M8 7.3v4M8 4.7v.9"></path></svg>
+<span style="font:400 11px/1.45 'IBM Plex Sans',sans-serif;color:#98a0a8">A timestamped, sourced index of sexual content in films. <b style="color:#c3cad1;font-weight:500">No images or video of any such content are hosted here.</b></span>
+<a href="#1b" style="font:500 11px/1.45 'IBM Plex Sans',sans-serif;color:#6fa8dc">How it works →</a>
+</div>
+
+<div style="padding:14px 18px 26px">
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-bottom:12px;border-bottom:1px solid #22262c;margin-bottom:12px">
+<span style="font:400 10px/1 'IBM Plex Mono',monospace;color:#6a737c">CATEGORY</span>
+<sc-for list="{{ pills }}" as="p" hint-placeholder-count="4">
+<span style="font:500 11px/1 'IBM Plex Sans',sans-serif;padding:6px 9px;border:1px solid {{ p.bd }};border-radius:2px;background:{{ p.bg }};color:{{ p.fg }};display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:1px;background:{{ p.dot }}"></span>{{ p.label }}<span style="font:400 9px 'IBM Plex Mono',monospace;opacity:.72">{{ p.count }}</span></span>
+</sc-for>
+<span style="width:1px;height:20px;background:#262b31;margin:0 4px"></span>
+<span style="font:500 11px/1 'IBM Plex Sans',sans-serif;padding:6px 9px;border:1px solid #303740;border-radius:2px;background:#1b1f24;color:#c3cad1">Intensity ▾</span>
+<span style="font:500 11px/1 'IBM Plex Sans',sans-serif;padding:6px 9px;border:1px solid #303740;border-radius:2px;background:#1b1f24;color:#c3cad1">Genre ▾</span>
+<span style="font:500 11px/1 'IBM Plex Sans',sans-serif;padding:6px 9px;border:1px solid #303740;border-radius:2px;background:#1b1f24;color:#c3cad1">Year ▾</span>
+<span style="font:500 11px/1 'IBM Plex Sans',sans-serif;padding:6px 9px;border:1px solid #303740;border-radius:2px;background:#1b1f24;color:#c3cad1">Verified only ▾</span>
+<span style="margin-left:auto;font:400 11px/1 'IBM Plex Sans',sans-serif;color:#98a0a8">Sort: <b style="color:#e6e8eb;font-weight:500">A–Z ▾</b></span>
+</div>
+
+<div style="display:grid;grid-template-columns:30px 46px minmax(0,1fr) 58px 148px 104px 88px 88px 88px 104px;align-items:center;gap:10px;padding:0 8px 8px;border-bottom:1px solid #303740;font:500 9px/1 'IBM Plex Mono',monospace;color:#767e87;letter-spacing:.08em">
+<span>#</span><span></span><span>TITLE</span><span>YEAR</span><span>GENRE</span><span>RUNTIME</span><span style="text-align:right">SEX</span><span style="text-align:right">NUDITY</span><span style="text-align:right">SUGG.</span><span style="text-align:right">STATUS</span>
+</div>
+<sc-for list="{{ rows }}" as="r" hint-placeholder-count="12">
+<div style="display:grid;grid-template-columns:30px 46px minmax(0,1fr) 58px 148px 104px 88px 88px 88px 104px;align-items:center;gap:10px;padding:9px 8px;border-bottom:1px solid #1c2026">
+<span style="font:400 10px/1 'IBM Plex Mono',monospace;color:#5c646d">{{ r.n }}</span>
+<div style="width:26px;aspect-ratio:2/3;background:repeating-linear-gradient(135deg,#1b1f24 0 5px,#171b20 5px 10px);border:1px solid #262b31;border-radius:2px"></div>
+<div style="min-width:0;display:flex;align-items:baseline;gap:8px"><span style="font:600 14px/1.2 'Source Serif 4',Georgia,serif;color:#e6e8eb">{{ r.title }}</span><span style="font:400 10px/1 'IBM Plex Sans',sans-serif;color:#6a737c">{{ r.director }}</span></div>
+<span style="font:400 11px/1 'IBM Plex Mono',monospace;color:#98a0a8">{{ r.year }}</span>
+<span style="font:400 11px/1 'IBM Plex Sans',sans-serif;color:#98a0a8">{{ r.genre }}</span>
+<span style="font:400 11px/1 'IBM Plex Mono',monospace;color:#98a0a8">{{ r.runtime }}</span>
+<span style="text-align:right;font:500 11px/1 'IBM Plex Mono',monospace;color:{{ r.sexColor }}">{{ r.sex }}</span>
+<span style="text-align:right;font:500 11px/1 'IBM Plex Mono',monospace;color:{{ r.nudColor }}">{{ r.nud }}</span>
+<span style="text-align:right;font:500 11px/1 'IBM Plex Mono',monospace;color:{{ r.sugColor }}">{{ r.sug }}</span>
+<span style="justify-self:end;font:500 9px/1 'IBM Plex Mono',monospace;letter-spacing:.05em;padding:4px 6px;border:1px solid {{ r.stBd }};border-radius:2px;background:{{ r.stBg }};color:{{ r.stFg }}">{{ r.status }}</span>
+</div>
+</sc-for>
+
+<div style="display:flex;align-items:center;gap:14px;padding-top:14px;font:400 11px/1 'IBM Plex Sans',sans-serif;color:#98a0a8">
+<span style="padding:6px 10px;border:1px solid #303740;border-radius:2px;background:#1b1f24;color:#c3cad1">‹ Prev</span>
+<span style="font:400 11px 'IBM Plex Mono',monospace;color:#767e87">PAGE 1 OF 1 240 · 12 OF 14 882</span>
+<span style="padding:6px 10px;border:1px solid #303740;border-radius:2px;background:#1b1f24;color:#c3cad1">Next ›</span>
+<span style="margin-left:auto;font:400 10px 'IBM Plex Mono',monospace;color:#5c646d">COUNTS ARE MARKS, NOT SCENES — ONE SCENE MAY HOLD SEVERAL MARKS</span>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:14px;padding:12px 18px;border-top:1px solid #1c2026;background:#0b0d0f">
+<div style="width:56px;height:16px;flex:none;border:1px dashed #3a424a;border-radius:2px;display:flex;align-items:center;justify-content:center"><span style="font:500 7px/1 'IBM Plex Mono',monospace;color:#5c646d;letter-spacing:.06em">TMDB LOGO</span></div>
+<span style="font:400 10px/1.6 'IBM Plex Sans',sans-serif;color:#6a737c;max-width:660px">This website uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB.</span>
+<span style="margin-left:auto;display:flex;gap:14px;font:400 10px/1 'IBM Plex Sans',sans-serif;color:#767e87"><span>About &amp; credits</span><span>Guidelines</span><span>Privacy</span><span>API</span></span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1c"><div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Home — verdict-first: the question answered on the card, filters collapsed into the header</div>
+<div class="dv-card" style="width:1280px">
+<div style="background:#0e1013;color:#e6e8eb;font-family:'IBM Plex Sans',sans-serif">
+
+<header style="display:flex;align-items:center;gap:22px;padding:9px 18px;border-bottom:1px solid #262b31;background:#13161a">
+<div style="display:flex;flex-direction:column;align-items:stretch;gap:2px;flex:none"><div style="font:600 19px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.035em;color:#f2f4f6">NSFW<span style="color:#e05a5a">hen</span></div><div style="position:relative;height:5px"><span style="position:absolute;top:2px;left:0;right:0;height:1px;background:#434b54"></span><span style="position:absolute;top:0;left:59%;width:5px;height:5px;border-radius:50%;background:#e05a5a"></span></div></div>
+<div style="flex:1;max-width:560px;display:flex;align-items:center;gap:8px;background:#1b1f24;border:1px solid #3a424a;border-radius:3px;padding:8px 11px">
+<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#98a0a8" stroke-width="1.5"><circle cx="7" cy="7" r="4.5"></circle><path d="M10.5 10.5L14 14"></path></svg>
+<span style="font:400 13px/1 'IBM Plex Sans',sans-serif;color:#8a929b">Type a film — we'll tell you when, not what</span>
+</div>
+<nav style="display:flex;gap:16px;font:500 12px/1 'IBM Plex Sans',sans-serif;align-items:center"><span style="color:#98a0a8">Contribute</span><span style="color:#98a0a8">Guidelines</span></nav>
+<div style="margin-left:auto;display:flex;align-items:center;gap:12px;flex:none">
+<div style="display:flex;border:1px solid #303740;border-radius:3px;overflow:hidden;font:500 10px/1 'IBM Plex Mono',monospace"><span style="padding:6px 8px;color:#7b838c">TR</span><span style="padding:6px 8px;background:#2c333b;color:#e6e8eb">EN</span></div>
+<span style="display:block;width:24px;height:24px;border-radius:2px;background:#2c333b;border:1px solid #3a424a"></span>
+</div>
+</header>
+
+<div style="display:flex;align-items:center;gap:10px;padding:10px 18px;border-bottom:1px solid #22262c;background:#15181c">
+<span style="font:400 11px/1.5 'IBM Plex Sans',sans-serif;color:#98a0a8;max-width:640px">Built because "is it safe to watch this with my family in the room" should take four seconds to answer, not a twenty-minute forum search. Community-marked, editor-verified, image-free.</span>
+<div style="margin-left:auto;display:flex;gap:6px">
+<sc-for list="{{ quickChips }}" as="q" hint-placeholder-count="4">
+<span style="font:500 11px/1 'IBM Plex Sans',sans-serif;padding:6px 10px;border:1px solid {{ q.bd }};border-radius:14px;background:{{ q.bg }};color:{{ q.fg }}">{{ q.label }}</span>
+</sc-for>
+</div>
+</div>
+
+<div style="padding:16px 18px 26px">
+<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:14px"><h1 style="margin:0;font:600 15px/1 'IBM Plex Sans',sans-serif;color:#e6e8eb">Verified this week</h1><span style="font:400 10px/1 'IBM Plex Mono',monospace;color:#6a737c">214 FILMS · 1 908 MARKS CONFIRMED</span><span style="margin-left:auto;font:400 11px/1 'IBM Plex Sans',sans-serif;color:#6fa8dc">See all →</span></div>
+
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:26px">
+<sc-for list="{{ bigCards }}" as="f" hint-placeholder-count="5">
+<div style="border:1px solid #22262c;border-radius:3px;background:#121519;overflow:hidden">
+<div style="position:relative;aspect-ratio:2/3;background:repeating-linear-gradient(135deg,#1b1f24 0 6px,#171b20 6px 12px);border-bottom:1px solid #22262c;display:flex;align-items:flex-end;padding:8px">
+<span style="font:400 8px/1.2 'IBM Plex Mono',monospace;color:#565e67">POSTER</span>
+<span style="position:absolute;top:0;left:0;right:0;height:4px;background:{{ f.color }}"></span>
+</div>
+<div style="padding:10px 10px 11px;display:flex;flex-direction:column;gap:7px">
+<div style="font:600 15px/1.2 'Source Serif 4',Georgia,serif;color:#e6e8eb">{{ f.title }}</div>
+<div style="font:400 10px/1 'IBM Plex Mono',monospace;color:#767e87">{{ f.meta }}</div>
+<div style="display:flex;align-items:center;gap:6px;padding:6px 8px;border:1px solid {{ f.vBd }};border-radius:2px;background:{{ f.vBg }}">
+<span style="width:8px;height:8px;flex:none;border-radius:1px;background:{{ f.color }}"></span>
+<span style="font:600 11px/1.3 'IBM Plex Sans',sans-serif;color:{{ f.color }}">{{ f.verdict }}</span>
+</div>
+<div style="display:flex;align-items:center;gap:8px">
+<span style="font:400 10px/1 'IBM Plex Mono',monospace;color:#767e87">INTENSITY</span>
+<span style="display:flex;gap:2px">
+<span style="width:14px;height:5px;border-radius:1px;background:{{ f.b1 }}"></span><span style="width:14px;height:5px;border-radius:1px;background:{{ f.b2 }}"></span><span style="width:14px;height:5px;border-radius:1px;background:{{ f.b3 }}"></span>
+</span>
+<span style="margin-left:auto;font:400 10px/1 'IBM Plex Mono',monospace;color:#767e87">{{ f.marks }}</span>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+
+<div style="border-top:1px solid #22262c;padding-top:16px">
+<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:12px"><h2 style="margin:0;font:600 13px/1 'IBM Plex Sans',sans-serif;color:#e6e8eb">Clean-verified — nothing found by three or more editors</h2><span style="margin-left:auto;font:400 11px/1 'IBM Plex Sans',sans-serif;color:#6fa8dc">Browse 2 664 →</span></div>
+<div style="display:grid;grid-template-columns:repeat(8,1fr);gap:12px">
+<sc-for list="{{ cleanRow }}" as="f" hint-placeholder-count="8">
+<div style="display:flex;flex-direction:column;gap:5px">
+<div style="position:relative;aspect-ratio:2/3;background:repeating-linear-gradient(135deg,#1b1f24 0 5px,#171b20 5px 10px);border:1px solid #262b31;border-radius:2px">
+<span style="position:absolute;top:0;left:0;right:0;height:3px;background:#5aa469"></span>
+<span style="position:absolute;bottom:6px;left:6px;display:flex;align-items:center;gap:4px;background:rgba(14,16,19,.88);border:1px solid #2e4a36;border-radius:2px;padding:2px 5px"><svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="#5aa469" stroke-width="2"><path d="M1.6 5.2 3.9 7.5 8.4 2.5"></path></svg><span style="font:500 9px/1 'IBM Plex Mono',monospace;color:#7cc08a">CLEAN</span></span>
+</div>
+<div style="font:600 11px/1.25 'Source Serif 4',Georgia,serif;color:#e6e8eb">{{ f.title }}</div>
+<div style="font:400 9px/1 'IBM Plex Mono',monospace;color:#767e87">{{ f.year }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:14px;padding:12px 18px;border-top:1px solid #1c2026;background:#0b0d0f">
+<div style="width:56px;height:16px;flex:none;border:1px dashed #3a424a;border-radius:2px;display:flex;align-items:center;justify-content:center"><span style="font:500 7px/1 'IBM Plex Mono',monospace;color:#5c646d;letter-spacing:.06em">TMDB LOGO</span></div>
+<span style="font:400 10px/1.6 'IBM Plex Sans',sans-serif;color:#6a737c;max-width:660px">This website uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB.</span>
+<span style="margin-left:auto;display:flex;gap:14px;font:400 10px/1 'IBM Plex Sans',sans-serif;color:#767e87"><span>About &amp; credits</span><span>Guidelines</span><span>Privacy</span><span>API</span></span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1d"><div class="dv-olabel"><a class="dv-oid" href="#1d">1d</a>Film detail — the timeline screen</div>
+<div class="dv-card" style="width:1280px">
+<div style="background:#0e1013;color:#e6e8eb;font-family:'IBM Plex Sans',sans-serif">
+
+<header style="display:flex;align-items:center;gap:22px;padding:9px 18px;border-bottom:1px solid #262b31;background:#13161a">
+<div style="display:flex;flex-direction:column;align-items:stretch;gap:2px;flex:none"><div style="font:600 19px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.035em;color:#f2f4f6">NSFW<span style="color:#e05a5a">hen</span></div><div style="position:relative;height:5px"><span style="position:absolute;top:2px;left:0;right:0;height:1px;background:#434b54"></span><span style="position:absolute;top:0;left:59%;width:5px;height:5px;border-radius:50%;background:#e05a5a"></span></div></div>
+<div style="flex:1;max-width:420px;display:flex;align-items:center;gap:8px;background:#1b1f24;border:1px solid #303740;border-radius:3px;padding:6px 10px">
+<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#828a93" stroke-width="1.5"><circle cx="7" cy="7" r="4.5"></circle><path d="M10.5 10.5L14 14"></path></svg>
+<span style="font:400 12px/1 'IBM Plex Sans',sans-serif;color:#7b838c">Search title, cast or director…</span>
+</div>
+<div style="margin-left:auto;display:flex;align-items:center;gap:12px;flex:none">
+<div style="display:flex;border:1px solid #303740;border-radius:3px;overflow:hidden;font:500 10px/1 'IBM Plex Mono',monospace"><span style="padding:6px 8px;color:#7b838c">TR</span><span style="padding:6px 8px;background:#2c333b;color:#e6e8eb">EN</span></div>
+<span style="font:500 11px/1 'IBM Plex Sans',sans-serif;color:#c3cad1">kerem_a</span>
+<span style="display:block;width:24px;height:24px;border-radius:2px;background:#2c333b;border:1px solid #3a424a"></span>
+</div>
+</header>
+
+<div style="padding:8px 18px;border-bottom:1px solid #22262c;font:400 10px/1 'IBM Plex Mono',monospace;color:#6a737c">BROWSE / DRAMA / <span style="color:#98a0a8">POOR THINGS (2023)</span></div>
+
+<div style="display:flex;gap:22px;padding:18px;border-bottom:1px solid #22262c">
+<div style="width:150px;flex:none;aspect-ratio:2/3;background:repeating-linear-gradient(135deg,#1b1f24 0 6px,#171b20 6px 12px);border:1px solid #262b31;border-radius:2px;display:flex;align-items:flex-end;padding:8px"><span style="font:400 8px/1.2 'IBM Plex Mono',monospace;color:#565e67">POSTER / TMDb</span></div>
+
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:11px">
+<div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+<h1 style="margin:0;font:700 30px/1.05 'Source Serif 4',Georgia,serif;color:#f2f4f6;letter-spacing:-.01em">Poor Things</h1>
+<span style="font:400 20px/1.05 'Source Serif 4',Georgia,serif;color:#8a929b">2023</span>
+<span style="display:flex;align-items:center;gap:6px;margin-left:6px;padding:5px 9px;border:1px solid #4a3033;border-radius:2px;background:#231a1b"><span style="width:8px;height:8px;border-radius:1px;background:#e05a5a"></span><span style="font:600 11px/1 'IBM Plex Sans',sans-serif;color:#e8938e">SEX SCENES PRESENT</span></span>
+<span style="display:flex;align-items:center;gap:6px;padding:5px 9px;border:1px solid #303740;border-radius:2px;background:#1b1f24"><span style="font:500 10px/1 'IBM Plex Mono',monospace;color:#98a0a8">INTENSITY</span><span style="display:flex;gap:2px"><span style="width:13px;height:5px;border-radius:1px;background:#e05a5a"></span><span style="width:13px;height:5px;border-radius:1px;background:#e05a5a"></span><span style="width:13px;height:5px;border-radius:1px;background:#e05a5a"></span></span><span style="font:600 10px/1 'IBM Plex Mono',monospace;color:#e8938e">HEAVY</span></span>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 26px;max-width:840px">
+<sc-for list="{{ facts }}" as="k" hint-placeholder-count="8">
+<div style="display:flex;flex-direction:column;gap:3px"><span style="font:500 9px/1 'IBM Plex Mono',monospace;color:#6a737c;letter-spacing:.08em">{{ k.label }}</span><span style="font:400 12px/1.4 'IBM Plex Sans',sans-serif;color:#d6dbe0">{{ k.value }}</span></div>
+</sc-for>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:2px">
+<span style="display:flex;align-items:center;gap:6px;font:600 12px/1 'IBM Plex Sans',sans-serif;padding:9px 13px;border:1px solid #4a72a0;border-radius:3px;background:#1c2b3c;color:#a9cdf0"><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="#a9cdf0" stroke-width="1.7"><path d="M7 2.5v9M2.5 7h9"></path></svg>Add scene</span>
+<span style="display:flex;align-items:center;gap:6px;font:600 12px/1 'IBM Plex Sans',sans-serif;padding:9px 13px;border:1px solid #2e4a36;border-radius:3px;background:#16211a;color:#7cc08a"><svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="#7cc08a" stroke-width="1.8"><path d="M2.4 7.3 5.6 10.5 11.6 3.7"></path></svg>No scenes in this film</span>
+<span style="font:500 12px/1 'IBM Plex Sans',sans-serif;padding:9px 13px;border:1px solid #303740;border-radius:3px;background:#1b1f24;color:#c3cad1">Watchlist</span>
+<span style="font:500 12px/1 'IBM Plex Sans',sans-serif;padding:9px 13px;border:1px solid #303740;border-radius:3px;background:#1b1f24;color:#c3cad1">Mark as watched</span>
+<span style="margin-left:auto;font:400 10px/1.5 'IBM Plex Mono',monospace;color:#6a737c;align-self:center">LAST EDITOR REVIEW 2026-09-04 · 8 MARKS · 6 VERIFIED</span>
+</div>
+</div>
+</div>
+
+<div style="padding:18px 18px 6px">
+<div style="display:flex;align-items:baseline;gap:12px;margin-bottom:4px">
+<h2 style="margin:0;font:600 13px/1 'IBM Plex Sans',sans-serif;color:#e6e8eb">Scene timeline</h2>
+<span style="font:400 10px/1 'IBM Plex Mono',monospace;color:#6a737c">RUNTIME 2:21:00 · CUT: THEATRICAL ▾</span>
+<div style="margin-left:auto;display:flex;align-items:center;gap:7px"><span style="width:26px;height:14px;flex:none;border-radius:8px;background:{{ spoilerToggleBg }};position:relative"><span style="position:absolute;top:2px;left:{{ spoilerKnobLeft }};width:10px;height:10px;border-radius:50%;background:#0e1013"></span></span><span style="font:500 11px/1 'IBM Plex Sans',sans-serif;color:#c3cad1">Spoiler-safe mode</span><span style="font:400 10px/1 'IBM Plex Sans',sans-serif;color:#6a737c">— {{ spoilerHint }}</span></div>
+</div>
+
+<div style="position:relative;height:46px;margin:14px 0 0;background:#171b20;border:1px solid #262b31;border-radius:2px;overflow:hidden">
+<sc-for list="{{ gridLines }}" as="g" hint-placeholder-count="9">
+<span style="position:absolute;top:0;bottom:0;width:1px;background:#22262c;left:{{ g.left }}"></span>
+</sc-for>
+<sc-for list="{{ segments }}" as="s" hint-placeholder-count="8">
+<span style="position:absolute;top:0;bottom:0;left:{{ s.left }};width:{{ s.width }};background:{{ s.bg }};border:{{ s.border }};border-radius:1px"></span>
+</sc-for>
+</div>
+<div style="position:relative;height:20px;margin-bottom:10px">
+<sc-for list="{{ ticks }}" as="t" hint-placeholder-count="10">
+<span style="position:absolute;top:4px;left:{{ t.left }};transform:translateX(-50%);font:400 9px/1 'IBM Plex Mono',monospace;color:#5c646d">{{ t.label }}</span>
+</sc-for>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px;padding:9px 11px;border:1px solid #22262c;border-radius:2px;background:#121519;margin-bottom:16px">
+<span style="font:500 9px/1 'IBM Plex Mono',monospace;color:#767e87;letter-spacing:.08em">LEGEND</span>
+<sc-for list="{{ legend }}" as="l" hint-placeholder-count="5">
+<span style="display:flex;align-items:center;gap:6px;font:400 11px/1 'IBM Plex Sans',sans-serif;color:#b4bcc4"><span style="width:16px;height:9px;border-radius:1px;background:{{ l.bg }};border:{{ l.border }}"></span>{{ l.label }}</span>
+</sc-for>
+</div>
+
+<div style="display:grid;grid-template-columns:148px 90px 110px 124px minmax(0,1fr) 118px 30px;align-items:center;gap:12px;padding:0 10px 8px;border-bottom:1px solid #303740;font:500 9px/1 'IBM Plex Mono',monospace;color:#767e87;letter-spacing:.08em">
+<span>TIME RANGE</span><span>DURATION</span><span>CATEGORY</span><span>VERIFICATION</span><span>CONTEXT</span><span style="text-align:right">CONFIRMATIONS</span><span></span>
+</div>
+<sc-for list="{{ marks }}" as="m" hint-placeholder-count="8">
+<div style="display:grid;grid-template-columns:148px 90px 110px 124px minmax(0,1fr) 118px 30px;align-items:center;gap:12px;padding:10px;border-bottom:1px solid #1c2026;border-left:3px solid {{ m.color }}">
+<span style="font:500 13px/1 'IBM Plex Mono',monospace;color:#e6e8eb">{{ m.range }}</span>
+<span style="font:400 11px/1 'IBM Plex Mono',monospace;color:#98a0a8">{{ m.duration }}</span>
+<span style="display:flex;align-items:center;gap:6px;font:500 11px/1 'IBM Plex Sans',sans-serif;color:{{ m.color }}"><span style="width:7px;height:7px;border-radius:1px;background:{{ m.color }}"></span>{{ m.category }}</span>
+<span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.04em;padding:4px 6px;border:1px solid {{ m.vBd }};border-radius:2px;background:{{ m.vBg }};color:{{ m.vFg }};justify-self:start">{{ m.verification }}</span>
+<span style="font:400 11px/1.35 'IBM Plex Sans',sans-serif;color:{{ m.ctxColor }};background:{{ m.ctxBg }};border:{{ m.ctxBorder }};border-radius:2px;padding:4px 8px;justify-self:start">{{ m.context }}</span>
+<span style="text-align:right;font:400 11px/1 'IBM Plex Mono',monospace;color:#98a0a8">{{ m.votes }}</span>
+<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#5c646d" stroke-width="1.5" style="justify-self:end"><path d="M3.5 14V2.5h9L10.4 6l2.1 3.5h-9"></path></svg>
+</div>
+</sc-for>
+
+<div style="display:flex;align-items:center;gap:12px;padding:12px 10px 18px;font:400 11px/1.55 'IBM Plex Sans',sans-serif;color:#767e87">
+<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#6a737c" stroke-width="1.4" style="flex:none"><circle cx="8" cy="8" r="6.3"></circle><path d="M8 7.3v4M8 4.7v.9"></path></svg>
+<span>Timestamps follow the theatrical cut. A mark becomes <b style="color:#b4bcc4;font-weight:500">editor-verified</b> after three independent confirmations plus one editor pass. Flag anything wrong with the report icon — no free-text comments are stored on marks.</span>
+<span style="margin-left:auto;flex:none;font:500 11px/1 'IBM Plex Sans',sans-serif;padding:7px 11px;border:1px solid #303740;border-radius:3px;background:#1b1f24;color:#c3cad1">Revision history</span>
+</div>
+</div>
+
+<div style="display:flex;gap:16px;padding:0 18px 20px">
+<div style="flex:1;border:1px solid #262b31;border-radius:3px;background:#121519;padding:14px">
+<div style="font:600 12px/1 'IBM Plex Sans',sans-serif;color:#e6e8eb;margin-bottom:3px">Add scene</div>
+<div style="font:400 10px/1.5 'IBM Plex Sans',sans-serif;color:#6a737c;margin-bottom:12px">Time range and category only. Descriptions are not collected.</div>
+<div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px">
+<div style="display:flex;flex-direction:column;gap:5px"><span style="font:500 9px/1 'IBM Plex Mono',monospace;color:#767e87;letter-spacing:.08em">START</span><span style="font:400 13px/1 'IBM Plex Mono',monospace;color:#e6e8eb;border:1px solid #3a424a;border-radius:2px;padding:8px 10px;background:#1b1f24">01:02:14</span></div>
+<span style="font:400 12px/1 'IBM Plex Mono',monospace;color:#5c646d;padding-bottom:10px">→</span>
+<div style="display:flex;flex-direction:column;gap:5px"><span style="font:500 9px/1 'IBM Plex Mono',monospace;color:#767e87;letter-spacing:.08em">END</span><span style="font:400 13px/1 'IBM Plex Mono',monospace;color:#e6e8eb;border:1px solid #3a424a;border-radius:2px;padding:8px 10px;background:#1b1f24">01:04:48</span></div>
+<div style="display:flex;flex-direction:column;gap:5px"><span style="font:500 9px/1 'IBM Plex Mono',monospace;color:#767e87;letter-spacing:.08em">CATEGORY</span>
+<div style="display:flex;border:1px solid #3a424a;border-radius:2px;overflow:hidden;font:500 11px/1 'IBM Plex Sans',sans-serif">
+<span style="padding:8px 11px;background:#231a1b;color:#e8938e;border-right:1px solid #3a424a">Sex scene</span><span style="padding:8px 11px;color:#98a0a8;border-right:1px solid #3a424a;background:#1b1f24">Nudity</span><span style="padding:8px 11px;color:#98a0a8;background:#1b1f24">Suggestive</span>
+</div></div>
+<span style="font:600 12px/1 'IBM Plex Sans',sans-serif;padding:10px 14px;border:1px solid #4a72a0;border-radius:3px;background:#1c2b3c;color:#a9cdf0">Submit mark</span>
+</div>
+</div>
+<div style="width:300px;flex:none;border:1px solid #262b31;border-radius:3px;background:#121519;padding:14px">
+<div style="font:600 12px/1 'IBM Plex Sans',sans-serif;color:#e6e8eb;margin-bottom:10px">People also checked</div>
+<div style="display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ similar }}" as="f" hint-placeholder-count="4">
+<div style="display:flex;align-items:center;gap:9px"><div style="width:24px;flex:none;aspect-ratio:2/3;background:repeating-linear-gradient(135deg,#1b1f24 0 5px,#171b20 5px 10px);border:1px solid #262b31;border-radius:2px"></div><span style="font:600 12px/1.2 'Source Serif 4',Georgia,serif;color:#d6dbe0;min-width:0">{{ f.title }}</span><span style="margin-left:auto;flex:none;width:7px;height:7px;border-radius:1px;background:{{ f.color }}"></span></div>
+</sc-for>
+</div>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:14px;padding:12px 18px;border-top:1px solid #1c2026;background:#0b0d0f">
+<div style="width:56px;height:16px;flex:none;border:1px dashed #3a424a;border-radius:2px;display:flex;align-items:center;justify-content:center"><span style="font:500 7px/1 'IBM Plex Mono',monospace;color:#5c646d;letter-spacing:.06em">TMDB LOGO</span></div>
+<span style="font:400 10px/1.6 'IBM Plex Sans',sans-serif;color:#6a737c;max-width:660px">This website uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB. Film metadata and posters via TMDB.</span>
+<span style="margin-left:auto;display:flex;gap:14px;font:400 10px/1 'IBM Plex Sans',sans-serif;color:#767e87"><span>About &amp; credits</span><span>Guidelines</span><span>Privacy</span><span>API</span></span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1e"><div class="dv-olabel"><a class="dv-oid" href="#1e">1e</a>Editor dashboard — pending queue</div>
+<div class="dv-card" style="width:1280px">
+<div style="background:#0e1013;color:#e6e8eb;font-family:'IBM Plex Sans',sans-serif">
+
+<header style="display:flex;align-items:center;gap:18px;padding:8px 16px;border-bottom:1px solid #262b31;background:#13161a">
+<div style="display:flex;align-items:baseline;gap:8px"><div style="display:flex;flex-direction:column;align-items:stretch;gap:2px;flex:none"><div style="font:600 17px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.035em;color:#f2f4f6">NSFW<span style="color:#e05a5a">hen</span></div><div style="position:relative;height:5px"><span style="position:absolute;top:2px;left:0;right:0;height:1px;background:#434b54"></span><span style="position:absolute;top:0;left:59%;width:4px;height:4px;border-radius:50%;background:#e05a5a"></span></div></div><span style="font:500 9px/1 'IBM Plex Mono',monospace;color:#d9a441;border:1px solid #4a4130;border-radius:2px;padding:3px 5px;letter-spacing:.08em">EDITOR</span></div>
+<div style="flex:1;max-width:340px;display:flex;align-items:center;gap:8px;background:#1b1f24;border:1px solid #303740;border-radius:3px;padding:5px 9px"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="#828a93" stroke-width="1.5"><circle cx="7" cy="7" r="4.5"></circle><path d="M10.5 10.5L14 14"></path></svg><span style="font:400 11px/1 'IBM Plex Sans',sans-serif;color:#7b838c">Filter queue…</span></div>
+<div style="margin-left:auto;display:flex;align-items:center;gap:12px"><span style="font:400 10px/1 'IBM Plex Mono',monospace;color:#767e87">SHIFT 14:02 · 38 ACTIONS TODAY</span><span style="font:500 11px/1 'IBM Plex Sans',sans-serif;color:#c3cad1">e.altan</span><span style="display:block;width:22px;height:22px;border-radius:2px;background:#2c333b;border:1px solid #3a424a"></span></div>
+</header>
+
+<div style="display:flex;align-items:flex-start">
+<aside style="width:212px;flex:none;border-right:1px solid #22262c;background:#111418;min-height:660px;padding:12px 0">
+<div style="font:500 9px/1 'IBM Plex Mono',monospace;color:#767e87;letter-spacing:.09em;padding:0 14px 9px">MODERATION</div>
+<sc-for list="{{ navItems }}" as="n" hint-placeholder-count="4">
+<div style="display:flex;align-items:center;gap:9px;padding:9px 14px;border-left:3px solid {{ n.mark }};background:{{ n.bg }}">
+<span style="font:500 12px/1 'IBM Plex Sans',sans-serif;color:{{ n.fg }}">{{ n.label }}</span>
+<span style="margin-left:auto;font:500 10px/1 'IBM Plex Mono',monospace;color:{{ n.cFg }};background:{{ n.cBg }};border:1px solid {{ n.cBd }};border-radius:2px;padding:2px 5px">{{ n.count }}</span>
+</div>
+</sc-for>
+<div style="font:500 9px/1 'IBM Plex Mono',monospace;color:#767e87;letter-spacing:.09em;padding:18px 14px 9px">REFERENCE</div>
+<div style="display:flex;flex-direction:column">
+<span style="font:400 12px/1 'IBM Plex Sans',sans-serif;color:#98a0a8;padding:8px 14px;border-left:3px solid transparent">Category rules</span>
+<span style="font:400 12px/1 'IBM Plex Sans',sans-serif;color:#98a0a8;padding:8px 14px;border-left:3px solid transparent">Audit log</span>
+<span style="font:400 12px/1 'IBM Plex Sans',sans-serif;color:#98a0a8;padding:8px 14px;border-left:3px solid transparent">Editor handbook</span>
+</div>
+</aside>
+
+<main style="flex:1;min-width:0;padding:14px 16px 24px">
+<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:12px">
+<h1 style="margin:0;font:600 15px/1 'IBM Plex Sans',sans-serif;color:#e6e8eb">Pending queue</h1>
+<span style="font:400 11px/1 'IBM Plex Mono',monospace;color:#767e87">128 SUBMISSIONS · OLDEST 4d 6h</span>
+<div style="margin-left:auto;display:flex;align-items:center;gap:8px;font:500 11px/1 'IBM Plex Sans',sans-serif">
+<span style="padding:6px 9px;border:1px solid #303740;border-radius:2px;background:#1b1f24;color:#c3cad1">Type: All ▾</span>
+<span style="padding:6px 9px;border:1px solid #303740;border-radius:2px;background:#1b1f24;color:#c3cad1">Votes: ≥3 ▾</span>
+<span style="padding:6px 9px;border:1px solid #303740;border-radius:2px;background:#1b1f24;color:#c3cad1">Sort: Oldest ▾</span>
+</div>
+</div>
+
+<div style="display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid #303740;border-radius:2px;background:#171b20;margin-bottom:12px">
+<span style="width:12px;height:12px;border:1px solid #6fa8dc;background:#6fa8dc;border-radius:2px"></span>
+<span style="font:500 11px/1 'IBM Plex Sans',sans-serif;color:#c3cad1">4 selected</span>
+<span style="font:500 11px/1 'IBM Plex Sans',sans-serif;padding:5px 9px;border:1px solid #2e4a36;border-radius:2px;background:#16211a;color:#7cc08a">Approve selected</span>
+<span style="font:500 11px/1 'IBM Plex Sans',sans-serif;padding:5px 9px;border:1px solid #4a3033;border-radius:2px;background:#231a1b;color:#e8938e">Reject selected</span>
+<span style="font:500 11px/1 'IBM Plex Sans',sans-serif;padding:5px 9px;border:1px solid #303740;border-radius:2px;background:#1b1f24;color:#c3cad1">Assign to…</span>
+<span style="margin-left:auto;font:400 10px/1 'IBM Plex Mono',monospace;color:#5c646d">J/K MOVE · A APPROVE · R REJECT</span>
+</div>
+
+<div style="display:grid;grid-template-columns:26px minmax(0,1.4fr) 116px 128px 104px 60px 106px 62px 178px;align-items:center;gap:10px;padding:0 9px 8px;border-bottom:1px solid #303740;font:500 9px/1 'IBM Plex Mono',monospace;color:#767e87;letter-spacing:.08em">
+<span></span><span>FILM</span><span>SUBMISSION</span><span>TIME RANGE</span><span>CATEGORY</span><span style="text-align:right">VOTES</span><span>SUBMITTER</span><span style="text-align:right">AGE</span><span style="text-align:right">ACTION</span>
+</div>
+<sc-for list="{{ queue }}" as="q" hint-placeholder-count="11">
+<div style="display:grid;grid-template-columns:26px minmax(0,1.4fr) 116px 128px 104px 60px 106px 62px 178px;align-items:center;gap:10px;padding:9px;border-bottom:1px solid #1c2026;background:{{ q.rowBg }}">
+<span style="width:12px;height:12px;border:1px solid {{ q.cbBd }};background:{{ q.cbBg }};border-radius:2px"></span>
+<div style="min-width:0;display:flex;align-items:baseline;gap:8px"><span style="font:600 13px/1.2 'Source Serif 4',Georgia,serif;color:#e6e8eb">{{ q.film }}</span><span style="font:400 10px/1 'IBM Plex Mono',monospace;color:#6a737c">{{ q.year }}</span></div>
+<span style="font:500 10px/1 'IBM Plex Mono',monospace;letter-spacing:.04em;padding:4px 6px;border:1px solid {{ q.tBd }};border-radius:2px;background:{{ q.tBg }};color:{{ q.tFg }};justify-self:start">{{ q.type }}</span>
+<span style="font:500 12px/1 'IBM Plex Mono',monospace;color:#d6dbe0">{{ q.range }}</span>
+<span style="display:flex;align-items:center;gap:6px;font:500 11px/1 'IBM Plex Sans',sans-serif;color:{{ q.cColor }}"><span style="width:7px;height:7px;border-radius:1px;background:{{ q.cColor }}"></span>{{ q.category }}</span>
+<span style="text-align:right;font:500 11px/1 'IBM Plex Mono',monospace;color:{{ q.vColor }}">{{ q.votes }}</span>
+<div style="display:flex;align-items:center;gap:6px;min-width:0"><span style="width:14px;height:14px;flex:none;border-radius:2px;background:#2c333b;border:1px solid #3a424a"></span><span style="font:400 11px/1 'IBM Plex Sans',sans-serif;color:#98a0a8">{{ q.user }}</span></div>
+<span style="text-align:right;font:400 10px/1 'IBM Plex Mono',monospace;color:#767e87">{{ q.age }}</span>
+<div style="justify-self:end;display:flex;gap:6px">
+<span style="font:500 11px/1 'IBM Plex Sans',sans-serif;padding:5px 9px;border:1px solid #2e4a36;border-radius:2px;background:#16211a;color:#7cc08a">Approve</span>
+<span style="font:500 11px/1 'IBM Plex Sans',sans-serif;padding:5px 9px;border:1px solid #4a3033;border-radius:2px;background:#231a1b;color:#e8938e">Reject</span>
+<span style="font:500 11px/1 'IBM Plex Sans',sans-serif;padding:5px 7px;border:1px solid #303740;border-radius:2px;background:#1b1f24;color:#98a0a8">⋯</span>
+</div>
+</div>
+</sc-for>
+
+<div style="display:flex;align-items:center;gap:14px;padding-top:14px;font:400 11px/1 'IBM Plex Sans',sans-serif;color:#98a0a8">
+<span style="padding:6px 10px;border:1px solid #303740;border-radius:2px;background:#1b1f24;color:#c3cad1">‹ Prev</span>
+<span style="font:400 11px 'IBM Plex Mono',monospace;color:#767e87">11 OF 128</span>
+<span style="padding:6px 10px;border:1px solid #303740;border-radius:2px;background:#1b1f24;color:#c3cad1">Next ›</span>
+<span style="margin-left:auto;font:400 10px 'IBM Plex Mono',monospace;color:#5c646d">MEDIAN REVIEW TIME 41s · SLA 72h</span>
+</div>
+</main>
+</div>
+<div style="display:flex;align-items:center;gap:14px;padding:11px 16px;border-top:1px solid #1c2026;background:#0b0d0f">
+<div style="width:56px;height:16px;flex:none;border:1px dashed #3a424a;border-radius:2px;display:flex;align-items:center;justify-content:center"><span style="font:500 7px/1 'IBM Plex Mono',monospace;color:#5c646d;letter-spacing:.06em">TMDB LOGO</span></div>
+<span style="font:400 10px/1.6 'IBM Plex Sans',sans-serif;color:#6a737c;max-width:660px">This website uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB.</span>
+<span style="margin-left:auto;display:flex;gap:14px;font:400 10px/1 'IBM Plex Sans',sans-serif;color:#767e87"><span>About &amp; credits</span><span>Editor handbook</span><span>Audit log</span></span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1f"><div class="dv-olabel"><a class="dv-oid" href="#1f">1f</a>Public profile</div>
+<div class="dv-card" style="width:1080px">
+<div style="background:#0e1013;color:#e6e8eb;font-family:'IBM Plex Sans',sans-serif">
+
+<header style="display:flex;align-items:center;gap:22px;padding:9px 18px;border-bottom:1px solid #262b31;background:#13161a">
+<div style="display:flex;flex-direction:column;align-items:stretch;gap:2px;flex:none"><div style="font:600 19px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.035em;color:#f2f4f6">NSFW<span style="color:#e05a5a">hen</span></div><div style="position:relative;height:5px"><span style="position:absolute;top:2px;left:0;right:0;height:1px;background:#434b54"></span><span style="position:absolute;top:0;left:59%;width:5px;height:5px;border-radius:50%;background:#e05a5a"></span></div></div>
+<nav style="display:flex;gap:16px;font:500 12px/1 'IBM Plex Sans',sans-serif"><span style="color:#98a0a8">Browse</span><span style="color:#98a0a8">Contribute</span><span style="color:#98a0a8">Guidelines</span></nav>
+<div style="margin-left:auto;display:flex;align-items:center;gap:12px"><div style="display:flex;border:1px solid #303740;border-radius:3px;overflow:hidden;font:500 10px/1 'IBM Plex Mono',monospace"><span style="padding:6px 8px;color:#7b838c">TR</span><span style="padding:6px 8px;background:#2c333b;color:#e6e8eb">EN</span></div><span style="display:block;width:24px;height:24px;border-radius:2px;background:#2c333b;border:1px solid #3a424a"></span></div>
+</header>
+
+<div style="display:flex;gap:18px;padding:20px 18px;border-bottom:1px solid #22262c;align-items:flex-start">
+<div style="width:76px;height:76px;flex:none;border-radius:3px;background:repeating-linear-gradient(135deg,#242a31 0 6px,#1e242a 6px 12px);border:1px solid #3a424a"></div>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:9px">
+<div style="display:flex;align-items:baseline;gap:10px"><h1 style="margin:0;font:700 24px/1 'Source Serif 4',Georgia,serif;color:#f2f4f6">kerem_a</h1><span style="font:400 11px/1 'IBM Plex Mono',monospace;color:#6a737c">MEMBER SINCE 2024-03-11 · ISTANBUL</span></div>
+<div style="display:flex;align-items:center;gap:10px">
+<span style="display:flex;align-items:baseline;gap:6px;padding:5px 10px;border:1px solid #4a72a0;border-radius:2px;background:#1c2b3c"><span style="font:500 9px/1 'IBM Plex Mono',monospace;color:#8fb8e0;letter-spacing:.08em">REPUTATION</span><span style="font:600 15px/1 'IBM Plex Mono',monospace;color:#a9cdf0">2 410</span></span>
+<span style="font:500 11px/1 'IBM Plex Sans',sans-serif;padding:6px 10px;border:1px solid #303740;border-radius:2px;background:#1b1f24;color:#c3cad1">Level 4 · Trusted contributor</span>
+<span style="font:400 10px/1.4 'IBM Plex Mono',monospace;color:#6a737c">NEXT LEVEL AT 3 000</span>
+<span style="margin-left:auto;font:500 11px/1 'IBM Plex Sans',sans-serif;padding:7px 11px;border:1px solid #303740;border-radius:2px;background:#1b1f24;color:#c3cad1">Report user</span>
+</div>
+<div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:4px">
+<sc-for list="{{ stats }}" as="s" hint-placeholder-count="5">
+<div style="border:1px solid #22262c;border-radius:3px;background:#121519;padding:9px 11px;display:flex;flex-direction:column;gap:4px"><span style="font:600 19px/1 'IBM Plex Mono',monospace;color:{{ s.color }}">{{ s.value }}</span><span style="font:400 10px/1.35 'IBM Plex Sans',sans-serif;color:#767e87">{{ s.label }}</span></div>
+</sc-for>
+</div>
+</div>
+</div>
+
+<div style="padding:16px 18px;border-bottom:1px solid #22262c">
+<div style="display:flex;align-items:baseline;gap:9px;margin-bottom:11px"><span style="font:600 12px/1 'IBM Plex Sans',sans-serif;color:#e6e8eb">Badges</span><span style="font:400 10px/1 'IBM Plex Mono',monospace;color:#6a737c">6 OF 19 EARNED</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px">
+<sc-for list="{{ badges }}" as="b" hint-placeholder-count="6">
+<div style="display:flex;gap:9px;padding:9px 10px;border:1px solid #22262c;border-radius:3px;background:#121519" style-hover="border-color:#3a424a">
+<span style="width:26px;height:26px;flex:none;border:1px solid {{ b.bd }};border-radius:2px;background:{{ b.bg }};display:flex;align-items:center;justify-content:center"><span style="width:9px;height:9px;background:{{ b.dot }};border-radius:{{ b.shape }}"></span></span>
+<div style="min-width:0;display:flex;flex-direction:column;gap:3px"><span style="font:600 11px/1.2 'IBM Plex Sans',sans-serif;color:#d6dbe0">{{ b.name }}</span><span style="font:400 10px/1.35 'IBM Plex Sans',sans-serif;color:#6a737c">{{ b.desc }}</span></div>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="display:flex;gap:18px;padding:16px 18px 24px;align-items:flex-start">
+<div style="flex:1;min-width:0">
+<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:11px"><span style="font:600 12px/1 'IBM Plex Sans',sans-serif;color:#e6e8eb">Watched</span><span style="font:400 10px/1 'IBM Plex Mono',monospace;color:#6a737c">418 FILMS · PUBLIC</span><span style="margin-left:auto;font:400 11px/1 'IBM Plex Sans',sans-serif;color:#6fa8dc">See all →</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:12px">
+<sc-for list="{{ watched }}" as="f" hint-placeholder-count="12">
+<div style="display:flex;flex-direction:column;gap:5px">
+<div style="position:relative;aspect-ratio:2/3;background:repeating-linear-gradient(135deg,#1b1f24 0 5px,#171b20 5px 10px);border:1px solid #262b31;border-radius:2px"><span style="position:absolute;top:0;left:0;right:0;height:3px;background:{{ f.color }}"></span></div>
+<div style="font:600 11px/1.25 'Source Serif 4',Georgia,serif;color:#d6dbe0">{{ f.title }}</div>
+<div style="font:400 9px/1 'IBM Plex Mono',monospace;color:#767e87">{{ f.year }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="width:320px;flex:none">
+<div style="font:600 12px/1 'IBM Plex Sans',sans-serif;color:#e6e8eb;margin-bottom:11px">Contribution history</div>
+<div style="border:1px solid #22262c;border-radius:3px;background:#121519">
+<sc-for list="{{ history }}" as="h" hint-placeholder-count="6">
+<div style="display:flex;align-items:center;gap:9px;padding:9px 11px;border-bottom:1px solid #1c2026">
+<span style="width:6px;height:6px;flex:none;border-radius:1px;background:{{ h.color }}"></span>
+<span style="font:400 11px/1.35 'IBM Plex Sans',sans-serif;color:#c3cad1;min-width:0">{{ h.text }}</span>
+<span style="margin-left:auto;flex:none;font:400 10px/1 'IBM Plex Mono',monospace;color:#6a737c">{{ h.date }}</span>
+</div>
+</sc-for>
+<div style="padding:9px 11px;font:400 10px/1.5 'IBM Plex Mono',monospace;color:#5c646d">312 SUBMITTED · 287 APPROVED · 92% ACCURACY</div>
+</div>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:14px;padding:12px 18px;border-top:1px solid #1c2026;background:#0b0d0f">
+<div style="width:56px;height:16px;flex:none;border:1px dashed #3a424a;border-radius:2px;display:flex;align-items:center;justify-content:center"><span style="font:500 7px/1 'IBM Plex Mono',monospace;color:#5c646d;letter-spacing:.06em">TMDB LOGO</span></div>
+<span style="font:400 10px/1.6 'IBM Plex Sans',sans-serif;color:#6a737c;max-width:560px">This website uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB.</span>
+<span style="margin-left:auto;display:flex;gap:14px;font:400 10px/1 'IBM Plex Sans',sans-serif;color:#767e87"><span>About &amp; credits</span><span>Guidelines</span><span>Privacy</span></span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1g"><div class="dv-olabel"><a class="dv-oid" href="#1g">1g</a>Age gate (first visit) + onboarding taste picker</div>
+<div class="dv-card" style="width:1080px">
+<div style="background:#0e1013;color:#e6e8eb;font-family:'IBM Plex Sans',sans-serif;padding:20px;display:flex;gap:20px;align-items:flex-start">
+
+<div style="width:396px;flex:none;border:1px solid #303740;border-radius:4px;background:#14171b;overflow:hidden">
+<div style="padding:9px 15px;border-bottom:1px solid #262b31;background:#171b20;font:500 9px/1 'IBM Plex Mono',monospace;color:#767e87;letter-spacing:.09em">STEP 0 — FIRST VISIT</div>
+<div style="padding:17px 15px 15px;display:flex;flex-direction:column;gap:12px">
+<div style="font:700 21px/1.2 'Source Serif 4',Georgia,serif;color:#f2f4f6">Before you continue</div>
+<div style="font:400 12px/1.65 'IBM Plex Sans',sans-serif;color:#b4bcc4">NSFWhen catalogues sexual content in films as <b style="font-weight:600;color:#e6e8eb">text and timestamps only</b>. It hosts no images, clips or stills of that content. The category language is still explicit, so the site is intended for adults.</div>
+<div style="display:flex;flex-direction:column;gap:9px;padding:11px;border:1px solid #22262c;border-radius:3px;background:#101317">
+<sc-for list="{{ gateChecks }}" as="g" hint-placeholder-count="2">
+<label style="display:flex;align-items:flex-start;gap:9px;font:400 11px/1.55 'IBM Plex Sans',sans-serif;color:#c3cad1"><span style="width:13px;height:13px;flex:none;margin-top:1px;border:1px solid {{ g.bd }};background:{{ g.bg }};border-radius:2px;display:flex;align-items:center;justify-content:center"><svg width="8" height="8" viewBox="0 0 10 10" fill="none" stroke="#0e1013" stroke-width="2.2" style="opacity:{{ g.tick }}"><path d="M1.8 5.2 4 7.4 8.2 2.6"></path></svg></span>{{ g.label }}</label>
+</sc-for>
+</div>
+<div style="display:flex;gap:9px;margin-top:2px">
+<span style="flex:1;text-align:center;font:600 12px/1 'IBM Plex Sans',sans-serif;padding:11px 0;border:1px solid #4a72a0;border-radius:3px;background:#1c2b3c;color:#a9cdf0">I am 18 or older — enter</span>
+<span style="flex:none;font:500 12px/1 'IBM Plex Sans',sans-serif;padding:11px 14px;border:1px solid #303740;border-radius:3px;background:#1b1f24;color:#98a0a8">Leave</span>
+</div>
+<div style="font:400 10px/1.55 'IBM Plex Sans',sans-serif;color:#6a737c">We store a single local flag so you are not asked again on this device. No account required to browse.</div>
+</div>
+</div>
+
+<div style="flex:1;min-width:0;border:1px solid #303740;border-radius:4px;background:#14171b;overflow:hidden">
+<div style="display:flex;align-items:center;gap:10px;padding:9px 15px;border-bottom:1px solid #262b31;background:#171b20">
+<span style="font:500 9px/1 'IBM Plex Mono',monospace;color:#767e87;letter-spacing:.09em">STEP 1 OF 2 — AFTER SIGN-UP</span>
+<span style="display:flex;gap:4px;margin-left:auto"><span style="width:38px;height:3px;border-radius:2px;background:#6fa8dc"></span><span style="width:38px;height:3px;border-radius:2px;background:#2c333b"></span></span>
+<span style="font:500 11px/1 'IBM Plex Sans',sans-serif;color:#6fa8dc">Skip</span>
+</div>
+<div style="padding:17px 15px 16px;display:flex;flex-direction:column;gap:14px">
+<div>
+<div style="font:700 21px/1.2 'Source Serif 4',Georgia,serif;color:#f2f4f6;margin-bottom:5px">What do you watch?</div>
+<div style="font:400 12px/1.6 'IBM Plex Sans',sans-serif;color:#98a0a8">Pick a few. This only shapes what we recommend — it is never shown on your profile.</div>
+</div>
+
+<div>
+<div style="font:500 9px/1 'IBM Plex Mono',monospace;color:#767e87;letter-spacing:.09em;margin-bottom:9px">GENRES <span style="color:#5c646d">· 4 SELECTED</span></div>
+<div style="display:flex;flex-wrap:wrap;gap:7px">
+<sc-for list="{{ onbGenres }}" as="t" hint-placeholder-count="16">
+<span style="display:flex;align-items:center;gap:6px;font:500 12px/1 'IBM Plex Sans',sans-serif;padding:8px 11px;border:1px solid {{ t.bd }};border-radius:3px;background:{{ t.bg }};color:{{ t.fg }}"><span style="font:400 11px/1 'IBM Plex Mono',monospace;color:{{ t.signFg }}">{{ t.sign }}</span>{{ t.label }}</span>
+</sc-for>
+</div>
+</div>
+
+<div>
+<div style="font:500 9px/1 'IBM Plex Mono',monospace;color:#767e87;letter-spacing:.09em;margin-bottom:9px">WHAT SHOULD WE WARN YOU ABOUT? <span style="color:#5c646d">· 2 SELECTED</span></div>
+<div style="display:flex;flex-wrap:wrap;gap:7px">
+<sc-for list="{{ onbTags }}" as="t" hint-placeholder-count="6">
+<span style="display:flex;align-items:center;gap:7px;font:500 12px/1 'IBM Plex Sans',sans-serif;padding:8px 11px;border:1px solid {{ t.bd }};border-radius:3px;background:{{ t.bg }};color:{{ t.fg }}"><span style="width:7px;height:7px;border-radius:1px;background:{{ t.dot }}"></span>{{ t.label }}</span>
+</sc-for>
+</div>
+</div>
+
+<div style="display:flex;align-items:center;gap:12px;padding:11px;border:1px solid #22262c;border-radius:3px;background:#101317">
+<span style="width:26px;height:14px;flex:none;border-radius:8px;background:#6fa8dc;position:relative"><span style="position:absolute;top:2px;right:2px;width:10px;height:10px;border-radius:50%;background:#0e1013"></span></span>
+<span style="font:400 12px/1.5 'IBM Plex Sans',sans-serif;color:#c3cad1">Turn on spoiler-safe mode by default — context stays hidden until you click it.</span>
+</div>
+
+<div style="display:flex;align-items:center;gap:10px">
+<span style="font:600 12px/1 'IBM Plex Sans',sans-serif;padding:11px 16px;border:1px solid #4a72a0;border-radius:3px;background:#1c2b3c;color:#a9cdf0">Continue</span>
+<span style="font:500 12px/1 'IBM Plex Sans',sans-serif;padding:11px 14px;border:1px solid #303740;border-radius:3px;background:#1b1f24;color:#98a0a8">Back</span>
+<span style="margin-left:auto;font:400 10px/1 'IBM Plex Mono',monospace;color:#5c646d">NEXT: HOW YOU WANT TIMESTAMPS DISPLAYED</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1h"><div class="dv-olabel"><a class="dv-oid" href="#1h">1h</a>Logo — cleaned lockup, monogram, usage</div>
+<div class="dv-card" style="width:1080px">
+<div style="background:#0e1013;color:#e6e8eb;font-family:'IBM Plex Sans',sans-serif;padding:22px;display:flex;flex-direction:column;gap:18px">
+
+<div style="display:flex;gap:22px;align-items:stretch">
+<div style="flex:1;min-width:0;border:1px solid #262b31;border-radius:3px;background:#121519;padding:22px 24px;display:flex;flex-direction:column;gap:16px">
+<span style="font:500 9px/1 'IBM Plex Mono',monospace;color:#767e87;letter-spacing:.09em">PRIMARY LOCKUP</span>
+<div style="display:flex;flex-direction:column;align-items:stretch;gap:6px;width:268px">
+<div style="font:600 62px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.04em;color:#f2f4f6">NSFW<span style="color:#e05a5a">hen</span></div>
+<div style="position:relative;height:13px">
+<span style="position:absolute;top:6px;left:0;right:0;height:2px;background:#434b54;border-radius:1px"></span>
+<span style="position:absolute;top:1px;left:59%;width:13px;height:13px;border-radius:50%;background:#e05a5a"></span>
+</div>
+</div>
+<div style="font:400 12px/1.7 'IBM Plex Sans',sans-serif;color:#98a0a8;max-width:400px">The rule under the wordmark is the scene timeline; the marker sits exactly where <b style="color:#e6e8eb;font-weight:600">hen</b> begins — the site's whole proposition is <i>when</i>, not what. Red is the same token as a sex-scene mark, so the logo is part of the colour system rather than an extra brand colour.</div>
+</div>
+
+<div style="width:300px;flex:none;border:1px solid #262b31;border-radius:3px;background:#121519;padding:22px 24px;display:flex;flex-direction:column;gap:16px">
+<span style="font:500 9px/1 'IBM Plex Mono',monospace;color:#767e87;letter-spacing:.09em">MONOGRAM · FAVICON · APP ICON</span>
+<div style="display:flex;align-items:flex-end;gap:16px">
+<div style="width:88px;height:88px;flex:none;border-radius:18px;background:#14171b;border:1px solid #303740;position:relative;display:flex;align-items:center;justify-content:center">
+<span style="font:600 50px/1 'IBM Plex Sans',sans-serif;color:#f2f4f6;letter-spacing:-.05em">N</span>
+<span style="position:absolute;bottom:16px;left:17px;right:17px;height:1.5px;background:#434b54"></span>
+<span style="position:absolute;bottom:13px;left:48px;width:7px;height:7px;border-radius:50%;background:#e05a5a"></span>
+</div>
+<div style="width:44px;height:44px;flex:none;border-radius:9px;background:#14171b;border:1px solid #303740;position:relative;display:flex;align-items:center;justify-content:center">
+<span style="font:600 25px/1 'IBM Plex Sans',sans-serif;color:#f2f4f6;letter-spacing:-.05em">N</span>
+<span style="position:absolute;bottom:8px;left:9px;right:9px;height:1px;background:#434b54"></span>
+<span style="position:absolute;bottom:6px;left:24px;width:4px;height:4px;border-radius:50%;background:#e05a5a"></span>
+</div>
+<div style="width:22px;height:22px;flex:none;border-radius:5px;background:#14171b;border:1px solid #303740;position:relative;display:flex;align-items:center;justify-content:center">
+<span style="font:600 13px/1 'IBM Plex Sans',sans-serif;color:#f2f4f6;letter-spacing:-.05em">N</span>
+<span style="position:absolute;bottom:4px;left:5px;width:3px;height:3px;border-radius:50%;background:#e05a5a"></span>
+</div>
+</div>
+<div style="font:400 11px/1.6 'IBM Plex Sans',sans-serif;color:#767e87">At 16px the rule drops out and only the marker stays.</div>
+</div>
+</div>
+
+<div style="display:flex;gap:22px;align-items:stretch">
+<div style="flex:1;border:1px solid #262b31;border-radius:3px;background:#121519;padding:16px 18px;display:flex;flex-direction:column;gap:12px">
+<span style="font:500 9px/1 'IBM Plex Mono',monospace;color:#767e87;letter-spacing:.09em">IN HEADER · 19px — THE SHIPPING SIZE</span>
+<div style="display:flex;align-items:center;gap:16px;padding:9px 14px;border:1px solid #262b31;border-radius:2px;background:#13161a">
+<div style="display:flex;flex-direction:column;align-items:stretch;gap:2px;flex:none"><div style="font:600 19px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.035em;color:#f2f4f6">NSFW<span style="color:#e05a5a">hen</span></div><div style="position:relative;height:5px"><span style="position:absolute;top:2px;left:0;right:0;height:1px;background:#434b54"></span><span style="position:absolute;top:0;left:59%;width:5px;height:5px;border-radius:50%;background:#e05a5a"></span></div></div>
+<span style="font:400 9px/1 'IBM Plex Mono',monospace;color:#6a737c;letter-spacing:.1em">BETA</span>
+<span style="margin-left:auto;font:400 11px/1 'IBM Plex Sans',sans-serif;color:#7b838c">Browse · Contribute · Guidelines</span>
+</div>
+</div>
+<div style="width:300px;flex:none;border:1px solid #262b31;border-radius:3px;background:#efece7;padding:16px 18px;display:flex;flex-direction:column;gap:12px">
+<span style="font:500 9px/1 'IBM Plex Mono',monospace;color:#7a756c;letter-spacing:.09em">ON LIGHT — PRINT, EMAIL, PRESS</span>
+<div style="display:flex;flex-direction:column;align-items:stretch;gap:3px;width:150px">
+<div style="font:600 30px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.04em;color:#14171b">NSFW<span style="color:#b3453f">hen</span></div>
+<div style="position:relative;height:7px"><span style="position:absolute;top:3px;left:0;right:0;height:1px;background:#a9a29a"></span><span style="position:absolute;top:0;left:59%;width:7px;height:7px;border-radius:50%;background:#b3453f"></span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1i"><div class="dv-olabel"><a class="dv-oid" href="#1i">1i</a>Welcome page — first-time visitor, pre-account</div>
+<div class="dv-card" style="width:1280px">
+<div style="background:#0e1013;color:#e6e8eb;font-family:'IBM Plex Sans',sans-serif">
+
+<header style="display:flex;align-items:center;gap:22px;padding:11px 40px;border-bottom:1px solid #1c2026">
+<div style="display:flex;flex-direction:column;align-items:stretch;gap:2px;flex:none"><div style="font:600 19px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.035em;color:#f2f4f6">NSFW<span style="color:#e05a5a">hen</span></div><div style="position:relative;height:5px"><span style="position:absolute;top:2px;left:0;right:0;height:1px;background:#434b54"></span><span style="position:absolute;top:0;left:59%;width:5px;height:5px;border-radius:50%;background:#e05a5a"></span></div></div>
+<nav style="display:flex;gap:18px;font:500 12px/1 'IBM Plex Sans',sans-serif;color:#98a0a8;margin-left:14px"><span>Browse</span><span>Guidelines</span><span>How verification works</span></nav>
+<div style="margin-left:auto;display:flex;align-items:center;gap:14px;flex:none">
+<div style="display:flex;border:1px solid #303740;border-radius:3px;overflow:hidden;font:500 10px/1 'IBM Plex Mono',monospace"><span style="padding:6px 8px;color:#7b838c">TR</span><span style="padding:6px 8px;background:#2c333b;color:#e6e8eb">EN</span></div>
+<span style="font:500 11px/1 'IBM Plex Sans',sans-serif;color:#98a0a8">Sign in</span>
+<span style="font:600 11px/1 'IBM Plex Sans',sans-serif;padding:8px 12px;border:1px solid #4a72a0;border-radius:3px;background:#1c2b3c;color:#a9cdf0">Create account</span>
+</div>
+</header>
+
+<div style="padding:76px 40px 56px;border-bottom:1px solid #1c2026;display:flex;gap:64px;align-items:flex-start">
+<div style="flex:1;min-width:0;max-width:660px;display:flex;flex-direction:column;gap:22px">
+<span style="font:500 10px/1 'IBM Plex Mono',monospace;color:#767e87;letter-spacing:.14em">FILM CONTENT ADVISORY · COMMUNITY-MARKED, EDITOR-VERIFIED</span>
+<h1 style="margin:0;font:700 62px/1.03 'Source Serif 4',Georgia,serif;color:#f6f7f8;letter-spacing:-.022em;text-wrap:pretty">Know <i style="font-style:italic">when</i>,<br>not what.</h1>
+<p style="margin:0;font:400 16px/1.65 'IBM Plex Sans',sans-serif;color:#b4bcc4;max-width:540px;text-wrap:pretty">A minute-by-minute index of sexual content in films. Look up a title, see exactly which minutes to skip, and nothing else — <b style="font-weight:500;color:#e6e8eb">no images, no clips, no stills</b>, ever.</p>
+<div style="display:flex;align-items:center;gap:10px;max-width:560px;background:#14171b;border:1px solid #3a424a;border-radius:3px;padding:13px 15px;margin-top:2px">
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#98a0a8" stroke-width="1.5" style="flex:none"><circle cx="7" cy="7" r="4.5"></circle><path d="M10.5 10.5L14 14"></path></svg>
+<span style="font:400 14px/1 'IBM Plex Sans',sans-serif;color:#8a929b">Search a film — 14 882 indexed</span>
+<span style="margin-left:auto;flex:none;font:600 12px/1 'IBM Plex Sans',sans-serif;padding:7px 13px;border:1px solid #4a72a0;border-radius:2px;background:#1c2b3c;color:#a9cdf0">Look up</span>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:6px">
+<span style="font:400 10px/1 'IBM Plex Mono',monospace;color:#6a737c;align-self:center;margin-right:2px">TRY:</span>
+<sc-for list="{{ similar }}" as="f" hint-placeholder-count="4">
+<span style="font:400 11px/1 'IBM Plex Sans',sans-serif;padding:6px 9px;border:1px solid #2a3138;border-radius:2px;background:#171b20;color:#98a0a8">{{ f.title }}</span>
+</sc-for>
+</div>
+<div style="display:flex;align-items:center;gap:8px;margin-top:4px">
+<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#6a737c" stroke-width="1.4" style="flex:none"><circle cx="8" cy="8" r="6.3"></circle><path d="M8 7.3v4M8 4.7v.9"></path></svg>
+<span style="font:400 11px/1.6 'IBM Plex Sans',sans-serif;color:#767e87">Browsing needs no account. 18+ only — you will be asked to confirm once. Film data via TMDB; not endorsed by TMDB.</span>
+</div>
+</div>
+
+<div style="width:412px;flex:none;border:1px solid #262b31;border-radius:3px;background:#121519;padding:18px">
+<div style="display:flex;align-items:baseline;gap:9px;margin-bottom:14px">
+<span style="font:600 12px/1 'IBM Plex Sans',sans-serif;color:#e6e8eb">What an answer looks like</span>
+<span style="margin-left:auto;font:400 9px/1 'IBM Plex Mono',monospace;color:#6a737c">POOR THINGS · 2:21:00</span>
+</div>
+<div style="position:relative;height:34px;background:#171b20;border:1px solid #262b31;border-radius:2px;overflow:hidden">
+<sc-for list="{{ gridLines }}" as="g" hint-placeholder-count="9">
+<span style="position:absolute;top:0;bottom:0;width:1px;background:#22262c;left:{{ g.left }}"></span>
+</sc-for>
+<sc-for list="{{ segments }}" as="s" hint-placeholder-count="8">
+<span style="position:absolute;top:0;bottom:0;left:{{ s.left }};width:{{ s.width }};background:{{ s.bg }};border:{{ s.border }};border-radius:1px"></span>
+</sc-for>
+</div>
+<div style="position:relative;height:18px;margin-bottom:10px">
+<sc-for list="{{ ticks }}" as="t" hint-placeholder-count="10">
+<span style="position:absolute;top:4px;left:{{ t.left }};transform:translateX(-50%);font:400 8px/1 'IBM Plex Mono',monospace;color:#565e67">{{ t.label }}</span>
+</sc-for>
+</div>
+<div style="display:flex;flex-direction:column;gap:1px;border-top:1px solid #22262c">
+<sc-for list="{{ marks }}" as="m" hint-placeholder-count="4">
+<div style="display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid #1c2026">
+<span style="width:3px;height:15px;flex:none;background:{{ m.color }};border-radius:1px"></span>
+<span style="font:500 12px/1 'IBM Plex Mono',monospace;color:#e6e8eb">{{ m.range }}</span>
+<span style="font:500 10px/1 'IBM Plex Sans',sans-serif;color:{{ m.color }}">{{ m.category }}</span>
+<span style="margin-left:auto;font:500 9px/1 'IBM Plex Mono',monospace;letter-spacing:.04em;padding:3px 5px;border:1px solid {{ m.vBd }};border-radius:2px;background:{{ m.vBg }};color:{{ m.vFg }}">{{ m.verification }}</span>
+</div>
+</sc-for>
+</div>
+<div style="font:400 10px/1.6 'IBM Plex Sans',sans-serif;color:#6a737c;padding-top:9px">Solid bar = editor-verified · dashed = community, still confirming.</div>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid #1c2026">
+<sc-for list="{{ wStats }}" as="s" hint-placeholder-count="5">
+<div style="padding:22px 40px;border-right:1px solid #1c2026;display:flex;flex-direction:column;gap:5px">
+<span style="font:500 26px/1 'IBM Plex Mono',monospace;color:#f2f4f6;letter-spacing:-.02em">{{ s.value }}</span>
+<span style="font:400 11px/1.4 'IBM Plex Sans',sans-serif;color:#767e87">{{ s.label }}</span>
+</div>
+</sc-for>
+</div>
+
+<div style="padding:48px 40px;border-bottom:1px solid #1c2026">
+<div style="font:500 10px/1 'IBM Plex Mono',monospace;color:#767e87;letter-spacing:.14em;margin-bottom:26px">HOW IT WORKS</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:44px">
+<sc-for list="{{ wSteps }}" as="s" hint-placeholder-count="3">
+<div style="display:flex;flex-direction:column;gap:9px;padding-top:14px;border-top:1px solid #303740">
+<span style="font:500 11px/1 'IBM Plex Mono',monospace;color:#e05a5a;letter-spacing:.08em">{{ s.n }}</span>
+<span style="font:600 19px/1.25 'Source Serif 4',Georgia,serif;color:#f2f4f6">{{ s.title }}</span>
+<span style="font:400 13px/1.7 'IBM Plex Sans',sans-serif;color:#98a0a8;text-wrap:pretty">{{ s.body }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="padding:44px 40px;border-bottom:1px solid #1c2026;display:flex;gap:56px;align-items:flex-start">
+<div style="width:300px;flex:none;display:flex;flex-direction:column;gap:10px">
+<span style="font:500 10px/1 'IBM Plex Mono',monospace;color:#767e87;letter-spacing:.14em">WHAT WE WILL NEVER DO</span>
+<span style="font:600 24px/1.25 'Source Serif 4',Georgia,serif;color:#f2f4f6;text-wrap:pretty">A reference desk, not a gallery.</span>
+</div>
+<div style="flex:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 32px">
+<div style="display:flex;gap:11px"><span style="width:14px;height:14px;flex:none;margin-top:3px;border:1px solid #4a3033;border-radius:2px;background:#231a1b;position:relative"><span style="position:absolute;top:6px;left:3px;width:8px;height:1.5px;background:#e8938e"></span></span><span style="font:400 13px/1.6 'IBM Plex Sans',sans-serif;color:#b4bcc4">Host images, clips or stills of the content we index</span></div>
+<div style="display:flex;gap:11px"><span style="width:14px;height:14px;flex:none;margin-top:3px;border:1px solid #4a3033;border-radius:2px;background:#231a1b;position:relative"><span style="position:absolute;top:6px;left:3px;width:8px;height:1.5px;background:#e8938e"></span></span><span style="font:400 13px/1.6 'IBM Plex Sans',sans-serif;color:#b4bcc4">Collect free-text descriptions on a scene mark</span></div>
+<div style="display:flex;gap:11px"><span style="width:14px;height:14px;flex:none;margin-top:3px;border:1px solid #4a3033;border-radius:2px;background:#231a1b;position:relative"><span style="position:absolute;top:6px;left:3px;width:8px;height:1.5px;background:#e8938e"></span></span><span style="font:400 13px/1.6 'IBM Plex Sans',sans-serif;color:#b4bcc4">Rank, rate or review films on moral grounds</span></div>
+<div style="display:flex;gap:11px"><span style="width:14px;height:14px;flex:none;margin-top:3px;border:1px solid #4a3033;border-radius:2px;background:#231a1b;position:relative"><span style="position:absolute;top:6px;left:3px;width:8px;height:1.5px;background:#e8938e"></span></span><span style="font:400 13px/1.6 'IBM Plex Sans',sans-serif;color:#b4bcc4">Show your watchlist or marks to anyone without consent</span></div>
+<div style="display:flex;gap:11px"><span style="width:14px;height:14px;flex:none;margin-top:3px;border:1px solid #2e4a36;border-radius:2px;background:#16211a;display:flex;align-items:center;justify-content:center"><svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="#7cc08a" stroke-width="2"><path d="M1.6 5.2 3.9 7.5 8.4 2.5"></path></svg></span><span style="font:400 13px/1.6 'IBM Plex Sans',sans-serif;color:#b4bcc4">Publish every edit with an author and a timestamp</span></div>
+<div style="display:flex;gap:11px"><span style="width:14px;height:14px;flex:none;margin-top:3px;border:1px solid #2e4a36;border-radius:2px;background:#16211a;display:flex;align-items:center;justify-content:center"><svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="#7cc08a" stroke-width="2"><path d="M1.6 5.2 3.9 7.5 8.4 2.5"></path></svg></span><span style="font:400 13px/1.6 'IBM Plex Sans',sans-serif;color:#b4bcc4">Let you mark a film clean, and verify that too</span></div>
+</div>
+</div>
+
+<div style="padding:40px 40px 44px;border-bottom:1px solid #1c2026">
+<div style="display:flex;align-items:baseline;gap:12px;margin-bottom:16px">
+<span style="font:600 13px/1 'IBM Plex Sans',sans-serif;color:#e6e8eb">Start with the clean-verified shelf</span>
+<span style="font:400 10px/1 'IBM Plex Mono',monospace;color:#6a737c">NOTHING FOUND BY THREE OR MORE EDITORS</span>
+<span style="margin-left:auto;font:400 11px/1 'IBM Plex Sans',sans-serif;color:#6fa8dc">Browse 2 664 →</span>
+</div>
+<div style="display:grid;grid-template-columns:repeat(8,1fr);gap:14px">
+<sc-for list="{{ cleanRow }}" as="f" hint-placeholder-count="8">
+<div style="display:flex;flex-direction:column;gap:6px">
+<div style="position:relative;aspect-ratio:2/3;background:repeating-linear-gradient(135deg,#1b1f24 0 5px,#171b20 5px 10px);border:1px solid #262b31;border-radius:2px">
+<span style="position:absolute;top:0;left:0;right:0;height:3px;background:#5aa469"></span>
+</div>
+<div style="font:600 12px/1.25 'Source Serif 4',Georgia,serif;color:#d6dbe0">{{ f.title }}</div>
+<div style="font:400 9px/1 'IBM Plex Mono',monospace;color:#767e87">{{ f.year }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="padding:40px;display:flex;align-items:flex-end;gap:40px">
+<div style="flex:1;min-width:0">
+<div style="font:600 28px/1.25 'Source Serif 4',Georgia,serif;color:#f2f4f6;max-width:520px;text-wrap:pretty;margin-bottom:10px">Found a minute we missed? Two fields and you are done.</div>
+<div style="font:400 13px/1.7 'IBM Plex Sans',sans-serif;color:#98a0a8;max-width:480px">A start, an end, a category. Three other people confirm it, an editor signs it, and it turns solid on the timeline.</div>
+</div>
+<div style="flex:none;display:flex;gap:10px">
+<span style="font:600 13px/1 'IBM Plex Sans',sans-serif;padding:13px 20px;border:1px solid #4a72a0;border-radius:3px;background:#1c2b3c;color:#a9cdf0">Create a free account</span>
+<span style="font:500 13px/1 'IBM Plex Sans',sans-serif;padding:13px 20px;border:1px solid #303740;border-radius:3px;background:#1b1f24;color:#c3cad1">Read the guidelines</span>
+</div>
+</div>
+
+<div style="display:flex;gap:40px;align-items:flex-start;padding:26px 40px;border-top:1px solid #1c2026;background:#101317">
+<div style="display:flex;gap:16px;align-items:flex-start;max-width:620px">
+<div style="width:92px;height:26px;flex:none;border:1px dashed #3a424a;border-radius:3px;display:flex;align-items:center;justify-content:center"><span style="font:500 8px/1 'IBM Plex Mono',monospace;color:#5c646d;letter-spacing:.08em">TMDB LOGO</span></div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<span style="font:400 12px/1.7 'IBM Plex Sans',sans-serif;color:#b4bcc4">This website uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB.</span>
+<span style="font:400 11px/1.7 'IBM Plex Sans',sans-serif;color:#767e87">Film titles, runtimes, cast and posters come from The Movie Database. Scene marks are ours and our contributors'. Drop the approved TMDB logo asset into the slot — it stays smaller than the NSFWhen mark, as the API terms require.</span>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;max-width:300px">
+<span style="font:500 9px/1 'IBM Plex Mono',monospace;color:#767e87;letter-spacing:.1em">SCENE DATA</span>
+<span style="font:400 11px/1.7 'IBM Plex Sans',sans-serif;color:#98a0a8">Timestamps and categories are published under CC BY-SA with full revision history, and are available through our own read-only API.</span>
+</div>
+</div>
+
+<div style="display:flex;align-items:center;gap:22px;padding:16px 40px;border-top:1px solid #1c2026;background:#0b0d0f">
+<div style="display:flex;flex-direction:column;align-items:stretch;gap:2px;flex:none"><div style="font:600 14px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.035em;color:#98a0a8">NSFW<span style="color:#b3453f">hen</span></div><div style="position:relative;height:4px"><span style="position:absolute;top:2px;left:0;right:0;height:1px;background:#2c333b"></span><span style="position:absolute;top:0;left:59%;width:4px;height:4px;border-radius:50%;background:#b3453f"></span></div></div>
+<div style="width:56px;height:16px;flex:none;border:1px dashed #3a424a;border-radius:2px;display:flex;align-items:center;justify-content:center"><span style="font:500 7px/1 'IBM Plex Mono',monospace;color:#5c646d;letter-spacing:.06em">TMDB LOGO</span></div>
+<span style="font:400 10px/1.6 'IBM Plex Sans',sans-serif;color:#6a737c;max-width:560px">This website uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB. Scene data CC BY-SA.</span>
+<span style="margin-left:auto;display:flex;gap:16px;font:400 11px/1 'IBM Plex Sans',sans-serif;color:#767e87"><span>About &amp; credits</span><span>Guidelines</span><span>Privacy</span><span>Report abuse</span><span>API</span></span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "take <a class="dv-oid" href="#1b">1b</a>'s per-category counts into <a class="dv-oid" href="#1a">1a</a>'s grid cards" · "make the <a class="dv-oid" href="#1d">1d</a> timeline taller with category lanes instead of one bar" · "show me the mobile film detail" · "a lighter theme variant for <a class="dv-oid" href="#1c">1c</a>"</p>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;spoilerSafe&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Film detail&quot;},&quot;showUnverified&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Film detail&quot;}}">
+const RED='#e05a5a',ORG='#d98a4a',AMB='#d9a441',GRN='#5aa469',MUT='#6a737c';
+const T=(t,y,c,l,r,m,i)=>({title:t,year:y,color:c,tagLabel:l,runtime:r,marks:m,intensityShort:i});
+
+class Component extends DCLogic {
+  renderVals(){
+    const spoiler = this.props.spoilerSafe ?? true;
+    const showUnverified = this.props.showUnverified ?? true;
+
+    const catFilters=[
+      {label:'Sex scene',count:'4 218',box:RED,fill:RED,tick:1},
+      {label:'Nudity',count:'6 907',box:'#4a525b',fill:'transparent',tick:0},
+      {label:'Suggestive',count:'9 140',box:AMB,fill:AMB,tick:1},
+      {label:'Clean-verified',count:'2 664',box:'#4a525b',fill:'transparent',tick:0}
+    ];
+    const on={bd:'#3a424a',bg:'#2c333b',fg:'#e6e8eb'}, off={bd:'#2a3138',bg:'#171b20',fg:'#98a0a8'};
+    const genres=['Drama','Thriller','Sci-fi','Comedy','Romance','Horror','Crime','Documentary','Animation','Historical']
+      .map((n,i)=>({name:n,...(i===0||i===2?on:off)}));
+
+    const films=[
+      T('Poor Things','2023',RED,'Sex scenes','2h21','8 marks','HEAVY'),
+      T('Blue Valentine','2010',RED,'Sex scenes','1h52','5 marks','MOD'),
+      T('Past Lives','2023',GRN,'Clean-verified','1h45','0 marks','—'),
+      T('Babylon','2022',RED,'Sex scenes','3h09','11 marks','HEAVY'),
+      T('Portrait of a Lady on Fire','2019',ORG,'Nudity','2h02','4 marks','MOD'),
+      T('Dune: Part Two','2024',GRN,'Clean-verified','2h46','0 marks','—'),
+      T('The Favourite','2018',RED,'Sex scenes','1h59','6 marks','MOD'),
+      T('Call Me by Your Name','2017',ORG,'Nudity','2h12','5 marks','MOD'),
+      T('Oppenheimer','2023',RED,'Sex scenes','3h00','3 marks','MOD'),
+      T('Arrival','2016',GRN,'Clean-verified','1h56','0 marks','—'),
+      T('Anatomy of a Fall','2023',AMB,'Suggestive','2h32','2 marks','LIGHT'),
+      T('Drive My Car','2021',AMB,'Suggestive','2h59','3 marks','LIGHT'),
+      T('The Handmaiden','2016',RED,'Sex scenes','2h25','9 marks','HEAVY'),
+      T('Everything Everywhere All at Once','2022',AMB,'Suggestive','2h19','2 marks','LIGHT')
+    ];
+    const recs=[
+      T('Aftersun','2022',GRN,'Clean-verified'),T('First Reformed','2017',AMB,'Suggestive'),
+      T('Burning','2018',ORG,'Nudity'),T('The Zone of Interest','2023',GRN,'Clean-verified'),
+      T('Tár','2022',AMB,'Suggestive'),T('Annihilation','2018',AMB,'Suggestive'),
+      T('Sicario','2015',GRN,'Clean-verified')
+    ];
+
+    const pills=[
+      {label:'Sex scene',count:'4 218',dot:RED,bd:'#4a3033',bg:'#231a1b',fg:'#e8938e'},
+      {label:'Nudity',count:'6 907',dot:ORG,bd:'#2a3138',bg:'#171b20',fg:'#98a0a8'},
+      {label:'Suggestive',count:'9 140',dot:AMB,bd:'#4a4130',bg:'#221f1a',fg:'#e0c078'},
+      {label:'Clean',count:'2 664',dot:GRN,bd:'#2a3138',bg:'#171b20',fg:'#98a0a8'}
+    ];
+    const ST={
+      verified:{status:'VERIFIED',stBd:'#2e4a36',stBg:'#16211a',stFg:'#7cc08a'},
+      partial:{status:'PARTIAL',stBd:'#4a4130',stBg:'#221f1a',stFg:'#e0c078'},
+      community:{status:'COMMUNITY',stBd:'#303740',stBg:'#1b1f24',stFg:'#98a0a8'}
+    };
+    const cnt=n=>n?String(n).padStart(2,'0'):'—';
+    const col=n=>n?undefined:MUT;
+    const mk=(n,title,director,year,genre,runtime,s,nu,su,st)=>({
+      n:String(n).padStart(2,'0'),title,director,year,genre,runtime,
+      sex:cnt(s),sexColor:s?'#e8938e':MUT,
+      nud:cnt(nu),nudColor:nu?'#e0a878':MUT,
+      sug:cnt(su),sugColor:su?'#e0c078':MUT,...ST[st]});
+    const rows=[
+      mk(1,'Anatomy of a Fall','Triet','2023','Drama · Courtroom','2h32',0,0,2,'verified'),
+      mk(2,'Babylon','Chazelle','2022','Drama · Period','3h09',4,5,2,'verified'),
+      mk(3,'Blue Valentine','Cianfrance','2010','Drama · Romance','1h52',3,1,1,'verified'),
+      mk(4,'Call Me by Your Name','Guadagnino','2017','Drama · Romance','2h12',1,3,1,'verified'),
+      mk(5,'Drive My Car','Hamaguchi','2021','Drama','2h59',1,0,2,'partial'),
+      mk(6,'Dune: Part Two','Villeneuve','2024','Sci-fi','2h46',0,0,0,'verified'),
+      mk(7,'Everything Everywhere…','Kwan & Scheinert','2022','Sci-fi · Comedy','2h19',0,0,2,'verified'),
+      mk(8,'Oppenheimer','Nolan','2023','Drama · Historical','3h00',2,1,0,'verified'),
+      mk(9,'Past Lives','Song','2023','Drama · Romance','1h45',0,0,0,'verified'),
+      mk(10,'Poor Things','Lanthimos','2023','Drama · Comedy','2h21',4,3,1,'partial'),
+      mk(11,'The Handmaiden','Park','2016','Thriller · Romance','2h25',5,3,1,'verified'),
+      mk(12,'The Favourite','Lanthimos','2018','Drama · Period','1h59',3,1,2,'community')
+    ];
+
+    const quickChips=[
+      {label:'Watching with family',bd:'#4a72a0',bg:'#1c2b3c',fg:'#a9cdf0'},
+      {label:'Clean only',bd:'#2e4a36',bg:'#16211a',fg:'#7cc08a'},
+      {label:'New this month',bd:'#303740',bg:'#1b1f24',fg:'#c3cad1'},
+      {label:'Needs verification',bd:'#303740',bg:'#1b1f24',fg:'#c3cad1'}
+    ];
+    const big=(title,meta,color,verdict,lvl,marks,vBd,vBg)=>({title,meta,color,verdict,marks,vBd,vBg,
+      b1:lvl>=1?color:'#2c333b',b2:lvl>=2?color:'#2c333b',b3:lvl>=3?color:'#2c333b'});
+    const bigCards=[
+      big('Poor Things','2023 · 2h21 · DRAMA',RED,'4 sex scenes, 3 nudity marks',3,'8 MARKS','#4a3033','#231a1b'),
+      big('Past Lives','2023 · 1h45 · DRAMA',GRN,'Nothing found — clean-verified',0,'0 MARKS','#2e4a36','#16211a'),
+      big('The Handmaiden','2016 · 2h25 · THRILLER',RED,'5 sex scenes, 3 nudity marks',3,'9 MARKS','#4a3033','#231a1b'),
+      big('Drive My Car','2021 · 2h59 · DRAMA',AMB,'Suggestive only, one early scene',1,'3 MARKS','#4a4130','#221f1a'),
+      big('Call Me by Your Name','2017 · 2h12 · ROMANCE',ORG,'Nudity, brief; one sex scene',2,'5 MARKS','#4a3a2c','#221c18')
+    ];
+    const cleanRow=[['Arrival','2016'],['Dune: Part Two','2024'],['Past Lives','2023'],['Sicario','2015'],
+      ['The Zone of Interest','2023'],['Aftersun','2022'],['Prisoners','2013'],['Paddington 2','2017']]
+      .map(([title,year])=>({title,year}));
+
+    const facts=[
+      {label:'DIRECTOR',value:'Yorgos Lanthimos'},
+      {label:'RUNTIME',value:'2h 21m (141 min)'},
+      {label:'GENRE',value:'Drama · Comedy · Romance'},
+      {label:'RATING',value:'R · 18+ (TR)'},
+      {label:'CAST',value:'Emma Stone, Mark Ruffalo, Willem Dafoe'},
+      {label:'LANGUAGE',value:'English'},
+      {label:'COUNTRY',value:'Ireland · UK · USA'},
+      {label:'TMDb',value:'ID 792307 · poster synced 2026-09-02'}
+    ];
+
+    const total=141;
+    const tickMins=[0,15,30,45,60,75,90,105,120,135];
+    const fmt=m=>`${Math.floor(m/60)}:${String(m%60).padStart(2,'0')}`;
+    const ticks=tickMins.map(m=>({left:(m/total*100).toFixed(2)+'%',label:fmt(m)}))
+      .concat([{left:'100%',label:'2:21'}]);
+    const gridLines=tickMins.slice(1).map(m=>({left:(m/total*100).toFixed(2)+'%'}));
+
+    const raw=[
+      [1120,45,AMB,'Suggestive','VERIFIED',41,'Dinner-table innuendo'],
+      [1870,115,ORG,'Nudity','VERIFIED',63,'Non-sexual, medical setting'],
+      [2842,156,RED,'Sex scene','VERIFIED',88,'Hotel room, explicit'],
+      [3485,67,ORG,'Nudity','COMMUNITY',2,'Brief, background'],
+      [3734,154,RED,'Sex scene','VERIFIED',71,'Paris apartment, explicit'],
+      [4530,74,AMB,'Suggestive','COMMUNITY',5,'Dialogue only'],
+      [6068,132,RED,'Sex scene','VERIFIED',57,'Brothel sequence'],
+      [7435,45,ORG,'Nudity','DISPUTED',9,'Category under review']
+    ];
+    const runtimeSec=total*60;
+    const vStyle={
+      VERIFIED:{vBd:'#2e4a36',vBg:'#16211a',vFg:'#7cc08a'},
+      COMMUNITY:{vBd:'#303740',vBg:'#1b1f24',vFg:'#98a0a8'},
+      DISPUTED:{vBd:'#4a4130',vBg:'#221f1a',vFg:'#e0c078'}
+    };
+    const hms=s=>`${String(Math.floor(s/3600)).padStart(2,'0')}:${String(Math.floor(s%3600/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
+    const ms=s=>`${Math.floor(s/60)}m ${String(s%60).padStart(2,'0')}s`;
+    const visible=raw.filter(r=>showUnverified||r[4]==='VERIFIED');
+    const marks=visible.map(([st,dur,color,category,verification,votes,ctx])=>({
+      range:`${hms(st)} – ${hms(st+dur)}`,duration:ms(dur),color,category,verification,
+      ...vStyle[verification],
+      votes:verification==='VERIFIED'?`${votes} confirmed`:`${votes} pending`,
+      context: spoiler ? 'Hidden — click to reveal' : ctx,
+      ctxColor: spoiler ? '#6a737c' : '#c3cad1',
+      ctxBg: spoiler ? 'transparent' : '#1b1f24',
+      ctxBorder: spoiler ? '1px dashed #3a424a' : '1px solid #2a3138'
+    }));
+    const segments=visible.map(([st,dur,color,,verification])=>({
+      left:(st/runtimeSec*100).toFixed(2)+'%',
+      width:Math.max(dur/runtimeSec*100,0.75).toFixed(2)+'%',
+      bg:verification==='VERIFIED'?color:'transparent',
+      border:verification==='VERIFIED'?'none':`1px dashed ${color}`
+    }));
+    const legend=[
+      {label:'Sex scene',bg:RED,border:'none'},{label:'Nudity',bg:ORG,border:'none'},
+      {label:'Suggestive',bg:AMB,border:'none'},
+      {label:'Editor-verified (solid)',bg:'#98a0a8',border:'none'},
+      {label:'Community / disputed (dashed)',bg:'transparent',border:'1px dashed #98a0a8'}
+    ];
+    const similar=[{title:'The Favourite',color:RED},{title:'The Lobster',color:ORG},
+      {title:'Babylon',color:RED},{title:'Portrait of a Lady on Fire',color:ORG}];
+
+    const navItems=[
+      {label:'Pending queue',count:'128',active:true},
+      {label:'Reported content',count:'34'},
+      {label:'Reported users',count:'7'},
+      {label:'Delist candidates',count:'3'}
+    ].map(n=>({label:n.label,count:n.count,
+      mark:n.active?'#6fa8dc':'transparent',bg:n.active?'#1a1f25':'transparent',
+      fg:n.active?'#e6e8eb':'#98a0a8',
+      cFg:n.active?'#a9cdf0':'#98a0a8',cBg:n.active?'#1c2b3c':'#1b1f24',cBd:n.active?'#4a72a0':'#303740'}));
+
+    const TY={
+      new:{type:'NEW MARK',tBd:'#4a72a0',tBg:'#1c2b3c',tFg:'#a9cdf0'},
+      edit:{type:'EDIT',tBd:'#303740',tBg:'#1b1f24',tFg:'#c3cad1'},
+      clean:{type:'CLEAN CLAIM',tBd:'#2e4a36',tBg:'#16211a',tFg:'#7cc08a'},
+      report:{type:'REPORT',tBd:'#4a3033',tBg:'#231a1b',tFg:'#e8938e'}
+    };
+    const q=(film,year,t,range,category,cColor,votes,user,age,sel)=>({
+      film,year,range,category,cColor,user,age,...TY[t],
+      votes:String(votes),vColor:votes>=5?'#7cc08a':votes>=3?'#e0c078':'#98a0a8',
+      rowBg:sel?'#141b22':'transparent',cbBd:sel?'#6fa8dc':'#3a424a',cbBg:sel?'#6fa8dc':'transparent'});
+    const queue=[
+      q('Babylon','2022','new','01:24:10 – 01:26:02','Sex scene',RED,6,'mira_k','4d 6h',true),
+      q('The Favourite','2018','edit','00:52:40 – 00:53:30','Suggestive',AMB,4,'onur.t','3d 22h',true),
+      q('Past Lives','2023','clean','—','Clean claim',GRN,9,'deniz_y','3d 11h',true),
+      q('The Handmaiden','2016','new','01:38:05 – 01:41:50','Sex scene',RED,7,'kerem_a','2d 19h',true),
+      q('Oppenheimer','2023','report','00:41:12 – 00:42:00','Nudity',ORG,2,'anon_4471','2d 08h'),
+      q('Tár','2022','new','00:16:30 – 00:17:05','Suggestive',AMB,3,'selin.b','1d 21h'),
+      q('Blue Valentine','2010','edit','01:12:00 – 01:14:40','Sex scene',RED,5,'mira_k','1d 14h'),
+      q('Burning','2018','new','00:58:20 – 00:59:44','Nudity',ORG,1,'newuser_88','1d 03h'),
+      q('Aftersun','2022','clean','—','Clean claim',GRN,4,'onur.t','22h'),
+      q('Dune: Part Two','2024','report','—','Clean claim',GRN,2,'anon_9012','14h'),
+      q('Portrait of a Lady on Fire','2019','new','01:05:12 – 01:08:30','Sex scene',RED,3,'deniz_y','6h')
+    ];
+
+    const stats=[
+      {value:'312',label:'Scenes marked',color:'#e6e8eb'},
+      {value:'287',label:'Approved',color:'#7cc08a'},
+      {value:'18',label:'Rejected',color:'#e8938e'},
+      {value:'7',label:'Pending review',color:'#e0c078'},
+      {value:'92%',label:'Accuracy rate',color:'#a9cdf0'}
+    ];
+    const badges=[
+      ['First mark','1 approved submission','#4a72a0','#1c2b3c','#a9cdf0','2px'],
+      ['Timekeeper','50 marks within ±5s','#4a72a0','#1c2b3c','#a9cdf0','50%'],
+      ['Clean sweep','25 verified clean claims','#2e4a36','#16211a','#7cc08a','2px'],
+      ['Second pair of eyes','100 confirmations','#303740','#1b1f24','#c3cad1','50%'],
+      ['Archivist','Marked a pre-1980 film','#303740','#1b1f24','#c3cad1','2px'],
+      ['Steady hand','12 months, no rejections','#4a4130','#221f1a','#e0c078','2px']
+    ].map(([name,desc,bd,bg,dot,shape])=>({name,desc,bd,bg,dot,shape}));
+    const watched=['Aftersun','Arrival','Babylon','Burning','Drive My Car','First Reformed',
+      'Oppenheimer','Past Lives','Poor Things','Sicario','Tár','The Handmaiden']
+      .map((title,i)=>({title,year:['2022','2016','2022','2018','2021','2017','2023','2023','2023','2015','2022','2016'][i],
+        color:[GRN,GRN,RED,ORG,AMB,AMB,RED,GRN,RED,GRN,AMB,RED][i]}));
+    const history=[
+      ['Marked a sex scene in Babylon',RED,'09-08'],
+      ['Confirmed 3 marks in The Handmaiden',RED,'09-06'],
+      ['Clean claim accepted — Past Lives',GRN,'09-03'],
+      ['Marked nudity in Burning',ORG,'08-29'],
+      ['Edit accepted — Poor Things 01:02:14',RED,'08-27'],
+      ['Marked suggestive in Tár',AMB,'08-24']
+    ].map(([text,color,date])=>({text,color,date}));
+
+    const gateChecks=[
+      {label:'I am 18 years of age or older.',bd:'#6fa8dc',bg:'#6fa8dc',tick:1},
+      {label:'I understand this site describes sexual content in text form and does not host any such imagery.',bd:'#6fa8dc',bg:'#6fa8dc',tick:1}
+    ];
+    const selG=['Drama','Sci-fi','Thriller','Documentary'];
+    const onbGenres=['Drama','Sci-fi','Thriller','Comedy','Romance','Horror','Crime','Documentary',
+      'Animation','Historical','Action','Musical','Western','Fantasy','War','Mystery']
+      .map(label=>{const s=selG.includes(label);return{label,sign:s?'✓':'+',
+        signFg:s?'#a9cdf0':'#6a737c',bd:s?'#4a72a0':'#2a3138',bg:s?'#1c2b3c':'#171b20',fg:s?'#d6e5f5':'#98a0a8'};});
+    const onbTags=[
+      ['Sex scenes',RED,true],['Nudity',ORG,false],['Suggestive content',AMB,true],
+      ['Only heavy intensity',MUT,false],['Unverified marks too',MUT,false]
+    ].map(([label,dot,s])=>({label,dot,bd:s?'#4a72a0':'#2a3138',bg:s?'#1c2b3c':'#171b20',fg:s?'#d6e5f5':'#98a0a8'}));
+
+    const wStats=[
+      ['14 882','films indexed'],['63 109','scene marks'],['9 341','editor-verified'],
+      ['2 664','clean-verified'],['41s','median review time']
+    ].map(([value,label])=>({value,label}));
+    const wSteps=[
+      ['01','Search the film','Title, cast or director. Answers load as text — no trailers, no stills, no autoplay anything.'],
+      ['02','Read the timeline','Every mark carries a start, an end and a category. Solid means an editor signed off; dashed means the community is still confirming.'],
+      ['03','Decide, or contribute','Skip the minute, skip the film, or add the mark you could not find. Marks take two fields and no opinion.']
+    ].map(([n,title,body])=>({n,title,body}));
+
+    return {wStats,wSteps,
+      catFilters,genres,films,recs,pills,rows,quickChips,bigCards,cleanRow,
+      facts,ticks,gridLines,marks,segments,legend,similar,
+      navItems,queue,stats,badges,watched,history,gateChecks,onbGenres,onbTags,
+      spoilerToggleBg: spoiler?'#6fa8dc':'#2c333b',
+      spoilerKnobLeft: spoiler?'14px':'2px',
+      spoilerHint: spoiler?'context hidden until clicked':'context shown inline'};
+  }
+}
+</script>
+</body>
+</html>
