@@ -18,14 +18,14 @@
     <div class="catalog-layout">
         <!-- Left Filter Rail -->
         <aside class="catalog-sidebar">
-            <details class="mobile-filter-drawer" {{ ($selectedCategory || $selectedGenre || $filterQuick) ? 'open' : '' }}>
+            <details class="mobile-filter-drawer" id="catalogFilterDrawer" open>
                 <summary class="mobile-filter-summary">
                     <span style="display: flex; align-items: center; gap: 8px;">
                         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
                             <path d="M2 3h12M4 8h8M6 13h4"></path>
                         </svg>
-                        <span>{{ app()->getLocale() === 'tr' ? 'Filtreler & Kategoriler' : 'Filters & Categories' }}</span>
-                        @if($selectedCategory || $selectedGenre || $filterQuick)
+                        <span>{{ app()->getLocale() === 'tr' ? 'Filtreler & Arama' : 'Filters & Search' }}</span>
+                        @if($selectedCategory || $selectedGenre || $filterQuick || $search)
                             <span style="font-family: var(--font-mono); font-size: 11px; padding: 2px 6px; border-radius: 2px; background: var(--color-blue-bg); border: 1px solid var(--color-blue); color: var(--color-blue-fg);">
                                 {{ app()->getLocale() === 'tr' ? 'Aktif' : 'Active' }}
                             </span>
@@ -35,6 +35,38 @@
                 </summary>
 
                 <div class="mobile-filter-content" style="display: flex; flex-direction: column; gap: 20px;">
+                    <!-- In-page Search Box -->
+                    <div>
+                        <div class="filter-section-title">{{ app()->getLocale() === 'tr' ? 'FİLM ARA' : 'SEARCH FILMS' }}</div>
+                        <form action="{{ route('home') }}" method="GET" style="display: flex; gap: 6px;">
+                            @if($selectedCategory)
+                                <input type="hidden" name="category" value="{{ $selectedCategory }}">
+                            @endif
+                            @if($selectedGenre)
+                                <input type="hidden" name="genre" value="{{ $selectedGenre }}">
+                            @endif
+                            @if($filterQuick)
+                                <input type="hidden" name="quick" value="{{ $filterQuick }}">
+                            @endif
+                            @if($viewMode && $viewMode !== 'grid')
+                                <input type="hidden" name="view" value="{{ $viewMode }}">
+                            @endif
+                            <div style="position: relative; flex: 1; display: flex; align-items: center;">
+                                <input type="text" name="q" value="{{ $search }}" 
+                                       placeholder="{{ app()->getLocale() === 'tr' ? 'Film adı veya yönetmen...' : 'Film title or director...' }}"
+                                       style="width: 100%; background: var(--bg-input); border: 1px solid var(--border-medium); border-radius: 3px; padding: 7px 28px 7px 10px; font-size: 13px; color: var(--text-primary); outline: none;">
+                                @if($search)
+                                    <a href="{{ route('home', array_merge(request()->query(), ['q' => null])) }}" 
+                                       style="position: absolute; right: 8px; color: var(--text-muted); font-size: 13px; text-decoration: none;" 
+                                       title="{{ app()->getLocale() === 'tr' ? 'Aramayı temizle' : 'Clear search' }}">✕</a>
+                                @endif
+                            </div>
+                            <button type="submit" class="btn btn-secondary" style="padding: 7px 12px; font-size: 12.5px; font-weight: 500;">
+                                {{ app()->getLocale() === 'tr' ? 'Ara' : 'Search' }}
+                            </button>
+                        </form>
+                    </div>
+
                     <!-- Category Filters -->
                     <div>
                         <div class="filter-section-title">CONTENT FILTER</div>
@@ -120,21 +152,58 @@
                     </div>
                 </div>
             </details>
+            <script>
+                if (window.innerWidth <= 992 && !{{ ($selectedCategory || $selectedGenre || $filterQuick || $search) ? 'true' : 'false' }}) {
+                    document.getElementById('catalogFilterDrawer')?.removeAttribute('open');
+                }
+            </script>
         </aside>
 
         <!-- Main Movies Area -->
         <main class="catalog-main">
-            <!-- Bar with search summary and layout modes -->
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
-                <div style="font-size: 14.5px; color: var(--text-secondary);">
+            <!-- Bar with search summary, active filter badges, and layout modes -->
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
+                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 14px; color: var(--text-secondary);">
                     @if($search)
-                        <span>Results for "<b style="color: #e6e8eb;">{{ $search }}</b>"</span>
-                    @elseif($selectedGenre)
-                        <span>Genre: <b style="color: #e6e8eb;">{{ $selectedGenre }}</b></span>
-                    @elseif($filterQuick === 'family')
-                        <span>Watching with family · Verified clean</span>
+                        <span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 3px; background: var(--bg-surface); border: 1px solid var(--border-medium); font-size: 12.5px;">
+                            <span>{{ app()->getLocale() === 'tr' ? 'Arama:' : 'Search:' }} <b style="color: #e6e8eb;">"{{ $search }}"</b></span>
+                            <a href="{{ route('home', array_merge(request()->query(), ['q' => null])) }}" 
+                               style="color: var(--text-muted); font-size: 11px; text-decoration: none; padding: 1px 3px;" 
+                               title="{{ app()->getLocale() === 'tr' ? 'Aramayı kaldır' : 'Clear search' }}">✕</a>
+                        </span>
+                    @endif
+                    @if($selectedGenre)
+                        <span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 3px; background: var(--bg-surface); border: 1px solid var(--border-medium); font-size: 12.5px;">
+                            <span>{{ app()->getLocale() === 'tr' ? 'Tür:' : 'Genre:' }} <b style="color: #e6e8eb;">{{ $selectedGenre }}</b></span>
+                            <a href="{{ route('home', array_merge(request()->query(), ['genre' => null])) }}" 
+                               style="color: var(--text-muted); font-size: 11px; text-decoration: none; padding: 1px 3px;">✕</a>
+                        </span>
+                    @endif
+                    @if($selectedCategory)
+                        <span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 3px; background: var(--bg-surface); border: 1px solid var(--border-medium); font-size: 12.5px;">
+                            <span>{{ app()->getLocale() === 'tr' ? 'Kategori:' : 'Category:' }} <b style="color: #e6e8eb;">{{ __('categories.' . $selectedCategory) }}</b></span>
+                            <a href="{{ route('home', array_merge(request()->query(), ['category' => null])) }}" 
+                               style="color: var(--text-muted); font-size: 11px; text-decoration: none; padding: 1px 3px;">✕</a>
+                        </span>
+                    @endif
+                    @if($filterQuick)
+                        <span style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 3px; background: var(--bg-surface); border: 1px solid var(--border-medium); font-size: 12.5px;">
+                            <b style="color: #e6e8eb;">{{ $filterQuick === 'family' ? __('messages.filter_family') : __('messages.filter_needs_verification') }}</b>
+                            <a href="{{ route('home', array_merge(request()->query(), ['quick' => null, 'category' => null])) }}" 
+                               style="color: var(--text-muted); font-size: 11px; text-decoration: none; padding: 1px 3px;">✕</a>
+                        </span>
+                    @endif
+
+                    @if(!$search && !$selectedGenre && !$selectedCategory && !$filterQuick)
+                        <span>{{ app()->getLocale() === 'tr' ? 'Tüm indeksli filmler' : 'All indexed films' }} ({{ $films->total() }})</span>
                     @else
-                        <span>All indexed films ({{ $films->total() }})</span>
+                        <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);">
+                            ({{ $films->total() }} {{ app()->getLocale() === 'tr' ? 'film' : 'films' }})
+                        </span>
+                        <a href="{{ route('home', ['view' => $viewMode]) }}" 
+                           style="font-family: var(--font-mono); font-size: 11.5px; color: var(--color-coral); text-decoration: none; margin-left: 4px;">
+                            {{ app()->getLocale() === 'tr' ? 'Tümünü Temizle' : 'Reset All' }}
+                        </a>
                     @endif
                 </div>
 

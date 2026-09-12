@@ -570,6 +570,18 @@ input, select, textarea, button {
     padding: 14px 16px;
   }
 
+  .site-header {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 10px 16px;
+  }
+
+  .header-search {
+    order: 3;
+    max-width: 100%;
+    width: 100%;
+  }
+
   .catalog-layout {
     flex-direction: column;
     gap: 16px;
@@ -728,6 +740,20 @@ input, select, textarea, button {
 
 .mobile-filter-summary {
   display: none;
+}
+
+@media (min-width: 993px) {
+  .mobile-filter-drawer {
+    display: block !important;
+  }
+
+  .mobile-filter-drawer > summary {
+    display: none !important;
+  }
+
+  .mobile-filter-content {
+    display: flex !important;
+  }
 }
 
 @media (max-width: 992px) {

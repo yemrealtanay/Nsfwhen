@@ -33,6 +33,9 @@ class PageRenderTest extends TestCase
         $response->assertSee('Poor Things');
         $response->assertSee('NSFW');
         $response->assertSee('tmdb_logo.png');
+        $response->assertSee('CONTENT FILTER');
+        $response->assertSee('GENRES');
+        $response->assertSee('name="q"', false);
     }
 
     public function test_home_page_supports_different_views(): void
