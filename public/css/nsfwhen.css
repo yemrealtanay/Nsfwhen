@@ -57,8 +57,8 @@ body {
   background-color: var(--bg-base);
   color: var(--text-primary);
   font-family: var(--font-sans);
-  font-size: 13px;
-  line-height: 1.5;
+  font-size: 14.5px;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -101,7 +101,7 @@ input, select, textarea, button {
 }
 
 .brand-wordmark {
-  font: 700 22px/1 var(--font-sans);
+  font: 700 23px/1 var(--font-sans);
   letter-spacing: -0.04em;
   color: #f2f4f6;
 }
@@ -145,7 +145,7 @@ input, select, textarea, button {
   background: var(--bg-input);
   border: 1px solid var(--border-medium);
   border-radius: 3px;
-  padding: 6px 12px;
+  padding: 7px 12px;
 }
 
 .header-search input {
@@ -154,7 +154,7 @@ input, select, textarea, button {
   outline: none;
   width: 100%;
   color: var(--text-primary);
-  font-size: 12px;
+  font-size: 13.5px;
 }
 
 .header-search input::placeholder {
@@ -174,7 +174,7 @@ input, select, textarea, button {
   border: 1px solid var(--border-medium);
   border-radius: 3px;
   overflow: hidden;
-  font: 500 10px/1 var(--font-mono);
+  font: 500 11.5px/1 var(--font-mono);
 }
 
 .lang-toggle a {
@@ -192,10 +192,10 @@ input, select, textarea, button {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 14px;
+  padding: 8px 15px;
   border-radius: 3px;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 13px;
   cursor: pointer;
   border: 1px solid transparent;
   text-align: center;
@@ -248,9 +248,9 @@ input, select, textarea, button {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 5px 9px;
+  padding: 5px 10px;
   border-radius: 2px;
-  font: 600 11px/1 var(--font-sans);
+  font: 600 12px/1 var(--font-sans);
 }
 
 .badge-intensity {
@@ -261,7 +261,7 @@ input, select, textarea, button {
   border: 1px solid var(--border-medium);
   border-radius: 2px;
   background: var(--bg-input);
-  font: 500 10px/1 var(--font-mono);
+  font: 500 11px/1 var(--font-mono);
   color: var(--text-secondary);
 }
 
@@ -296,7 +296,7 @@ input, select, textarea, button {
 }
 
 .filter-section-title {
-  font: 500 9px/1 var(--font-mono);
+  font: 600 11px/1 var(--font-mono);
   color: var(--text-muted);
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -307,8 +307,8 @@ input, select, textarea, button {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font: 500 11px/1 var(--font-sans);
-  padding: 7px 10px;
+  font: 500 12.5px/1 var(--font-sans);
+  padding: 7px 11px;
   border: 1px solid var(--border-subtle);
   border-radius: 3px;
   background: var(--bg-surface);
@@ -375,7 +375,7 @@ input, select, textarea, button {
 }
 
 .film-card-title {
-  font: 600 13px/1.2 var(--font-serif);
+  font: 600 15px/1.25 var(--font-serif);
   color: var(--text-primary);
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -384,7 +384,7 @@ input, select, textarea, button {
 }
 
 .film-card-meta {
-  font: 400 10px/1 var(--font-mono);
+  font: 400 11.5px/1 var(--font-mono);
   color: var(--text-muted);
   display: flex;
   justify-content: space-between;
@@ -396,8 +396,8 @@ input, select, textarea, button {
   margin-top: 60px;
   border-top: 1px solid var(--border-subtle);
   background: #0b0d0f;
-  padding: 16px 24px;
-  font-size: 11px;
+  padding: 18px 24px;
+  font-size: 12.5px;
   color: var(--text-muted);
 }
 
@@ -417,7 +417,7 @@ input, select, textarea, button {
   padding: 4px 8px;
   border: 1px dashed var(--border-strong);
   border-radius: 2px;
-  font: 600 8px/1 var(--font-mono);
+  font: 600 10px/1 var(--font-mono);
   color: var(--text-secondary);
   letter-spacing: 0.06em;
 }
@@ -447,7 +447,7 @@ input, select, textarea, button {
   padding: 12px 18px;
   background: var(--bg-surface);
   border-bottom: 1px solid var(--border-default);
-  font: 500 10px/1 var(--font-mono);
+  font: 600 12px/1 var(--font-mono);
   color: var(--text-muted);
   letter-spacing: 0.08em;
   display: flex;
@@ -660,7 +660,7 @@ input, select, textarea, button {
   }
 
   .brand-wordmark {
-    font-size: 19px;
+    font-size: 21px;
   }
 
   .header-actions {
@@ -682,7 +682,7 @@ input, select, textarea, button {
   }
 
   .film-card-title {
-    font-size: 12px;
+    font-size: 13.5px;
   }
 
   .film-card-body {
@@ -697,7 +697,7 @@ input, select, textarea, button {
 
   .badge-intensity {
     padding: 4px 6px;
-    font-size: 9px;
+    font-size: 10px;
   }
 
   .intensity-bar {

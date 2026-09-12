@@ -48,7 +48,7 @@
         </a>
 
         <!-- Top Nav (Browse, Guidelines, How it works) -->
-        <nav class="site-nav" style="display: flex; gap: 18px; font-size: 12px; font-weight: 500; color: #98a0a8; margin-left: 8px; flex: none;">
+        <nav class="site-nav" style="display: flex; gap: 18px; font-size: 13.5px; font-weight: 500; color: #98a0a8; margin-left: 8px; flex: none;">
             <a href="{{ route('home') }}" style="{{ request()->routeIs('home') ? 'color: #e6e8eb;' : 'color: #98a0a8;' }}">{{ __('welcome.nav_browse') }}</a>
             <a href="{{ route('guidelines') }}" style="{{ request()->routeIs('guidelines', 'terms', 'privacy') ? 'color: #e6e8eb;' : 'color: #98a0a8;' }}">{{ __('welcome.nav_guidelines') }}</a>
             <a href="{{ route('welcome') }}" style="{{ request()->routeIs('welcome') ? 'color: #e6e8eb;' : 'color: #98a0a8;' }}">{{ __('welcome.nav_how_it_works') }}</a>
@@ -56,7 +56,7 @@
 
         <!-- Search Bar -->
         <form action="{{ route('home') }}" method="GET" class="header-search">
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#828a93" stroke-width="1.5">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#828a93" stroke-width="1.5">
                 <circle cx="7" cy="7" r="4.5"></circle>
                 <path d="M10.5 10.5L14 14"></path>
             </svg>
@@ -73,36 +73,36 @@
 
             @auth
                 @if(auth()->user()->isEditor())
-                    <a href="{{ route('editor.dashboard', ['tab' => 'import']) }}" class="btn" style="padding: 5px 9px; font-size: 11px; background: #152230; border: 1px solid #2e4d6d; color: #8ec3f8; text-decoration: none;">
+                    <a href="{{ route('editor.dashboard', ['tab' => 'import']) }}" class="btn" style="padding: 6px 11px; font-size: 12px; background: #152230; border: 1px solid #2e4d6d; color: #8ec3f8; text-decoration: none;">
                         + {{ app()->getLocale() === 'tr' ? 'Film Ekle' : 'Add Film' }}
                     </a>
-                    <a href="{{ route('editor.dashboard') }}" class="btn btn-secondary" style="padding: 5px 9px; font-size: 11px;">
+                    <a href="{{ route('editor.dashboard') }}" class="btn btn-secondary" style="padding: 6px 11px; font-size: 12px;">
                         <span style="width: 6px; height: 6px; border-radius: 50%; background: #6fa8dc;"></span>
                         {{ __('messages.editor_dashboard') }}
                     </a>
                 @endif
 
-                <a href="{{ route('profile.show', auth()->user()) }}" style="display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; color: #c3cad1;">
-                    <span style="width: 24px; height: 24px; border-radius: 2px; background: #2c333b; border: 1px solid #3a424a; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; color: #a9cdf0; font-family: var(--font-mono);">
+                <a href="{{ route('profile.show', auth()->user()) }}" style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: #c3cad1;">
+                    <span style="width: 26px; height: 26px; border-radius: 2px; background: #2c333b; border: 1px solid #3a424a; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; color: #a9cdf0; font-family: var(--font-mono);">
                         {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
                     </span>
                     <span>{{ auth()->user()->name }}</span>
-                    <span style="font-family: var(--font-mono); font-size: 10px; color: #8fb8e0; background: #1c2b3c; border: 1px solid #4a72a0; border-radius: 2px; padding: 2px 5px;">
+                    <span style="font-family: var(--font-mono); font-size: 11px; color: #8fb8e0; background: #1c2b3c; border: 1px solid #4a72a0; border-radius: 2px; padding: 2px 6px;">
                         {{ auth()->user()->reputation_score }}
                     </span>
                 </a>
 
                 <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                     @csrf
-                    <button type="submit" style="background: none; border: none; font-size: 11px; color: #767e87; cursor: pointer;">
+                    <button type="submit" style="background: none; border: none; font-size: 12.5px; color: #767e87; cursor: pointer;">
                         {{ __('messages.logout') }}
                     </button>
                 </form>
             @else
-                <a href="{{ route('login') }}" style="font-size: 12px; color: #98a0a8; font-weight: 500;">
+                <a href="{{ route('login') }}" style="font-size: 13.5px; color: #98a0a8; font-weight: 500;">
                     {{ __('messages.login') }}
                 </a>
-                <a href="{{ route('register') }}" class="btn btn-primary" style="padding: 6px 12px; font-size: 11px;">
+                <a href="{{ route('register') }}" class="btn btn-primary" style="padding: 7px 14px; font-size: 12.5px;">
                     {{ __('messages.register') }}
                 </a>
             @endauth
@@ -111,12 +111,12 @@
 
     <!-- Flash Messages -->
     @if(session('success'))
-        <div style="max-width: 1320px; margin: 12px auto 0; padding: 10px 16px; background: #16211a; border: 1px solid #2e4a36; border-radius: 3px; color: #7cc08a; font-size: 12px;">
+        <div style="max-width: 1320px; margin: 12px auto 0; padding: 10px 16px; background: #16211a; border: 1px solid #2e4a36; border-radius: 3px; color: #7cc08a; font-size: 13.5px;">
             {{ session('success') }}
         </div>
     @endif
     @if(session('error'))
-        <div style="max-width: 1320px; margin: 12px auto 0; padding: 10px 16px; background: #231a1b; border: 1px solid #4a3033; border-radius: 3px; color: #e8938e; font-size: 12px;">
+        <div style="max-width: 1320px; margin: 12px auto 0; padding: 10px 16px; background: #231a1b; border: 1px solid #4a3033; border-radius: 3px; color: #e8938e; font-size: 13.5px;">
             {{ session('error') }}
         </div>
     @endif
@@ -132,10 +132,10 @@
             <div class="tmdb-badge">
                 TMDB ATTRIBUTION
             </div>
-            <p style="max-width: 720px; line-height: 1.5; color: #767e87;">
+            <p style="max-width: 720px; line-height: 1.5; color: #767e87; font-size: 12.5px;">
                 {{ __('messages.tmdb_attribution') }}
             </p>
-            <div style="margin-left: auto; display: flex; gap: 16px; font-size: 11px; color: #767e87; flex-wrap: wrap;">
+            <div style="margin-left: auto; display: flex; gap: 16px; font-size: 12.5px; color: #767e87; flex-wrap: wrap;">
                 <a href="{{ route('home') }}">{{ __('welcome.nav_browse') }}</a>
                 <a href="{{ route('welcome') }}">{{ __('welcome.nav_how_it_works') }}</a>
                 <a href="{{ route('guidelines') }}">{{ __('welcome.nav_guidelines') }}</a>

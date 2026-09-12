@@ -204,31 +204,31 @@
           <!-- Controls & Legend -->
           <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px; background: #121519; border: 1px solid #22262c; border-radius: 3px;">
             <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
-              <span style="font: 500 9px/1 'IBM Plex Mono', monospace; color: #767e87; letter-spacing: .08em;">LEGEND</span>
-              <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 11px; color: #b4bcc4;">
+              <span style="font: 600 11px/1 'IBM Plex Mono', monospace; color: #767e87; letter-spacing: .08em;">LEGEND</span>
+              <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: #b4bcc4;">
                 <span style="width: 14px; height: 8px; border-radius: 1px; background: #e05a5a;"></span>
                 Sex scene
               </span>
-              <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 11px; color: #b4bcc4;">
+              <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: #b4bcc4;">
                 <span style="width: 14px; height: 8px; border-radius: 1px; background: #d98a4a;"></span>
                 Nudity
               </span>
-              <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 11px; color: #b4bcc4;">
+              <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: #b4bcc4;">
                 <span style="width: 14px; height: 8px; border-radius: 1px; background: #d9a441;"></span>
                 Suggestive
               </span>
-              <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 11px; color: #767e87;">
+              <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #767e87;">
                 <span style="width: 14px; height: 8px; border-radius: 1px; border: 1px dashed #767e87; background: transparent;"></span>
                 Community / Unverified
               </span>
             </div>
 
             <div style="display: flex; align-items: center; gap: 10px;">
-              <label style="display: flex; align-items: center; gap: 6px; font-size: 11px; color: #98a0a8; cursor: pointer;">
+              <label style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #98a0a8; cursor: pointer;">
                 <input type="checkbox" v-model="showUnverified" style="accent-color: #4a72a0;">
                 Show unverified marks
               </label>
-              <button @click="showAddModal = true" class="btn btn-primary" style="padding: 6px 11px; font-size: 11px;">
+              <button @click="showAddModal = true" class="btn btn-primary" style="padding: 6px 12px; font-size: 12.5px;">
                 + Add scene
               </button>
             </div>
@@ -238,13 +238,13 @@
           <div style="background: #111418; border: 1px solid #262b31; border-radius: 3px; padding: 22px 18px 12px; position: relative;">
             
             <!-- Tooltip Hover Display -->
-            <div v-if="activeSceneHover" style="position: absolute; top: 3px; left: 18px; font: 500 11px/1 'IBM Plex Mono', monospace; color: #e6e8eb; display: flex; align-items: center; gap: 8px;">
+            <div v-if="activeSceneHover" style="position: absolute; top: 3px; left: 18px; font: 500 12.5px/1 'IBM Plex Mono', monospace; color: #e6e8eb; display: flex; align-items: center; gap: 8px;">
               <span :style="{ background: activeSceneHover.color, width: '7px', height: '7px', borderRadius: '1px' }"></span>
               <span>{{ activeSceneHover.range }}</span>
               <span style="color: #98a0a8;">({{ activeSceneHover.duration }})</span>
               <span style="text-transform: uppercase; color: #a9cdf0; letter-spacing: 0.05em;">{{ activeSceneHover.category_label }}</span>
-              <span v-if="activeSceneHover.is_verified" style="color: #7cc08a; font-size: 9px; padding: 2px 4px; border: 1px solid #2e4a36; border-radius: 2px; background: #16211a;">VERIFIED</span>
-              <span v-else style="color: #98a0a8; font-size: 9px; padding: 2px 4px; border: 1px solid #303740; border-radius: 2px; background: #1b1f24;">UNVERIFIED</span>
+              <span v-if="activeSceneHover.is_verified" style="color: #7cc08a; font-size: 10.5px; padding: 2px 5px; border: 1px solid #2e4a36; border-radius: 2px; background: #16211a;">VERIFIED</span>
+              <span v-else style="color: #98a0a8; font-size: 10.5px; padding: 2px 5px; border: 1px solid #303740; border-radius: 2px; background: #1b1f24;">UNVERIFIED</span>
             </div>
 
             <!-- Bar track -->
@@ -283,7 +283,7 @@
                       top: '2px',
                       left: t.left,
                       transform: 'translateX(-50%)',
-                      font: '400 9px/1 IBM Plex Mono, monospace',
+                      font: '400 10.5px/1 IBM Plex Mono, monospace',
                       color: '#5c646d'
                     }">
                 {{ t.label }}
@@ -294,7 +294,7 @@
           <!-- Marks Table -->
           <div class="table-responsive" style="background: #111418; border: 1px solid #22262c; border-radius: 3px;">
             <div style="min-width: 680px;">
-              <div style="display: grid; grid-template-columns: 160px 100px 130px 110px 1fr 140px 80px; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid #262b31; font: 500 9px/1 'IBM Plex Mono', monospace; color: #767e87; letter-spacing: .08em;">
+              <div style="display: grid; grid-template-columns: 160px 100px 130px 110px 1fr 140px 80px; align-items: center; gap: 12px; padding: 11px 14px; border-bottom: 1px solid #262b31; font: 500 11px/1 'IBM Plex Mono', monospace; color: #767e87; letter-spacing: .08em;">
                 <span>TIME RANGE</span>
                 <span>DURATION</span>
                 <span>CATEGORY</span>
@@ -304,7 +304,7 @@
                 <span style="text-align: right;">REPORT</span>
               </div>
 
-              <div v-if="filteredScenes.length === 0" style="padding: 24px; text-align: center; color: #6a737c; font-style: italic;">
+              <div v-if="filteredScenes.length === 0" style="padding: 24px; text-align: center; color: #6a737c; font-style: italic; font-size: 13px;">
                 No scene marks in this category.
               </div>
 
@@ -314,28 +314,28 @@
                      gridTemplateColumns: '160px 100px 130px 110px 1fr 140px 80px',
                      alignItems: 'center',
                      gap: '12px',
-                     padding: '10px 14px',
+                     padding: '11px 14px',
                      borderBottom: '1px solid #1c2026',
                      borderLeft: '3px solid ' + scene.color,
                      background: activeSceneHover && activeSceneHover.id === scene.id ? '#161b22' : 'transparent'
                    }"
                    @mouseenter="activeSceneHover = scene"
                    @mouseleave="activeSceneHover = null">
-                <span style="font: 500 13px/1 'IBM Plex Mono', monospace; color: #e6e8eb;">{{ scene.range }}</span>
-                <span style="font: 400 11px/1 'IBM Plex Mono', monospace; color: #98a0a8;">{{ scene.duration }}</span>
-                <span style="display: flex; align-items: center; gap: 6px; font: 500 11px/1 'IBM Plex Sans', sans-serif;" :style="{ color: scene.color }">
+                <span style="font: 500 14px/1 'IBM Plex Mono', monospace; color: #e6e8eb;">{{ scene.range }}</span>
+                <span style="font: 400 12.5px/1 'IBM Plex Mono', monospace; color: #98a0a8;">{{ scene.duration }}</span>
+                <span style="display: flex; align-items: center; gap: 6px; font: 500 12.5px/1 'IBM Plex Sans', sans-serif;" :style="{ color: scene.color }">
                   <span :style="{ width: '7px', height: '7px', borderRadius: '1px', background: scene.color }"></span>
                   {{ scene.category_label }}
                 </span>
                 <span>
-                  <span v-if="scene.is_verified" style="font: 500 9px/1 'IBM Plex Mono', monospace; padding: 3px 6px; border: 1px solid #2e4a36; border-radius: 2px; background: #16211a; color: #7cc08a;">
+                  <span v-if="scene.is_verified" style="font: 500 10.5px/1 'IBM Plex Mono', monospace; padding: 3px 6px; border: 1px solid #2e4a36; border-radius: 2px; background: #16211a; color: #7cc08a;">
                     VERIFIED
                   </span>
-                  <span v-else style="font: 500 9px/1 'IBM Plex Mono', monospace; padding: 3px 6px; border: 1px solid #303740; border-radius: 2px; background: #1b1f24; color: #98a0a8;">
+                  <span v-else style="font: 500 10.5px/1 'IBM Plex Mono', monospace; padding: 3px 6px; border: 1px solid #303740; border-radius: 2px; background: #1b1f24; color: #98a0a8;">
                     UNVERIFIED
                   </span>
                 </span>
-                <span style="font: 400 11px/1 'IBM Plex Mono', monospace; color: #98a0a8;">
+                <span style="font: 400 12px/1 'IBM Plex Mono', monospace; color: #98a0a8;">
                   <span style="color: #7cc08a;">✓ {{ scene.confirm_votes }}</span>
                   <span style="margin: 0 4px; color: #434b54;">/</span>
                   <span style="color: #e8938e;">✗ {{ scene.dispute_votes }}</span>
@@ -345,8 +345,8 @@
                 <div style="display: flex; gap: 4px; justify-content: flex-end;">
                   <button @click="voteScene(scene, 'confirm')" 
                           :style="{
-                            padding: '4px 7px',
-                            fontSize: '10px',
+                            padding: '5px 8px',
+                            fontSize: '11px',
                             borderRadius: '2px',
                             border: scene.user_vote === 'confirm' ? '1px solid #2e4a36' : '1px solid #303740',
                             background: scene.user_vote === 'confirm' ? '#16211a' : '#1b1f24',
@@ -358,8 +358,8 @@
                   </button>
                   <button @click="voteScene(scene, 'dispute')"
                           :style="{
-                            padding: '4px 7px',
-                            fontSize: '10px',
+                            padding: '5px 8px',
+                            fontSize: '11px',
                             borderRadius: '2px',
                             border: scene.user_vote === 'dispute' ? '1px solid #4a3033' : '1px solid #303740',
                             background: scene.user_vote === 'dispute' ? '#231a1b' : '#1b1f24',

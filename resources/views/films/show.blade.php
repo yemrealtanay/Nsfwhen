@@ -11,7 +11,7 @@
 <div class="app-container" style="padding-top: 12px;">
 
     <!-- Breadcrumb bar -->
-    <div style="padding: 8px 0; font: 400 10px/1 var(--font-mono); color: var(--text-muted); border-bottom: 1px solid var(--border-subtle); margin-bottom: 18px;">
+    <div style="padding: 8px 0; font: 400 12px/1 var(--font-mono); color: var(--text-muted); border-bottom: 1px solid var(--border-subtle); margin-bottom: 18px;">
         <span>BROWSE</span> /
         <span>{{ !empty($film->genres) ? strtoupper($film->genres[0]) : 'FILM' }}</span> /
         <span style="color: var(--text-secondary);">{{ strtoupper($film->title) }} ({{ $film->releaseYear() }})</span>
@@ -24,7 +24,7 @@
             @if($film->posterUrl())
                 <img src="{{ $film->posterUrl() }}" alt="{{ $film->title }}" style="width: 100%; height: 100%; object-fit: cover;">
             @else
-                <div style="display: flex; align-items: flex-end; padding: 8px; height: 100%; font: 400 8px/1.2 var(--font-mono); color: #565e67;">
+                <div style="display: flex; align-items: flex-end; padding: 8px; height: 100%; font: 400 10px/1.2 var(--font-mono); color: #565e67;">
                     POSTER / TMDb
                 </div>
             @endif
@@ -69,10 +69,10 @@
             <div class="film-facts-grid">
                 @foreach($facts as $fact)
                     <div style="display: flex; flex-direction: column; gap: 3px;">
-                        <span style="font: 500 9px/1 var(--font-mono); color: var(--text-muted); letter-spacing: .08em;">
+                        <span style="font: 500 11px/1 var(--font-mono); color: var(--text-muted); letter-spacing: .08em;">
                             {{ $fact['label'] }}
                         </span>
-                        <span style="font: 400 12px/1.4 var(--font-sans); color: #d6dbe0;">
+                        <span style="font: 400 13.5px/1.4 var(--font-sans); color: #d6dbe0;">
                             {{ $fact['value'] }}
                         </span>
                     </div>
@@ -102,7 +102,7 @@
                     </button>
                 </form>
 
-                <div style="margin-left: auto; font: 400 10px/1.5 var(--font-mono); color: var(--text-muted);">
+                <div style="margin-left: auto; font: 400 12px/1.5 var(--font-mono); color: var(--text-muted);">
                     {{ __('messages.last_editor_review', ['date' => $film->clean_confirmed_at ? $film->clean_confirmed_at->format('Y-m-d') : 'PENDING']) }}
                     · {{ $counts['total'] }} MARKS · {{ $counts['verified'] }} VERIFIED
                 </div>
@@ -119,7 +119,7 @@
 
         <!-- Right: People Also Checked Sidebar -->
         <aside class="film-similar-sidebar">
-            <div style="font: 600 12px/1 var(--font-sans); color: var(--text-primary); margin-bottom: 12px;">
+            <div style="font: 600 13.5px/1 var(--font-sans); color: var(--text-primary); margin-bottom: 12px;">
                 People also checked
             </div>
             <div style="display: flex; flex-direction: column; gap: 10px;">
@@ -131,7 +131,7 @@
                                 <img src="{{ $s->posterUrl() }}" style="width: 100%; height: 100%; object-fit: cover;">
                             @endif
                         </div>
-                        <span style="font: 600 12px/1.2 var(--font-serif); color: #d6dbe0; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                        <span style="font: 600 13.5px/1.2 var(--font-serif); color: #d6dbe0; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                             {{ $s->title }}
                         </span>
                         <span style="margin-left: auto; flex: none; width: 7px; height: 7px; border-radius: 1px; background: {{ $sVerdict['color'] }};"></span>

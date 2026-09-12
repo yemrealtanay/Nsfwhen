@@ -4,7 +4,7 @@
 <div class="app-container">
 
     <!-- Global Stats / Banner -->
-    <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 14px; padding: 12px 16px; border: 1px solid var(--border-subtle); border-radius: 3px; background: var(--bg-card); margin-bottom: 20px; font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary);">
+    <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 14px; padding: 12px 16px; border: 1px solid var(--border-subtle); border-radius: 3px; background: var(--bg-card); margin-bottom: 20px; font-family: var(--font-mono); font-size: 12.5px; color: var(--text-secondary);">
         <span><b style="color: #e6e8eb;">{{ $totalFilms }}</b> films</span>
         <span style="color: var(--text-dim);">·</span>
         <span><b style="color: #e6e8eb;">{{ $totalMarks }}</b> scene marks</span>
@@ -26,12 +26,12 @@
                         </svg>
                         <span>{{ app()->getLocale() === 'tr' ? 'Filtreler & Kategoriler' : 'Filters & Categories' }}</span>
                         @if($selectedCategory || $selectedGenre || $filterQuick)
-                            <span style="font-family: var(--font-mono); font-size: 9px; padding: 2px 6px; border-radius: 2px; background: var(--color-blue-bg); border: 1px solid var(--color-blue); color: var(--color-blue-fg);">
+                            <span style="font-family: var(--font-mono); font-size: 11px; padding: 2px 6px; border-radius: 2px; background: var(--color-blue-bg); border: 1px solid var(--color-blue); color: var(--color-blue-fg);">
                                 {{ app()->getLocale() === 'tr' ? 'Aktif' : 'Active' }}
                             </span>
                         @endif
                     </span>
-                    <span style="font-size: 11px; color: var(--text-muted);">▾</span>
+                    <span style="font-size: 12px; color: var(--text-muted);">▾</span>
                 </summary>
 
                 <div class="mobile-filter-content" style="display: flex; flex-direction: column; gap: 20px;">
@@ -51,7 +51,7 @@
                                     <span style="width: 8px; height: 8px; border-radius: 1px; background: var(--color-sex);"></span>
                                     {{ __('categories.sex_scene') }}
                                 </span>
-                                <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-muted);">{{ $sexCount }}</span>
+                                <span style="font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted);">{{ $sexCount }}</span>
                             </a>
                             <a href="{{ route('home', array_merge(request()->query(), ['category' => 'nudity', 'quick' => null])) }}"
                                class="filter-chip {{ $selectedCategory === 'nudity' ? 'active' : '' }}"
@@ -60,7 +60,7 @@
                                     <span style="width: 8px; height: 8px; border-radius: 1px; background: var(--color-nudity);"></span>
                                     {{ __('categories.nudity') }}
                                 </span>
-                                <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-muted);">{{ $nudityCount }}</span>
+                                <span style="font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted);">{{ $nudityCount }}</span>
                             </a>
                             <a href="{{ route('home', array_merge(request()->query(), ['category' => 'suggestive', 'quick' => null])) }}"
                                class="filter-chip {{ $selectedCategory === 'suggestive' ? 'active' : '' }}"
@@ -69,7 +69,7 @@
                                     <span style="width: 8px; height: 8px; border-radius: 1px; background: var(--color-suggestive);"></span>
                                     {{ __('categories.suggestive') }}
                                 </span>
-                                <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-muted);">{{ $suggestiveCount }}</span>
+                                <span style="font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted);">{{ $suggestiveCount }}</span>
                             </a>
                             <a href="{{ route('home', array_merge(request()->query(), ['category' => 'clean', 'quick' => 'clean'])) }}"
                                class="filter-chip {{ $filterQuick === 'clean' || $selectedCategory === 'clean' ? 'active' : '' }}"
@@ -78,7 +78,7 @@
                                     <span style="width: 8px; height: 8px; border-radius: 1px; background: var(--color-clean);"></span>
                                     {{ __('categories.clean_verified') }}
                                 </span>
-                                <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-muted);">{{ $cleanVerifiedFilms }}</span>
+                                <span style="font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted);">{{ $cleanVerifiedFilms }}</span>
                             </a>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                             @foreach($genresList as $g)
                                 <a href="{{ route('home', array_merge(request()->query(), ['genre' => $selectedGenre === $g ? null : $g])) }}"
                                    class="filter-chip {{ $selectedGenre === $g ? 'active' : '' }}"
-                                   style="padding: 5px 8px; font-size: 10px;">
+                                   style="padding: 5px 9px; font-size: 11.5px;">
                                     {{ $g }}
                                 </a>
                             @endforeach
@@ -126,7 +126,7 @@
         <main class="catalog-main">
             <!-- Bar with search summary and layout modes -->
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
-                <div style="font-size: 13px; color: var(--text-secondary);">
+                <div style="font-size: 14.5px; color: var(--text-secondary);">
                     @if($search)
                         <span>Results for "<b style="color: #e6e8eb;">{{ $search }}</b>"</span>
                     @elseif($selectedGenre)
@@ -139,17 +139,17 @@
                 </div>
 
                 <!-- View Mode Switcher -->
-                <div style="display: flex; border: 1px solid var(--border-medium); border-radius: 3px; overflow: hidden; font-size: 10px; font-family: var(--font-mono);">
+                <div style="display: flex; border: 1px solid var(--border-medium); border-radius: 3px; overflow: hidden; font-size: 11.5px; font-family: var(--font-mono);">
                     <a href="{{ route('home', array_merge(request()->query(), ['view' => 'grid'])) }}"
-                       style="padding: 6px 10px; {{ $viewMode === 'grid' ? 'background: #2c333b; color: #fff;' : 'color: #98a0a8;' }}">
+                       style="padding: 6px 11px; {{ $viewMode === 'grid' ? 'background: #2c333b; color: #fff;' : 'color: #98a0a8;' }}">
                         GRID
                     </a>
                     <a href="{{ route('home', array_merge(request()->query(), ['view' => 'rows'])) }}"
-                       style="padding: 6px 10px; {{ $viewMode === 'rows' ? 'background: #2c333b; color: #fff;' : 'color: #98a0a8;' }}">
+                       style="padding: 6px 11px; {{ $viewMode === 'rows' ? 'background: #2c333b; color: #fff;' : 'color: #98a0a8;' }}">
                         INDEX ROWS
                     </a>
                     <a href="{{ route('home', array_merge(request()->query(), ['view' => 'cards'])) }}"
-                       style="padding: 6px 10px; {{ $viewMode === 'cards' ? 'background: #2c333b; color: #fff;' : 'color: #98a0a8;' }}">
+                       style="padding: 6px 11px; {{ $viewMode === 'cards' ? 'background: #2c333b; color: #fff;' : 'color: #98a0a8;' }}">
                         VERDICT CARDS
                     </a>
                 </div>
@@ -157,15 +157,15 @@
 
             @if($films->isEmpty())
                 <div style="padding: 48px 24px; text-align: center; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 3px; color: var(--text-muted);">
-                    <div style="font-size: 13px; color: #b0b8c1; margin-bottom: 6px;">
+                    <div style="font-size: 14.5px; color: #b0b8c1; margin-bottom: 6px;">
                         {{ app()->getLocale() === 'tr' ? 'Arama kriterlerinize uygun film bulunamadı.' : 'No films found matching your search and filter criteria.' }}
                     </div>
                     @if(auth()->check() && auth()->user()->isEditor() && !empty($search))
                         <div style="margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border-subtle); display: flex; flex-direction: column; align-items: center; gap: 8px;">
-                            <span style="font-size: 12px; color: #8a94a0;">
+                            <span style="font-size: 13px; color: #8a94a0;">
                                 {{ app()->getLocale() === 'tr' ? 'Aradığınız film henüz NSFWhen\'de kayıtlı değil mi?' : 'Is the film you are looking for not in NSFWhen yet?' }}
                             </span>
-                            <a href="{{ route('editor.dashboard', ['tab' => 'import', 'q' => $search]) }}" class="btn" style="padding: 6px 14px; font-size: 11px; font-weight: 600; background: #162436; border: 1px solid #325880; color: #8ec3f8; text-decoration: none;">
+                            <a href="{{ route('editor.dashboard', ['tab' => 'import', 'q' => $search]) }}" class="btn" style="padding: 6px 14px; font-size: 12.5px; font-weight: 600; background: #162436; border: 1px solid #325880; color: #8ec3f8; text-decoration: none;">
                                 🎬 TMDb'den "{{ $search }}" Ara ve Ekle →
                             </a>
                         </div>
@@ -187,7 +187,7 @@
                                     @if($film->posterUrl())
                                         <img src="{{ $film->posterUrl() }}" alt="{{ $film->title }}" loading="lazy">
                                     @else
-                                        <div style="display: flex; align-items: flex-end; padding: 8px; height: 100%; font-family: var(--font-mono); font-size: 8px; color: #565e67;">
+                                        <div style="display: flex; align-items: flex-end; padding: 8px; height: 100%; font-family: var(--font-mono); font-size: 10px; color: #565e67;">
                                             POSTER / TMDb
                                         </div>
                                     @endif
@@ -199,11 +199,11 @@
                                         <span>{{ $film->shortRuntime() }}</span>
                                     </div>
                                     <div style="display: flex; align-items: center; gap: 4px; margin-top: 4px;">
-                                        <span style="width: 6px; height: 6px; border-radius: 1px; background: {{ $verdict['color'] }};"></span>
-                                        <span style="font-size: 10px; font-weight: 500; color: {{ $verdict['fg'] }};">
+                                        <span style="width: 7px; height: 7px; border-radius: 1px; background: {{ $verdict['color'] }};"></span>
+                                        <span style="font-size: 11.5px; font-weight: 500; color: {{ $verdict['fg'] }};">
                                             {{ $verdict['short'] }}
                                         </span>
-                                        <span style="margin-left: auto; font-family: var(--font-mono); font-size: 9px; color: var(--text-muted);">
+                                        <span style="margin-left: auto; font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">
                                             {{ $counts['total'] }}m
                                         </span>
                                     </div>
@@ -216,7 +216,7 @@
                 @elseif($viewMode === 'rows')
                     <div class="table-responsive" style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 3px;">
                         <div style="min-width: 680px;">
-                            <div style="display: grid; grid-template-columns: 36px minmax(0, 1.6fr) 80px 100px 70px 70px 70px 100px; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid var(--border-medium); font: 500 9px/1 var(--font-mono); color: var(--text-muted); letter-spacing: 0.08em;">
+                            <div style="display: grid; grid-template-columns: 36px minmax(0, 1.6fr) 80px 100px 70px 70px 70px 100px; align-items: center; gap: 12px; padding: 11px 14px; border-bottom: 1px solid var(--border-medium); font: 500 11px/1 var(--font-mono); color: var(--text-muted); letter-spacing: 0.08em;">
                                 <span>#</span>
                                 <span>TITLE / DIRECTOR</span>
                                 <span>YEAR</span>
@@ -232,36 +232,36 @@
                                     $verdict = $film->verdict();
                                 @endphp
                                 <a href="{{ route('films.show', $film) }}"
-                                   style="display: grid; grid-template-columns: 36px minmax(0, 1.6fr) 80px 100px 70px 70px 70px 100px; align-items: center; gap: 12px; padding: 11px 14px; border-bottom: 1px solid var(--border-subtle); font-size: 12px; transition: background 0.1s ease;"
+                                   style="display: grid; grid-template-columns: 36px minmax(0, 1.6fr) 80px 100px 70px 70px 70px 100px; align-items: center; gap: 12px; padding: 12px 14px; border-bottom: 1px solid var(--border-subtle); font-size: 13.5px; transition: background 0.1s ease;"
                                    onmouseover="this.style.background='#161b22'" onmouseout="this.style.background='transparent'">
-                                    <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-muted);">
+                                    <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">
                                         {{ str_pad($idx + 1, 2, '0', STR_PAD_LEFT) }}
                                     </span>
                                     <div style="min-width: 0;">
-                                        <div style="font: 600 13px/1.2 var(--font-serif); color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                        <div style="font: 600 14px/1.2 var(--font-serif); color: var(--text-primary); text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
                                             {{ $film->title }}
                                         </div>
-                                        <div style="font-size: 10px; color: var(--text-muted);">
-                                            {{ $film->director ?? '—' }}
+                                        <div style="font: 400 11.5px/1 var(--font-sans); color: var(--text-muted);">
+                                            {{ $film->director ?: '—' }}
                                         </div>
                                     </div>
-                                    <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary);">
+                                    <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);">
                                         {{ $film->releaseYear() }}
                                     </span>
-                                    <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">
+                                    <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);">
                                         {{ $film->shortRuntime() }}
                                     </span>
-                                    <span style="font-family: var(--font-mono); font-weight: 500; color: {{ $counts['sex_scene'] > 0 ? 'var(--color-sex-fg)' : 'var(--text-dim)' }};">
+                                    <span style="font-family: var(--font-mono); font-weight: 500; font-size: 12.5px; color: {{ $counts['sex_scene'] > 0 ? 'var(--color-sex-fg)' : 'var(--text-dim)' }};">
                                         {{ $counts['sex_scene'] > 0 ? str_pad($counts['sex_scene'], 2, '0', STR_PAD_LEFT) : '—' }}
                                     </span>
-                                    <span style="font-family: var(--font-mono); font-weight: 500; color: {{ $counts['nudity'] > 0 ? 'var(--color-nudity-fg)' : 'var(--text-dim)' }};">
+                                    <span style="font-family: var(--font-mono); font-weight: 500; font-size: 12.5px; color: {{ $counts['nudity'] > 0 ? 'var(--color-nudity-fg)' : 'var(--text-dim)' }};">
                                         {{ $counts['nudity'] > 0 ? str_pad($counts['nudity'], 2, '0', STR_PAD_LEFT) : '—' }}
                                     </span>
-                                    <span style="font-family: var(--font-mono); font-weight: 500; color: {{ $counts['suggestive'] > 0 ? 'var(--color-suggestive-fg)' : 'var(--text-dim)' }};">
+                                    <span style="font-family: var(--font-mono); font-weight: 500; font-size: 12.5px; color: {{ $counts['suggestive'] > 0 ? 'var(--color-suggestive-fg)' : 'var(--text-dim)' }};">
                                         {{ $counts['suggestive'] > 0 ? str_pad($counts['suggestive'], 2, '0', STR_PAD_LEFT) : '—' }}
                                     </span>
                                     <span style="text-align: right;">
-                                        <span style="font-family: var(--font-mono); font-size: 9px; padding: 3px 6px; border: 1px solid {{ $verdict['bd'] }}; border-radius: 2px; background: {{ $verdict['bg'] }}; color: {{ $verdict['fg'] }};">
+                                        <span style="font-family: var(--font-mono); font-size: 11px; padding: 3px 7px; border: 1px solid {{ $verdict['bd'] }}; border-radius: 2px; background: {{ $verdict['bg'] }}; color: {{ $verdict['fg'] }};">
                                             {{ $verdict['short'] }}
                                         </span>
                                     </span>
@@ -283,14 +283,14 @@
                                style="display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 14px 18px; background: var(--bg-card); border: 1px solid var(--border-default); border-left: 4px solid {{ $verdict['color'] }}; border-radius: 3px; flex-wrap: wrap;">
                                 <div style="flex: 1; min-width: 0;">
                                     <div style="display: flex; align-items: baseline; gap: 10px;">
-                                        <div style="font: 700 17px/1.2 var(--font-serif); color: var(--text-primary);">
+                                        <div style="font: 700 18px/1.2 var(--font-serif); color: var(--text-primary);">
                                             {{ $film->title }}
                                         </div>
-                                        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">
+                                        <span style="font-family: var(--font-mono); font-size: 12.5px; color: var(--text-muted);">
                                             {{ $film->releaseYear() }} · {{ $film->shortRuntime() }}
                                         </span>
                                     </div>
-                                    <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">
+                                    <div style="font-size: 13.5px; color: var(--text-secondary); margin-top: 4px;">
                                         {{ $verdict['summary'] }}
                                     </div>
                                 </div>
@@ -308,7 +308,7 @@
                                             {{ $film->intensityLabel() }}
                                         </span>
                                     </div>
-                                    <span style="font-family: var(--font-mono); font-size: 10px; color: var(--text-muted);">
+                                    <span style="font-family: var(--font-mono); font-size: 11.5px; color: var(--text-muted);">
                                         {{ $counts['total'] }} marks recorded
                                     </span>
                                 </div>

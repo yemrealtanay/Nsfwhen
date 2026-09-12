@@ -15,7 +15,7 @@
                 <h1 style="margin: 0; font: 700 24px/1 var(--font-serif); color: #f2f4f6;">
                     {{ $user->name }}
                 </h1>
-                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); margin-top: 4px;">
+                <div style="font-family: var(--font-mono); font-size: 12.5px; color: var(--text-muted); margin-top: 4px;">
                     Member since {{ $user->created_at->format('M Y') }}
                 </div>
             </div>
@@ -23,15 +23,15 @@
             <!-- Reputation Pill & Level -->
             <div style="margin-left: auto; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
                 <span style="display: inline-flex; align-items: baseline; gap: 6px; padding: 6px 12px; border: 1px solid #4a72a0; border-radius: 2px; background: #1c2b3c;">
-                    <span style="font: 500 9px/1 var(--font-mono); color: #8fb8e0; letter-spacing: .08em;">{{ __('messages.reputation') }}</span>
+                    <span style="font: 600 11px/1 var(--font-mono); color: #8fb8e0; letter-spacing: .08em;">{{ __('messages.reputation') }}</span>
                     <span style="font: 600 16px/1 var(--font-mono); color: #a9cdf0;">{{ number_format($user->reputation_score) }}</span>
                 </span>
 
-                <span style="font: 500 11px/1 var(--font-sans); padding: 7px 12px; border: 1px solid var(--border-medium); border-radius: 2px; background: #1b1f24; color: #c3cad1;">
+                <span style="font: 500 12.5px/1 var(--font-sans); padding: 7px 12px; border: 1px solid var(--border-medium); border-radius: 2px; background: #1b1f24; color: #c3cad1;">
                     {{ $user->reputationLevelTitle() }}
                 </span>
 
-                <span style="font: 400 10px/1.4 var(--font-mono); color: var(--text-muted);">
+                <span style="font: 400 11.5px/1.4 var(--font-mono); color: var(--text-muted);">
                     NEXT LEVEL AT {{ number_format($user->nextLevelThreshold()) }}
                 </span>
             </div>
@@ -44,7 +44,7 @@
                     <span style="font: 600 20px/1 var(--font-mono); color: {{ $s['color'] }};">
                         {{ $s['value'] }}
                     </span>
-                    <span style="font: 400 10px/1.35 var(--font-sans); color: var(--text-muted);">
+                    <span style="font: 400 12px/1.35 var(--font-sans); color: var(--text-muted);">
                         {{ $s['label'] }}
                     </span>
                 </div>
@@ -55,8 +55,8 @@
     <!-- Badges Shelf -->
     <div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 4px; padding: 20px; margin-bottom: 20px;">
         <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px;">
-            <span style="font: 600 14px/1 var(--font-sans); color: #e6e8eb;">{{ __('messages.badges') }}</span>
-            <span style="font: 400 10px/1 var(--font-mono); color: var(--text-muted);">
+            <span style="font: 600 15px/1 var(--font-sans); color: #e6e8eb;">{{ __('messages.badges') }}</span>
+            <span style="font: 400 11.5px/1 var(--font-mono); color: var(--text-muted);">
                 {{ count($earnedBadgeIds) }} OF {{ $allBadges->count() }} EARNED
             </span>
         </div>
@@ -69,8 +69,8 @@
                         <span style="width: 8px; height: 8px; background: {{ $earned ? '#a9cdf0' : '#6a737c' }}; border-radius: 2px;"></span>
                     </span>
                     <div style="min-width: 0; display: flex; flex-direction: column; gap: 2px;">
-                        <span style="font: 600 11px/1.2 var(--font-sans); color: #d6dbe0;">{{ $badge->name }}</span>
-                        <span style="font: 400 10px/1.3 var(--font-sans); color: var(--text-muted);">{{ $badge->description }}</span>
+                        <span style="font: 600 12.5px/1.2 var(--font-sans); color: #d6dbe0;">{{ $badge->name }}</span>
+                        <span style="font: 400 11.5px/1.3 var(--font-sans); color: var(--text-muted);">{{ $badge->description }}</span>
                     </div>
                 </div>
             @endforeach
@@ -82,12 +82,12 @@
         <!-- Watched Films -->
         <div style="flex: 1; min-width: 0; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 4px; padding: 20px;">
             <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px;">
-                <span style="font: 600 14px/1 var(--font-sans); color: #e6e8eb;">Watched Films</span>
-                <span style="font: 400 10px/1 var(--font-mono); color: var(--text-muted);">{{ $watchedFilms->count() }} FILMS</span>
+                <span style="font: 600 15px/1 var(--font-sans); color: #e6e8eb;">Watched Films</span>
+                <span style="font: 400 11.5px/1 var(--font-mono); color: var(--text-muted);">{{ $watchedFilms->count() }} FILMS</span>
             </div>
 
             @if($watchedFilms->isEmpty())
-                <div style="padding: 24px; text-align: center; color: var(--text-muted); font-style: italic;">
+                <div style="padding: 24px; text-align: center; color: var(--text-muted); font-style: italic; font-size: 13px;">
                     No watched films recorded yet.
                 </div>
             @else
@@ -101,10 +101,10 @@
                                     <img src="{{ $w->film->posterUrl() }}" style="width: 100%; height: 100%; object-fit: cover;">
                                 @endif
                             </div>
-                            <div style="font: 600 11px/1.2 var(--font-serif); color: #d6dbe0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                            <div style="font: 600 12.5px/1.2 var(--font-serif); color: #d6dbe0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                                 {{ $w->film->title }}
                             </div>
-                            <div style="font: 400 9px/1 var(--font-mono); color: var(--text-muted);">
+                            <div style="font: 400 11px/1 var(--font-mono); color: var(--text-muted);">
                                 {{ $w->film->releaseYear() }}
                             </div>
                         </a>
@@ -115,23 +115,23 @@
 
         <!-- Recent Contributions History -->
         <div style="width: 320px; flex: none; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 4px; padding: 20px;">
-            <div style="font: 600 14px/1 var(--font-sans); color: #e6e8eb; margin-bottom: 14px;">
+            <div style="font: 600 15px/1 var(--font-sans); color: #e6e8eb; margin-bottom: 14px;">
                 Contribution History
             </div>
 
             @if($recentScenes->isEmpty())
-                <div style="color: var(--text-muted); font-size: 11px; font-style: italic;">
+                <div style="color: var(--text-muted); font-size: 12.5px; font-style: italic;">
                     No recent contributions.
                 </div>
             @else
                 <div style="display: flex; flex-direction: column; gap: 10px;">
                     @foreach($recentScenes as $scene)
-                        <div style="display: flex; align-items: center; gap: 10px; font-size: 11px; padding-bottom: 8px; border-bottom: 1px solid var(--border-subtle);">
+                        <div style="display: flex; align-items: center; gap: 10px; font-size: 12.5px; padding-bottom: 8px; border-bottom: 1px solid var(--border-subtle);">
                             <span style="width: 6px; height: 6px; border-radius: 1px; background: {{ $scene->categoryColor() }}; flex: none;"></span>
                             <span style="color: #c3cad1; flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                                 {{ $scene->categoryLabel() }} in {{ $scene->film->title }}
                             </span>
-                            <span style="font-family: var(--font-mono); font-size: 9px; color: var(--text-muted);">
+                            <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">
                                 {{ $scene->created_at->format('m-d') }}
                             </span>
                         </div>
