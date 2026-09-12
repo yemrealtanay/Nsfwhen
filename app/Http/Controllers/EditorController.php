@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SyncFilmFromTmdbJob;
 use App\Models\Film;
 use App\Models\Report;
 use App\Models\Scene;
 use App\Models\User;
 use App\Services\DelistService;
 use App\Services\ReputationService;
+use App\Services\TmdbService;
 use Illuminate\Http\Request;
 
 class EditorController
@@ -64,6 +66,27 @@ class EditorController
                 ->withQueryString();
         }
 
+        // 6. TMDb Search for Import Tab
+        $tmdbResults = [];
+        $tmdbSearch = $request->query('q');
+        if ($currentTab === 'import' && ! empty($tmdbSearch)) {
+            $tmdbService = app(TmdbService::class);
+            if (is_numeric($tmdbSearch)) {
+                $single = $tmdbService->getMovie((int) $tmdbSearch);
+                if ($single) {
+                    $tmdbResults = [$single];
+                }
+            } else {
+                $res = $tmdbService->search($tmdbSearch);
+                $tmdbResults = $res['results'] ?? [];
+            }
+
+            foreach ($tmdbResults as &$movie) {
+                $movie['existing_film'] = Film::where('tmdb_id', $movie['id'])->first();
+            }
+            unset($movie);
+        }
+
         // Queue counts for sidebar
         $pendingCount = Scene::where('verification_status', 'unverified')->count();
         $reportedContentCount = Report::where('status', 'pending')->where('reportable_type', Scene::class)->count();
@@ -78,12 +101,43 @@ class EditorController
             'reportedUsers',
             'delistCandidates',
             'users',
+            'tmdbResults',
+            'tmdbSearch',
             'pendingCount',
             'reportedContentCount',
             'reportedUsersCount',
             'delistCandidatesCount',
             'editorsCount'
         ));
+    }
+
+    public function importFilm(Request $request)
+    {
+        $validated = $request->validate([
+            'tmdb_id' => 'required|integer',
+        ]);
+
+        $tmdbId = $validated['tmdb_id'];
+
+        $existing = Film::where('tmdb_id', $tmdbId)->first();
+        if ($existing) {
+            return redirect()->route('films.show', $existing->id)
+                ->with('info', __('editor.already_indexed_notice'));
+        }
+
+        try {
+            SyncFilmFromTmdbJob::dispatchSync($tmdbId);
+            $film = Film::where('tmdb_id', $tmdbId)->first();
+
+            if ($film) {
+                return redirect()->route('films.show', $film->id)
+                    ->with('success', __('editor.import_success', ['title' => $film->title]));
+            }
+        } catch (\Throwable $e) {
+            return back()->with('error', 'TMDb import error: '.$e->getMessage());
+        }
+
+        return back()->with('error', __('editor.tmdb_no_results'));
     }
 
     public function approveScene(Scene $scene, ReputationService $reputationService)

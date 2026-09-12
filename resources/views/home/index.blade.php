@@ -138,7 +138,19 @@
 
             @if($films->isEmpty())
                 <div style="padding: 48px 24px; text-align: center; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 3px; color: var(--text-muted);">
-                    No films found matching your search and filter criteria.
+                    <div style="font-size: 13px; color: #b0b8c1; margin-bottom: 6px;">
+                        {{ app()->getLocale() === 'tr' ? 'Arama kriterlerinize uygun film bulunamadı.' : 'No films found matching your search and filter criteria.' }}
+                    </div>
+                    @if(auth()->check() && auth()->user()->isEditor() && !empty($search))
+                        <div style="margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border-subtle); display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                            <span style="font-size: 12px; color: #8a94a0;">
+                                {{ app()->getLocale() === 'tr' ? 'Aradığınız film henüz NSFWhen\'de kayıtlı değil mi?' : 'Is the film you are looking for not in NSFWhen yet?' }}
+                            </span>
+                            <a href="{{ route('editor.dashboard', ['tab' => 'import', 'q' => $search]) }}" class="btn" style="padding: 6px 14px; font-size: 11px; font-weight: 600; background: #162436; border: 1px solid #325880; color: #8ec3f8; text-decoration: none;">
+                                🎬 TMDb'den "{{ $search }}" Ara ve Ekle →
+                            </a>
+                        </div>
+                    @endif
                 </div>
             @else
 

@@ -73,6 +73,9 @@
 
             @auth
                 @if(auth()->user()->isEditor())
+                    <a href="{{ route('editor.dashboard', ['tab' => 'import']) }}" class="btn" style="padding: 5px 9px; font-size: 11px; background: #152230; border: 1px solid #2e4d6d; color: #8ec3f8; text-decoration: none;">
+                        + {{ app()->getLocale() === 'tr' ? 'Film Ekle' : 'Add Film' }}
+                    </a>
                     <a href="{{ route('editor.dashboard') }}" class="btn btn-secondary" style="padding: 5px 9px; font-size: 11px;">
                         <span style="width: 6px; height: 6px; border-radius: 50%; background: #6fa8dc;"></span>
                         {{ __('messages.editor_dashboard') }}

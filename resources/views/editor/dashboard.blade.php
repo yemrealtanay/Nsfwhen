@@ -50,6 +50,15 @@
                         {{ $editorsCount }}
                     </span>
                 </a>
+
+                <div style="font: 500 9px/1 var(--font-mono); color: var(--text-muted); letter-spacing: .09em; padding: 16px 16px 8px;">
+                    {{ __('editor.catalog_tools') }}
+                </div>
+
+                <a href="{{ route('editor.dashboard', ['tab' => 'import']) }}"
+                   style="display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-left: 3px solid {{ $currentTab === 'import' ? 'var(--color-blue-link)' : 'transparent' }}; background: {{ $currentTab === 'import' ? '#1a1f25' : 'transparent' }}; color: {{ $currentTab === 'import' ? '#fff' : 'var(--text-secondary)' }}; font-size: 12px; font-weight: 500;">
+                    <span>🎬 {{ __('editor.tmdb_import') }}</span>
+                </a>
             </div>
 
             <div style="font: 500 9px/1 var(--font-mono); color: var(--text-muted); letter-spacing: .09em; padding: 24px 16px 10px;">
@@ -412,6 +421,119 @@
 
                     <div style="margin-top: 14px;">
                         {{ $users->links() }}
+                    </div>
+                @endif
+            @endif
+
+            <!-- 6. TMDB IMPORT TAB -->
+            @if($currentTab === 'import')
+                <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 14px;">
+                    <div>
+                        <h1 style="font: 600 18px/1 var(--font-sans); color: var(--text-primary); margin-bottom: 4px;">
+                            {{ __('editor.tmdb_import_title') }}
+                        </h1>
+                        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">
+                            {{ __('editor.tmdb_import_desc') }}
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Search form -->
+                <div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 3px; padding: 16px; margin-bottom: 20px;">
+                    <form action="{{ route('editor.dashboard') }}" method="GET" style="display: flex; gap: 10px; align-items: center;">
+                        <input type="hidden" name="tab" value="import">
+                        <input type="text"
+                               name="q"
+                               value="{{ $tmdbSearch ?? '' }}"
+                               placeholder="{{ __('editor.tmdb_search_placeholder') }}"
+                               style="flex: 1; background: var(--bg-surface); border: 1px solid var(--border-medium); border-radius: 2px; padding: 9px 13px; font-size: 13px; color: var(--text-primary); outline: none;">
+                        <button type="submit" class="btn btn-primary" style="padding: 9px 18px; font-size: 12px; font-weight: 600;">
+                            {{ __('editor.search_button') }}
+                        </button>
+                        @if(!empty($tmdbSearch))
+                            <a href="{{ route('editor.dashboard', ['tab' => 'import']) }}" class="btn btn-secondary" style="padding: 9px 14px; font-size: 12px;">
+                                {{ __('editor.clear_filter') }}
+                            </a>
+                        @endif
+                    </form>
+                </div>
+
+                @if(!empty($tmdbSearch))
+                    @if(empty($tmdbResults))
+                        <div style="padding: 32px; text-align: center; border: 1px dashed var(--border-default); border-radius: 3px; background: var(--bg-card); color: var(--text-muted); font-size: 12px;">
+                            {{ __('editor.tmdb_no_results') }}
+                        </div>
+                    @else
+                        <div style="display: flex; flex-direction: column; gap: 12px;">
+                            @foreach($tmdbResults as $movie)
+                                <div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 3px; padding: 14px 18px; display: flex; gap: 18px; align-items: flex-start;">
+                                    <!-- Poster -->
+                                    <div style="width: 58px; height: 86px; flex: none; background: #1b1f24; border: 1px solid var(--border-subtle); border-radius: 2px; overflow: hidden;">
+                                        @if(!empty($movie['poster_path']))
+                                            <img src="https://image.tmdb.org/t/p/w200{{ $movie['poster_path'] }}" alt="{{ $movie['title'] ?? 'Film' }}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+                                        @else
+                                            <div style="height: 100%; display: flex; align-items: center; justify-content: center; font-size: 9px; font-family: var(--font-mono); color: var(--text-muted); text-align: center;">NO POSTER</div>
+                                        @endif
+                                    </div>
+
+                                    <!-- Details -->
+                                    <div style="flex: 1; min-width: 0;">
+                                        <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; flex-wrap: wrap;">
+                                            <span style="font: 600 16px/1.2 var(--font-serif); color: #f2f4f6;">
+                                                {{ $movie['title'] ?? 'Unknown' }}
+                                            </span>
+                                            @if(!empty($movie['original_title']) && $movie['original_title'] !== ($movie['title'] ?? ''))
+                                                <span style="font: 400 12px/1 var(--font-sans); color: var(--text-muted); font-style: italic;">
+                                                    ({{ $movie['original_title'] }})
+                                                </span>
+                                            @endif
+                                            <span style="font: 500 11px/1 var(--font-mono); color: var(--text-muted);">
+                                                {{ !empty($movie['release_date']) ? substr($movie['release_date'], 0, 4) : '—' }}
+                                            </span>
+                                            <span style="font: 400 10px/1 var(--font-mono); color: var(--text-muted); margin-left: auto;">
+                                                TMDb ID: #{{ $movie['id'] }}
+                                            </span>
+                                        </div>
+
+                                        <p style="font: 400 12px/1.5 var(--font-sans); color: #9da7b3; margin: 0 0 10px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                            {{ $movie['overview'] ?? 'Açıklama bulunmuyor.' }}
+                                        </p>
+
+                                        <!-- Action Button -->
+                                        <div>
+                                            @if(!empty($movie['existing_film']))
+                                                <div style="display: flex; align-items: center; gap: 10px;">
+                                                    <span style="font: 600 10px/1 var(--font-mono); padding: 4px 8px; border-radius: 2px; background: #16241a; border: 1px solid #2b4d32; color: #7cc08a;">
+                                                        ✓ {{ __('editor.already_indexed') }}
+                                                    </span>
+                                                    <a href="{{ route('films.show', $movie['existing_film']->id) }}" class="btn btn-secondary" style="padding: 4px 10px; font-size: 11px; text-decoration: none;">
+                                                        {{ __('editor.view_film') }}
+                                                    </a>
+                                                </div>
+                                            @else
+                                                <form action="{{ route('editor.films.import') }}" method="POST" style="display: inline-block;">
+                                                    @csrf
+                                                    <input type="hidden" name="tmdb_id" value="{{ $movie['id'] }}">
+                                                    <button type="submit" class="btn btn-primary" style="padding: 5px 12px; font-size: 11px; font-weight: 600; cursor: pointer;">
+                                                        {{ __('editor.import_button') }}
+                                                    </button>
+                                                </form>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
+                @else
+                    <div style="padding: 48px 32px; text-align: center; border: 1px dashed var(--border-default); border-radius: 3px; background: var(--bg-card); color: var(--text-muted);">
+                        <div style="font-size: 32px; margin-bottom: 12px;">🎬</div>
+                        <div style="font: 500 13px/1.5 var(--font-sans); color: #d6dbe0; margin-bottom: 4px;">
+                            {{ __('editor.tmdb_import_title') }}
+                        </div>
+                        <div style="font: 400 11px/1.5 var(--font-sans); color: var(--text-muted); max-width: 440px; margin: 0 auto;">
+                            {{ __('editor.tmdb_import_prompt') }}
+                        </div>
                     </div>
                 @endif
             @endif

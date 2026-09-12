@@ -75,5 +75,6 @@ Route::prefix('editor')->middleware(['auth', 'editor'])->name('editor.')->group(
     Route::post('/reports/{report}/resolve', [EditorController::class, 'resolveReport'])->name('reports.resolve');
     Route::post('/films/{film}/delist', [EditorController::class, 'confirmDelist'])->name('films.delist');
     Route::post('/films/{film}/reject-delist', [EditorController::class, 'rejectDelist'])->name('films.reject-delist');
+    Route::post('/films/import', [EditorController::class, 'importFilm'])->name('films.import');
     Route::post('/users/{user}/toggle-role', [EditorController::class, 'toggleEditorRole'])->name('users.toggle-role');
 });
