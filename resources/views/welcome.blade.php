@@ -7,17 +7,17 @@
 <div class="welcome-container" style="max-width: 1280px; margin: 0 auto; font-family: var(--font-sans); color: var(--text-primary);">
 
     <!-- HERO SECTION (Screen 1i) -->
-    <section style="padding: 64px 40px 52px; border-bottom: 1px solid var(--border-subtle); display: flex; gap: 56px; align-items: flex-start; flex-wrap: wrap;">
+    <section class="welcome-hero welcome-section" style="padding: 64px 40px 52px; border-bottom: 1px solid var(--border-subtle); display: flex; gap: 56px; align-items: flex-start; flex-wrap: wrap;">
         
         <!-- Hero Left Column -->
-        <div style="flex: 1; min-width: 320px; max-width: 660px; display: flex; flex-direction: column; gap: 20px;">
+        <div class="welcome-hero-left" style="flex: 1; min-width: 0; max-width: 660px; display: flex; flex-direction: column; gap: 20px;">
             <div style="font: 500 10px/1 var(--font-mono); color: var(--text-muted); letter-spacing: 0.14em; text-transform: uppercase;">
                 {{ __('welcome.hero_eyebrow') }}
             </div>
 
             <!-- Big Brand Logo in Hero -->
             <div style="display: inline-flex; flex-direction: column; width: fit-content; margin-top: 2px; margin-bottom: 2px;">
-                <div style="font: 700 64px/0.92 var(--font-sans); letter-spacing: -0.04em; color: #f2f4f6; display: flex; align-items: baseline;">
+                <div class="welcome-hero-logo" style="font: 700 64px/0.92 var(--font-sans); letter-spacing: -0.04em; color: #f2f4f6; display: flex; align-items: baseline;">
                     <span>NSFW</span><span style="color: var(--color-coral);">hen</span>
                     <span style="font: 500 11px/1 var(--font-mono); color: var(--text-muted); letter-spacing: 0.1em; margin-left: 14px; padding: 3px 6px; border: 1px solid var(--border-medium); border-radius: 2px; background: var(--bg-surface); align-self: flex-start;">.COM</span>
                 </div>
@@ -29,7 +29,7 @@
             </div>
 
             <!-- Slogan (Under the logo) -->
-            <h1 style="margin: 0; font: 700 38px/1.18 var(--font-serif); color: #f6f7f8; letter-spacing: -0.02em; text-wrap: pretty;">
+            <h1 class="welcome-hero-title" style="margin: 0; font: 700 38px/1.18 var(--font-serif); color: #f6f7f8; letter-spacing: -0.02em; text-wrap: pretty;">
                 {{ __('welcome.hero_title_line1') }} <i style="font-style: italic; color: #d6dbe0;">{{ __('welcome.hero_title_line2') }}</i>
             </h1>
 
@@ -88,7 +88,7 @@
         </div>
 
         <!-- Hero Right Column: What an answer looks like (Preview Card) -->
-        <div style="width: 420px; flex: none; max-width: 100%; border: 1px solid var(--border-default); border-radius: 3px; background: var(--bg-card); padding: 20px;">
+        <div class="welcome-preview-card" style="width: 420px; flex: none; max-width: 100%; border: 1px solid var(--border-default); border-radius: 3px; background: var(--bg-card); padding: 20px;">
             <div style="display: flex; align-items: baseline; gap: 9px; margin-bottom: 14px;">
                 <span style="font: 600 12px/1 var(--font-sans); color: var(--text-primary);">
                     {{ __('welcome.example_label') }}
@@ -168,8 +168,8 @@
     </section>
 
     <!-- 5 METRIC STATS ROW (Screen 1i) -->
-    <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); border-bottom: 1px solid var(--border-subtle);">
-        <div style="padding: 22px 36px; border-right: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 5px;">
+    <section class="welcome-stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); border-bottom: 1px solid var(--border-subtle);">
+        <div class="welcome-stats-item" style="padding: 22px 36px; border-right: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 5px;">
             <span style="font: 500 26px/1 var(--font-mono); color: #f2f4f6; letter-spacing: -0.02em;">
                 {{ number_format($totalFilms, 0, ',', ' ') }}
             </span>
@@ -178,7 +178,7 @@
             </span>
         </div>
 
-        <div style="padding: 22px 36px; border-right: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 5px;">
+        <div class="welcome-stats-item" style="padding: 22px 36px; border-right: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 5px;">
             <span style="font: 500 26px/1 var(--font-mono); color: #f2f4f6; letter-spacing: -0.02em;">
                 {{ number_format($totalMarks, 0, ',', ' ') }}
             </span>
@@ -187,7 +187,7 @@
             </span>
         </div>
 
-        <div style="padding: 22px 36px; border-right: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 5px;">
+        <div class="welcome-stats-item" style="padding: 22px 36px; border-right: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 5px;">
             <span style="font: 500 26px/1 var(--font-mono); color: #f2f4f6; letter-spacing: -0.02em;">
                 {{ number_format($verifiedMarks, 0, ',', ' ') }}
             </span>
@@ -196,7 +196,7 @@
             </span>
         </div>
 
-        <div style="padding: 22px 36px; border-right: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 5px;">
+        <div class="welcome-stats-item" style="padding: 22px 36px; border-right: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 5px;">
             <span style="font: 500 26px/1 var(--font-mono); color: #f2f4f6; letter-spacing: -0.02em;">
                 {{ number_format($cleanVerifiedFilms, 0, ',', ' ') }}
             </span>
@@ -205,7 +205,7 @@
             </span>
         </div>
 
-        <div style="padding: 22px 36px; display: flex; flex-direction: column; gap: 5px;">
+        <div class="welcome-stats-item" style="padding: 22px 36px; display: flex; flex-direction: column; gap: 5px;">
             <span style="font: 500 26px/1 var(--font-mono); color: #f2f4f6; letter-spacing: -0.02em;">
                 {{ $avgReviewTime ?? '—' }}
             </span>
@@ -216,7 +216,7 @@
     </section>
 
     <!-- HOW IT WORKS (Screen 1i) -->
-    <section id="how-it-works" style="padding: 48px 40px; border-bottom: 1px solid var(--border-subtle);">
+    <section id="how-it-works" class="welcome-section" style="padding: 48px 40px; border-bottom: 1px solid var(--border-subtle);">
         <div style="font: 500 10px/1 var(--font-mono); color: var(--text-muted); letter-spacing: 0.14em; margin-bottom: 26px; text-transform: uppercase;">
             {{ __('welcome.how_it_works_title') }}
         </div>
@@ -263,8 +263,8 @@
     </section>
 
     <!-- WHAT WE WILL NEVER DO (Screen 1i Manifesto) -->
-    <section style="padding: 48px 40px; border-bottom: 1px solid var(--border-subtle); display: flex; gap: 56px; align-items: flex-start; flex-wrap: wrap;">
-        <div style="width: 300px; flex: none; display: flex; flex-direction: column; gap: 10px;">
+    <section class="welcome-section" style="padding: 48px 40px; border-bottom: 1px solid var(--border-subtle); display: flex; gap: 56px; align-items: flex-start; flex-wrap: wrap;">
+        <div style="max-width: 300px; width: 100%; flex: none; display: flex; flex-direction: column; gap: 10px;">
             <span style="font: 500 10px/1 var(--font-mono); color: var(--text-muted); letter-spacing: 0.14em; text-transform: uppercase;">
                 {{ __('welcome.never_do_title') }}
             </span>
@@ -273,7 +273,7 @@
             </span>
         </div>
 
-        <div style="flex: 1; min-width: 320px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px 36px;">
+        <div style="flex: 1; min-width: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px 36px;">
             <div style="display: flex; gap: 11px;">
                 <span style="width: 14px; height: 14px; flex: none; margin-top: 3px; border: 1px solid #4a3033; border-radius: 2px; background: #231a1b; position: relative;">
                     <span style="position: absolute; top: 6px; left: 3px; width: 8px; height: 1.5px; background: #e8938e;"></span>
@@ -335,7 +335,7 @@
     </section>
 
     <!-- CLEAN-VERIFIED SHELF (Screen 1i) -->
-    <section style="padding: 40px 40px 44px; border-bottom: 1px solid var(--border-subtle);">
+    <section class="welcome-shelf-section welcome-section" style="padding: 40px 40px 44px; border-bottom: 1px solid var(--border-subtle);">
         <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 18px; flex-wrap: wrap;">
             <span style="font: 600 14px/1 var(--font-sans); color: var(--text-primary);">
                 {{ __('welcome.clean_shelf_title') }}
@@ -349,7 +349,7 @@
         </div>
 
         <!-- 8-Film Grid -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 16px;">
+        <div class="welcome-shelf-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 16px;">
             @php
                 $cleanShelf = $cleanFilms && $cleanFilms->isNotEmpty() ? $cleanFilms : collect([
                     (object)['title' => 'Arrival', 'release_date' => '2016-11-11', 'poster_url' => 'https://image.tmdb.org/t/p/w500/x2FJsf1ElAgr63Y3PNPtJrcmpoe.jpg', 'id' => null],
@@ -390,8 +390,8 @@
     </section>
 
     <!-- TWO-FIELD CONTRIBUTION BANNER (Screen 1i) -->
-    <section style="padding: 48px 40px; display: flex; align-items: flex-end; gap: 40px; flex-wrap: wrap;">
-        <div style="flex: 1; min-width: 320px;">
+    <section class="welcome-section" style="padding: 48px 40px; display: flex; align-items: flex-end; gap: 40px; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 0;">
             <div style="font: 600 28px/1.25 var(--font-serif); color: #f2f4f6; max-width: 520px; text-wrap: pretty; margin-bottom: 10px;">
                 {{ __('welcome.cta_title') }}
             </div>
@@ -411,7 +411,7 @@
     </section>
 
     <!-- TMDB ATTRIBUTION & SCENE DATA NOTICE BAND (Screen 1i) -->
-    <section style="display: flex; gap: 40px; align-items: flex-start; padding: 26px 40px; border-top: 1px solid var(--border-subtle); background: #101317; flex-wrap: wrap;">
+    <section class="welcome-section" style="display: flex; gap: 40px; align-items: flex-start; padding: 26px 40px; border-top: 1px solid var(--border-subtle); background: #101317; flex-wrap: wrap;">
         <div style="display: flex; gap: 16px; align-items: flex-start; max-width: 620px;">
             <div style="width: 92px; height: 26px; flex: none; border: 1px dashed #3a424a; border-radius: 3px; display: flex; align-items: center; justify-content: center;">
                 <span style="font: 500 8px/1 var(--font-mono); color: #5c646d; letter-spacing: 0.08em;">TMDB LOGO</span>

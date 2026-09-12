@@ -292,93 +292,95 @@
           </div>
 
           <!-- Marks Table -->
-          <div style="background: #111418; border: 1px solid #22262c; border-radius: 3px; overflow: hidden;">
-            <div style="display: grid; grid-template-columns: 160px 100px 130px 110px 1fr 140px 80px; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid #262b31; font: 500 9px/1 'IBM Plex Mono', monospace; color: #767e87; letter-spacing: .08em;">
-              <span>TIME RANGE</span>
-              <span>DURATION</span>
-              <span>CATEGORY</span>
-              <span>STATUS</span>
-              <span>COMMUNITY VOTES</span>
-              <span style="text-align: right;">YOUR VOTE</span>
-              <span style="text-align: right;">REPORT</span>
-            </div>
-
-            <div v-if="filteredScenes.length === 0" style="padding: 24px; text-align: center; color: #6a737c; font-style: italic;">
-              No scene marks in this category.
-            </div>
-
-            <div v-for="scene in filteredScenes" :key="'row-'+scene.id"
-                 :style="{
-                   display: 'grid',
-                   gridTemplateColumns: '160px 100px 130px 110px 1fr 140px 80px',
-                   alignItems: 'center',
-                   gap: '12px',
-                   padding: '10px 14px',
-                   borderBottom: '1px solid #1c2026',
-                   borderLeft: '3px solid ' + scene.color,
-                   background: activeSceneHover && activeSceneHover.id === scene.id ? '#161b22' : 'transparent'
-                 }"
-                 @mouseenter="activeSceneHover = scene"
-                 @mouseleave="activeSceneHover = null">
-              <span style="font: 500 13px/1 'IBM Plex Mono', monospace; color: #e6e8eb;">{{ scene.range }}</span>
-              <span style="font: 400 11px/1 'IBM Plex Mono', monospace; color: #98a0a8;">{{ scene.duration }}</span>
-              <span style="display: flex; align-items: center; gap: 6px; font: 500 11px/1 'IBM Plex Sans', sans-serif;" :style="{ color: scene.color }">
-                <span :style="{ width: '7px', height: '7px', borderRadius: '1px', background: scene.color }"></span>
-                {{ scene.category_label }}
-              </span>
-              <span>
-                <span v-if="scene.is_verified" style="font: 500 9px/1 'IBM Plex Mono', monospace; padding: 3px 6px; border: 1px solid #2e4a36; border-radius: 2px; background: #16211a; color: #7cc08a;">
-                  VERIFIED
-                </span>
-                <span v-else style="font: 500 9px/1 'IBM Plex Mono', monospace; padding: 3px 6px; border: 1px solid #303740; border-radius: 2px; background: #1b1f24; color: #98a0a8;">
-                  UNVERIFIED
-                </span>
-              </span>
-              <span style="font: 400 11px/1 'IBM Plex Mono', monospace; color: #98a0a8;">
-                <span style="color: #7cc08a;">✓ {{ scene.confirm_votes }}</span>
-                <span style="margin: 0 4px; color: #434b54;">/</span>
-                <span style="color: #e8938e;">✗ {{ scene.dispute_votes }}</span>
-              </span>
-
-              <!-- Vote Buttons -->
-              <div style="display: flex; gap: 4px; justify-content: flex-end;">
-                <button @click="voteScene(scene, 'confirm')" 
-                        :style="{
-                          padding: '4px 7px',
-                          fontSize: '10px',
-                          borderRadius: '2px',
-                          border: scene.user_vote === 'confirm' ? '1px solid #2e4a36' : '1px solid #303740',
-                          background: scene.user_vote === 'confirm' ? '#16211a' : '#1b1f24',
-                          color: scene.user_vote === 'confirm' ? '#7cc08a' : '#98a0a8',
-                          cursor: 'pointer'
-                        }"
-                        title="Confirm timestamp & category">
-                  Confirm
-                </button>
-                <button @click="voteScene(scene, 'dispute')"
-                        :style="{
-                          padding: '4px 7px',
-                          fontSize: '10px',
-                          borderRadius: '2px',
-                          border: scene.user_vote === 'dispute' ? '1px solid #4a3033' : '1px solid #303740',
-                          background: scene.user_vote === 'dispute' ? '#231a1b' : '#1b1f24',
-                          color: scene.user_vote === 'dispute' ? '#e8938e' : '#98a0a8',
-                          cursor: 'pointer'
-                        }"
-                        title="Dispute timestamp or category">
-                  Dispute
-                </button>
+          <div class="table-responsive" style="background: #111418; border: 1px solid #22262c; border-radius: 3px;">
+            <div style="min-width: 680px;">
+              <div style="display: grid; grid-template-columns: 160px 100px 130px 110px 1fr 140px 80px; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid #262b31; font: 500 9px/1 'IBM Plex Mono', monospace; color: #767e87; letter-spacing: .08em;">
+                <span>TIME RANGE</span>
+                <span>DURATION</span>
+                <span>CATEGORY</span>
+                <span>STATUS</span>
+                <span>COMMUNITY VOTES</span>
+                <span style="text-align: right;">YOUR VOTE</span>
+                <span style="text-align: right;">REPORT</span>
               </div>
 
-              <!-- Report Flag -->
-              <div style="text-align: right;">
-                <button @click="openReport(scene)"
-                        style="background: transparent; border: none; cursor: pointer; color: #6a737c; padding: 4px;"
-                        title="Report this mark to editors">
-                  <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M3.5 14V2.5h9L10.4 6l2.1 3.5h-9"></path>
-                  </svg>
-                </button>
+              <div v-if="filteredScenes.length === 0" style="padding: 24px; text-align: center; color: #6a737c; font-style: italic;">
+                No scene marks in this category.
+              </div>
+
+              <div v-for="scene in filteredScenes" :key="'row-'+scene.id"
+                   :style="{
+                     display: 'grid',
+                     gridTemplateColumns: '160px 100px 130px 110px 1fr 140px 80px',
+                     alignItems: 'center',
+                     gap: '12px',
+                     padding: '10px 14px',
+                     borderBottom: '1px solid #1c2026',
+                     borderLeft: '3px solid ' + scene.color,
+                     background: activeSceneHover && activeSceneHover.id === scene.id ? '#161b22' : 'transparent'
+                   }"
+                   @mouseenter="activeSceneHover = scene"
+                   @mouseleave="activeSceneHover = null">
+                <span style="font: 500 13px/1 'IBM Plex Mono', monospace; color: #e6e8eb;">{{ scene.range }}</span>
+                <span style="font: 400 11px/1 'IBM Plex Mono', monospace; color: #98a0a8;">{{ scene.duration }}</span>
+                <span style="display: flex; align-items: center; gap: 6px; font: 500 11px/1 'IBM Plex Sans', sans-serif;" :style="{ color: scene.color }">
+                  <span :style="{ width: '7px', height: '7px', borderRadius: '1px', background: scene.color }"></span>
+                  {{ scene.category_label }}
+                </span>
+                <span>
+                  <span v-if="scene.is_verified" style="font: 500 9px/1 'IBM Plex Mono', monospace; padding: 3px 6px; border: 1px solid #2e4a36; border-radius: 2px; background: #16211a; color: #7cc08a;">
+                    VERIFIED
+                  </span>
+                  <span v-else style="font: 500 9px/1 'IBM Plex Mono', monospace; padding: 3px 6px; border: 1px solid #303740; border-radius: 2px; background: #1b1f24; color: #98a0a8;">
+                    UNVERIFIED
+                  </span>
+                </span>
+                <span style="font: 400 11px/1 'IBM Plex Mono', monospace; color: #98a0a8;">
+                  <span style="color: #7cc08a;">✓ {{ scene.confirm_votes }}</span>
+                  <span style="margin: 0 4px; color: #434b54;">/</span>
+                  <span style="color: #e8938e;">✗ {{ scene.dispute_votes }}</span>
+                </span>
+
+                <!-- Vote Buttons -->
+                <div style="display: flex; gap: 4px; justify-content: flex-end;">
+                  <button @click="voteScene(scene, 'confirm')" 
+                          :style="{
+                            padding: '4px 7px',
+                            fontSize: '10px',
+                            borderRadius: '2px',
+                            border: scene.user_vote === 'confirm' ? '1px solid #2e4a36' : '1px solid #303740',
+                            background: scene.user_vote === 'confirm' ? '#16211a' : '#1b1f24',
+                            color: scene.user_vote === 'confirm' ? '#7cc08a' : '#98a0a8',
+                            cursor: 'pointer'
+                          }"
+                          title="Confirm timestamp & category">
+                    Confirm
+                  </button>
+                  <button @click="voteScene(scene, 'dispute')"
+                          :style="{
+                            padding: '4px 7px',
+                            fontSize: '10px',
+                            borderRadius: '2px',
+                            border: scene.user_vote === 'dispute' ? '1px solid #4a3033' : '1px solid #303740',
+                            background: scene.user_vote === 'dispute' ? '#231a1b' : '#1b1f24',
+                            color: scene.user_vote === 'dispute' ? '#e8938e' : '#98a0a8',
+                            cursor: 'pointer'
+                          }"
+                          title="Dispute timestamp or category">
+                    Dispute
+                  </button>
+                </div>
+
+                <!-- Report Flag -->
+                <div style="text-align: right;">
+                  <button @click="openReport(scene)"
+                          style="background: transparent; border: none; cursor: pointer; color: #6a737c; padding: 4px;"
+                          title="Report this mark to editors">
+                    <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M3.5 14V2.5h9L10.4 6l2.1 3.5h-9"></path>
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           </div>

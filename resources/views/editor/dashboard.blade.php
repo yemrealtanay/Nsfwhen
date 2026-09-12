@@ -3,15 +3,16 @@
 @section('content')
 <div class="app-container" style="padding-top: 12px;">
 
-    <div style="display: flex; gap: 24px; align-items: flex-start;">
+    <div class="editor-layout">
         <!-- Left Moderation Sidebar -->
-        <aside style="width: 230px; flex: none; border-right: 1px solid var(--border-default); background: var(--bg-card); min-height: 600px; padding: 14px 0;">
+        <aside class="editor-sidebar">
             <div style="font: 500 9px/1 var(--font-mono); color: var(--text-muted); letter-spacing: .09em; padding: 0 16px 12px;">
                 {{ __('editor.moderation') }}
             </div>
 
-            <div style="display: flex; flex-direction: column;">
+            <div class="editor-nav-list">
                 <a href="{{ route('editor.dashboard', ['tab' => 'pending']) }}"
+                   class="{{ $currentTab === 'pending' ? 'active-tab' : '' }}"
                    style="display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-left: 3px solid {{ $currentTab === 'pending' ? 'var(--color-blue-link)' : 'transparent' }}; background: {{ $currentTab === 'pending' ? '#1a1f25' : 'transparent' }}; color: {{ $currentTab === 'pending' ? '#fff' : 'var(--text-secondary)' }}; font-size: 12px; font-weight: 500;">
                     <span>{{ __('editor.pending_queue') }}</span>
                     <span style="margin-left: auto; font-family: var(--font-mono); font-size: 10px; padding: 2px 6px; border-radius: 2px; border: 1px solid var(--border-medium); background: #1b1f24; color: var(--text-muted);">
@@ -20,6 +21,7 @@
                 </a>
 
                 <a href="{{ route('editor.dashboard', ['tab' => 'reported_content']) }}"
+                   class="{{ $currentTab === 'reported_content' ? 'active-tab' : '' }}"
                    style="display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-left: 3px solid {{ $currentTab === 'reported_content' ? 'var(--color-blue-link)' : 'transparent' }}; background: {{ $currentTab === 'reported_content' ? '#1a1f25' : 'transparent' }}; color: {{ $currentTab === 'reported_content' ? '#fff' : 'var(--text-secondary)' }}; font-size: 12px; font-weight: 500;">
                     <span>{{ __('editor.reported_content') }}</span>
                     <span style="margin-left: auto; font-family: var(--font-mono); font-size: 10px; padding: 2px 6px; border-radius: 2px; border: 1px solid var(--border-medium); background: #1b1f24; color: var(--text-muted);">
@@ -28,6 +30,7 @@
                 </a>
 
                 <a href="{{ route('editor.dashboard', ['tab' => 'reported_users']) }}"
+                   class="{{ $currentTab === 'reported_users' ? 'active-tab' : '' }}"
                    style="display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-left: 3px solid {{ $currentTab === 'reported_users' ? 'var(--color-blue-link)' : 'transparent' }}; background: {{ $currentTab === 'reported_users' ? '#1a1f25' : 'transparent' }}; color: {{ $currentTab === 'reported_users' ? '#fff' : 'var(--text-secondary)' }}; font-size: 12px; font-weight: 500;">
                     <span>{{ __('editor.reported_users') }}</span>
                     <span style="margin-left: auto; font-family: var(--font-mono); font-size: 10px; padding: 2px 6px; border-radius: 2px; border: 1px solid var(--border-medium); background: #1b1f24; color: var(--text-muted);">
@@ -36,6 +39,7 @@
                 </a>
 
                 <a href="{{ route('editor.dashboard', ['tab' => 'delist_candidates']) }}"
+                   class="{{ $currentTab === 'delist_candidates' ? 'active-tab' : '' }}"
                    style="display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-left: 3px solid {{ $currentTab === 'delist_candidates' ? 'var(--color-blue-link)' : 'transparent' }}; background: {{ $currentTab === 'delist_candidates' ? '#1a1f25' : 'transparent' }}; color: {{ $currentTab === 'delist_candidates' ? '#fff' : 'var(--text-secondary)' }}; font-size: 12px; font-weight: 500;">
                     <span>{{ __('editor.delist_candidates') }}</span>
                     <span style="margin-left: auto; font-family: var(--font-mono); font-size: 10px; padding: 2px 6px; border-radius: 2px; border: 1px solid var(--border-medium); background: #1b1f24; color: var(--text-muted);">
@@ -44,6 +48,7 @@
                 </a>
 
                 <a href="{{ route('editor.dashboard', ['tab' => 'users']) }}"
+                   class="{{ $currentTab === 'users' ? 'active-tab' : '' }}"
                    style="display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-left: 3px solid {{ $currentTab === 'users' ? 'var(--color-blue-link)' : 'transparent' }}; background: {{ $currentTab === 'users' ? '#1a1f25' : 'transparent' }}; color: {{ $currentTab === 'users' ? '#fff' : 'var(--text-secondary)' }}; font-size: 12px; font-weight: 500;">
                     <span>{{ __('editor.users_management') }}</span>
                     <span style="margin-left: auto; font-family: var(--font-mono); font-size: 10px; padding: 2px 6px; border-radius: 2px; border: 1px solid #365880; background: #162436; color: #8fb8e0;">
@@ -56,6 +61,7 @@
                 </div>
 
                 <a href="{{ route('editor.dashboard', ['tab' => 'import']) }}"
+                   class="{{ $currentTab === 'import' ? 'active-tab' : '' }}"
                    style="display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-left: 3px solid {{ $currentTab === 'import' ? 'var(--color-blue-link)' : 'transparent' }}; background: {{ $currentTab === 'import' ? '#1a1f25' : 'transparent' }}; color: {{ $currentTab === 'import' ? '#fff' : 'var(--text-secondary)' }}; font-size: 12px; font-weight: 500;">
                     <span>🎬 {{ __('editor.tmdb_import') }}</span>
                 </a>
@@ -72,7 +78,7 @@
         </aside>
 
         <!-- Right Main Workspace -->
-        <main style="flex: 1; min-width: 0;">
+        <main class="editor-main">
 
             <!-- 1. PENDING QUEUE TAB -->
             @if($currentTab === 'pending')
@@ -92,62 +98,64 @@
                         Pending queue is clear. No scene submissions awaiting review.
                     </div>
                 @else
-                    <div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 3px; overflow: hidden;">
-                        <div style="display: grid; grid-template-columns: 200px 140px 110px 80px 120px 1fr; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid var(--border-medium); font: 500 9px/1 var(--font-mono); color: var(--text-muted); letter-spacing: 0.08em;">
-                            <span>FILM</span>
-                            <span>TIME RANGE</span>
-                            <span>CATEGORY</span>
-                            <span>VOTES</span>
-                            <span>SUBMITTER</span>
-                            <span style="text-align: right;">ACTION</span>
-                        </div>
+                    <div class="table-responsive" style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 3px;">
+                        <div style="min-width: 720px;">
+                            <div style="display: grid; grid-template-columns: 200px 140px 110px 80px 120px 1fr; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid var(--border-medium); font: 500 9px/1 var(--font-mono); color: var(--text-muted); letter-spacing: 0.08em;">
+                                <span>FILM</span>
+                                <span>TIME RANGE</span>
+                                <span>CATEGORY</span>
+                                <span>VOTES</span>
+                                <span>SUBMITTER</span>
+                                <span style="text-align: right;">ACTION</span>
+                            </div>
 
-                        @foreach($pendingScenes as $scene)
-                            <div style="display: grid; grid-template-columns: 200px 140px 110px 80px 120px 1fr; align-items: center; gap: 12px; padding: 12px 14px; border-bottom: 1px solid var(--border-subtle); font-size: 12px;">
-                                <div>
-                                    <a href="{{ route('films.show', $scene->film) }}" style="font: 600 13px/1.2 var(--font-serif); color: var(--text-primary);">
-                                        {{ $scene->film->title }}
-                                    </a>
-                                    <div style="font-family: var(--font-mono); font-size: 10px; color: var(--text-muted);">
-                                        {{ $scene->film->releaseYear() }}
+                            @foreach($pendingScenes as $scene)
+                                <div style="display: grid; grid-template-columns: 200px 140px 110px 80px 120px 1fr; align-items: center; gap: 12px; padding: 12px 14px; border-bottom: 1px solid var(--border-subtle); font-size: 12px;">
+                                    <div>
+                                        <a href="{{ route('films.show', $scene->film) }}" style="font: 600 13px/1.2 var(--font-serif); color: var(--text-primary);">
+                                            {{ $scene->film->title }}
+                                        </a>
+                                        <div style="font-family: var(--font-mono); font-size: 10px; color: var(--text-muted);">
+                                            {{ $scene->film->releaseYear() }}
+                                        </div>
+                                    </div>
+
+                                    <span style="font-family: var(--font-mono); font-size: 12px; color: #d6dbe0;">
+                                        {{ $scene->rangeFormatted() }}
+                                    </span>
+
+                                    <span style="display: flex; align-items: center; gap: 6px; font-weight: 500; color: {{ $scene->categoryColor() }}; font-size: 11px;">
+                                        <span style="width: 7px; height: 7px; border-radius: 1px; background: {{ $scene->categoryColor() }};"></span>
+                                        {{ $scene->categoryLabel() }}
+                                    </span>
+
+                                    <span style="font-family: var(--font-mono); font-weight: 600; color: {{ $scene->confirm_votes_count >= 3 ? '#7cc08a' : 'var(--text-muted)' }};">
+                                        {{ $scene->confirm_votes_count }} ✓
+                                    </span>
+
+                                    <span style="color: var(--text-secondary); font-size: 11px;">
+                                        {{ $scene->submitter?->name ?? 'anonymous' }}
+                                    </span>
+
+                                    <!-- Approve / Reject Actions -->
+                                    <div style="display: flex; gap: 8px; justify-content: flex-end;">
+                                        <form action="{{ route('editor.scenes.approve', $scene) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-clean" style="padding: 6px 12px; font-size: 11px;">
+                                                {{ __('editor.approve') }}
+                                            </button>
+                                        </form>
+
+                                        <form action="{{ route('editor.scenes.reject', $scene) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger" style="padding: 6px 12px; font-size: 11px;">
+                                                {{ __('editor.reject') }}
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
-
-                                <span style="font-family: var(--font-mono); font-size: 12px; color: #d6dbe0;">
-                                    {{ $scene->rangeFormatted() }}
-                                </span>
-
-                                <span style="display: flex; align-items: center; gap: 6px; font-weight: 500; color: {{ $scene->categoryColor() }}; font-size: 11px;">
-                                    <span style="width: 7px; height: 7px; border-radius: 1px; background: {{ $scene->categoryColor() }};"></span>
-                                    {{ $scene->categoryLabel() }}
-                                </span>
-
-                                <span style="font-family: var(--font-mono); font-weight: 600; color: {{ $scene->confirm_votes_count >= 3 ? '#7cc08a' : 'var(--text-muted)' }};">
-                                    {{ $scene->confirm_votes_count }} ✓
-                                </span>
-
-                                <span style="color: var(--text-secondary); font-size: 11px;">
-                                    {{ $scene->submitter?->name ?? 'anonymous' }}
-                                </span>
-
-                                <!-- Approve / Reject Actions -->
-                                <div style="display: flex; gap: 8px; justify-content: flex-end;">
-                                    <form action="{{ route('editor.scenes.approve', $scene) }}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="btn btn-clean" style="padding: 6px 12px; font-size: 11px;">
-                                            {{ __('editor.approve') }}
-                                        </button>
-                                    </form>
-
-                                    <form action="{{ route('editor.scenes.reject', $scene) }}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="btn btn-danger" style="padding: 6px 12px; font-size: 11px;">
-                                            {{ __('editor.reject') }}
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
 
                     <div style="margin-top: 16px;">
@@ -261,43 +269,45 @@
                         No films currently pending delist review.
                     </div>
                 @else
-                    <div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 3px; overflow: hidden;">
-                        <div style="display: grid; grid-template-columns: 240px 100px 130px 1fr; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid var(--border-medium); font: 500 9px/1 var(--font-mono); color: var(--text-muted); letter-spacing: 0.08em;">
-                            <span>FILM</span>
-                            <span>YEAR</span>
-                            <span>CLEAN VOTES</span>
-                            <span style="text-align: right;">DECISION</span>
-                        </div>
-
-                        @foreach($delistCandidates as $film)
-                            <div style="display: grid; grid-template-columns: 240px 100px 130px 1fr; align-items: center; gap: 12px; padding: 12px 14px; border-bottom: 1px solid var(--border-subtle); font-size: 12px;">
-                                <div>
-                                    <a href="{{ route('films.show', $film) }}" style="font: 600 13px/1.2 var(--font-serif); color: var(--text-primary);">
-                                        {{ $film->title }}
-                                    </a>
-                                </div>
-                                <span style="font-family: var(--font-mono); color: var(--text-muted);">
-                                    {{ $film->releaseYear() }}
-                                </span>
-                                <span style="font-family: var(--font-mono); font-weight: 600; color: #7cc08a;">
-                                    {{ $film->clean_votes_count }} positive votes
-                                </span>
-                                <div style="display: flex; gap: 8px; justify-content: flex-end;">
-                                    <form action="{{ route('editor.films.delist', $film) }}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="btn btn-clean" style="padding: 6px 12px; font-size: 11px;">
-                                            {{ __('editor.confirm_delist') }}
-                                        </button>
-                                    </form>
-                                    <form action="{{ route('editor.films.reject-delist', $film) }}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="btn btn-secondary" style="padding: 6px 12px; font-size: 11px;">
-                                            {{ __('editor.reject_delist') }}
-                                        </button>
-                                    </form>
-                                </div>
+                    <div class="table-responsive" style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 3px;">
+                        <div style="min-width: 600px;">
+                            <div style="display: grid; grid-template-columns: 240px 100px 130px 1fr; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid var(--border-medium); font: 500 9px/1 var(--font-mono); color: var(--text-muted); letter-spacing: 0.08em;">
+                                <span>FILM</span>
+                                <span>YEAR</span>
+                                <span>CLEAN VOTES</span>
+                                <span style="text-align: right;">DECISION</span>
                             </div>
-                        @endforeach
+
+                            @foreach($delistCandidates as $film)
+                                <div style="display: grid; grid-template-columns: 240px 100px 130px 1fr; align-items: center; gap: 12px; padding: 12px 14px; border-bottom: 1px solid var(--border-subtle); font-size: 12px;">
+                                    <div>
+                                        <a href="{{ route('films.show', $film) }}" style="font: 600 13px/1.2 var(--font-serif); color: var(--text-primary);">
+                                            {{ $film->title }}
+                                        </a>
+                                    </div>
+                                    <span style="font-family: var(--font-mono); color: var(--text-muted);">
+                                        {{ $film->releaseYear() }}
+                                    </span>
+                                    <span style="font-family: var(--font-mono); font-weight: 600; color: #7cc08a;">
+                                        {{ $film->clean_votes_count }} positive votes
+                                    </span>
+                                    <div style="display: flex; gap: 8px; justify-content: flex-end;">
+                                        <form action="{{ route('editor.films.delist', $film) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-clean" style="padding: 6px 12px; font-size: 11px;">
+                                                {{ __('editor.confirm_delist') }}
+                                            </button>
+                                        </form>
+                                        <form action="{{ route('editor.films.reject-delist', $film) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-secondary" style="padding: 6px 12px; font-size: 11px;">
+                                                {{ __('editor.reject_delist') }}
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 @endif
 
@@ -314,10 +324,10 @@
                     </div>
 
                     <!-- Search Box -->
-                    <form action="{{ route('editor.dashboard') }}" method="GET" style="display: flex; gap: 8px; align-items: center;">
+                    <form action="{{ route('editor.dashboard') }}" method="GET" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
                         <input type="hidden" name="tab" value="users">
                         <input type="text" name="search" value="{{ request('search') }}" placeholder="{{ __('editor.search_users_placeholder') }}"
-                               style="background: #121519; border: 1px solid var(--border-medium); border-radius: 2px; padding: 6px 10px; color: var(--text-primary); font-size: 11px; width: 220px;">
+                                style="background: #121519; border: 1px solid var(--border-medium); border-radius: 2px; padding: 6px 10px; color: var(--text-primary); font-size: 11px; width: 220px;">
                         <button type="submit" class="btn btn-secondary" style="padding: 6px 12px; font-size: 11px;">
                             {{ __('editor.search_button') }}
                         </button>
@@ -334,8 +344,9 @@
                         {{ __('editor.no_users_found') }}
                     </div>
                 @elseif($users)
-                    <div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 3px; overflow: hidden;">
-                        <div style="display: grid; grid-template-columns: 2fr 110px 140px 100px 110px 150px; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid var(--border-medium); font: 500 9px/1 var(--font-mono); color: var(--text-muted); letter-spacing: 0.08em;">
+                    <div class="table-responsive" style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 3px;">
+                        <div style="min-width: 680px;">
+                            <div style="display: grid; grid-template-columns: 2fr 110px 140px 100px 110px 150px; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid var(--border-medium); font: 500 9px/1 var(--font-mono); color: var(--text-muted); letter-spacing: 0.08em;">
                             <span>KULLANICI / USER</span>
                             <span>ROL</span>
                             <span>E-POSTA DURUMU</span>
@@ -417,6 +428,7 @@
                                 </div>
                             </div>
                         @endforeach
+                        </div>
                     </div>
 
                     <div style="margin-top: 14px;">
@@ -440,13 +452,13 @@
 
                 <!-- Search form -->
                 <div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 3px; padding: 16px; margin-bottom: 20px;">
-                    <form action="{{ route('editor.dashboard') }}" method="GET" style="display: flex; gap: 10px; align-items: center;">
+                    <form action="{{ route('editor.dashboard') }}" method="GET" style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
                         <input type="hidden" name="tab" value="import">
                         <input type="text"
                                name="q"
                                value="{{ $tmdbSearch ?? '' }}"
                                placeholder="{{ __('editor.tmdb_search_placeholder') }}"
-                               style="flex: 1; background: var(--bg-surface); border: 1px solid var(--border-medium); border-radius: 2px; padding: 9px 13px; font-size: 13px; color: var(--text-primary); outline: none;">
+                               style="flex: 1; min-width: 180px; background: var(--bg-surface); border: 1px solid var(--border-medium); border-radius: 2px; padding: 9px 13px; font-size: 13px; color: var(--text-primary); outline: none;">
                         <button type="submit" class="btn btn-primary" style="padding: 9px 18px; font-size: 12px; font-weight: 600;">
                             {{ __('editor.search_button') }}
                         </button>

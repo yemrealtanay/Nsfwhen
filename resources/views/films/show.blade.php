@@ -18,9 +18,9 @@
     </div>
 
     <!-- Film Overview & Facts Header -->
-    <div style="display: flex; gap: 24px; padding-bottom: 22px; border-bottom: 1px solid var(--border-subtle); margin-bottom: 24px;">
+    <div class="film-header-layout" style="padding-bottom: 22px; border-bottom: 1px solid var(--border-subtle); margin-bottom: 24px;">
         <!-- Poster -->
-        <div style="width: 150px; flex: none; aspect-ratio: 2/3; background: repeating-linear-gradient(135deg, #1b1f24 0 6px, #171b20 6px 12px); border: 1px solid var(--border-default); border-radius: 3px; overflow: hidden; position: relative;">
+        <div class="film-poster-container">
             @if($film->posterUrl())
                 <img src="{{ $film->posterUrl() }}" alt="{{ $film->title }}" style="width: 100%; height: 100%; object-fit: cover;">
             @else
@@ -31,7 +31,7 @@
         </div>
 
         <!-- Facts & Actions Area -->
-        <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 14px;">
+        <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 14px; width: 100%;">
             @php
                 $verdict = $film->verdict();
                 $intensity = $film->intensityLevel();
@@ -66,7 +66,7 @@
             </div>
 
             <!-- Facts Grid matching design screen 1d -->
-            <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px 24px; max-width: 880px;">
+            <div class="film-facts-grid">
                 @foreach($facts as $fact)
                     <div style="display: flex; flex-direction: column; gap: 3px;">
                         <span style="font: 500 9px/1 var(--font-mono); color: var(--text-muted); letter-spacing: .08em;">
@@ -111,14 +111,14 @@
     </div>
 
     <!-- Timeline & Similar Films Area -->
-    <div style="display: flex; gap: 24px; align-items: flex-start;">
+    <div class="film-details-body">
         <!-- Left: Vue Scrubber & Marks Component Mount -->
-        <div style="flex: 1; min-width: 0;">
+        <div style="flex: 1; min-width: 0; width: 100%;">
             <div id="timeline-mount"></div>
         </div>
 
         <!-- Right: People Also Checked Sidebar -->
-        <aside style="width: 260px; flex: none; border: 1px solid var(--border-default); border-radius: 3px; background: var(--bg-card); padding: 14px;">
+        <aside class="film-similar-sidebar">
             <div style="font: 600 12px/1 var(--font-sans); color: var(--text-primary); margin-bottom: 12px;">
                 People also checked
             </div>
