@@ -38,7 +38,7 @@
         </div>
 
         <!-- 5-Metric Stats Grid -->
-        <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px;">
+        <div class="profile-stats-grid">
             @foreach($stats as $s)
                 <div style="border: 1px solid var(--border-subtle); border-radius: 3px; background: #121519; padding: 12px; display: flex; flex-direction: column; gap: 4px;">
                     <span style="font: 600 20px/1 var(--font-mono); color: {{ $s['color'] }};">
@@ -78,9 +78,9 @@
     </div>
 
     <!-- Watched Films Grid & Recent Contributions -->
-    <div style="display: flex; gap: 24px; align-items: flex-start;">
+    <div class="profile-body">
         <!-- Watched Films -->
-        <div style="flex: 1; min-width: 0; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 4px; padding: 20px;">
+        <div class="profile-main" style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 4px; padding: 20px;">
             <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px;">
                 <span style="font: 600 15px/1 var(--font-sans); color: #e6e8eb;">Watched Films</span>
                 <span style="font: 400 11.5px/1 var(--font-mono); color: var(--text-muted);">{{ $watchedFilms->count() }} FILMS</span>
@@ -114,7 +114,7 @@
         </div>
 
         <!-- Recent Contributions History -->
-        <div style="width: 320px; flex: none; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 4px; padding: 20px;">
+        <div class="profile-history" style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 4px; padding: 20px;">
             <div style="font: 600 15px/1 var(--font-sans); color: #e6e8eb; margin-bottom: 14px;">
                 Contribution History
             </div>

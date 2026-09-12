@@ -35,7 +35,7 @@
         </div>
 
         <!-- Document Selection Tabs -->
-        <div style="display: flex; gap: 8px;">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
             <a href="{{ route('terms') }}"
                style="padding: 8px 16px; border-radius: 3px; font-size: 12px; font-weight: 500; text-decoration: none; border: 1px solid {{ request()->routeIs('terms', 'guidelines') ? 'var(--color-blue-link)' : 'var(--border-medium)' }}; background: {{ request()->routeIs('terms', 'guidelines') ? '#1c293c' : 'var(--bg-card)' }}; color: {{ request()->routeIs('terms', 'guidelines') ? '#fff' : 'var(--text-secondary)' }};">
                 {{ __('messages.terms_of_service') }}
@@ -48,10 +48,10 @@
     </div>
 
     <!-- Document Two-Column Body -->
-    <div style="display: flex; gap: 40px; align-items: flex-start;">
+    <div class="legal-layout">
 
         <!-- Sticky Table of Contents Sidebar -->
-        <aside style="width: 260px; flex: none; position: sticky; top: 20px; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 3px; padding: 16px; max-height: calc(100vh - 40px); overflow-y: auto;">
+        <aside class="legal-toc" style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 3px; padding: 16px;">
             <div style="font: 500 9px/1 var(--font-mono); color: var(--text-muted); letter-spacing: .09em; text-transform: uppercase; margin-bottom: 12px;">
                 {{ __('messages.table_of_contents') }}
             </div>

@@ -144,7 +144,7 @@
 </div>
 
 @push('scripts')
-<script src="{{ asset('js/components/timeline.js') }}"></script>
+<script src="{{ asset('js/components/timeline.js') }}?v={{ @filemtime(public_path('js/components/timeline.js')) }}"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         if (window.initTimeline) {

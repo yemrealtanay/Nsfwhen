@@ -27,11 +27,12 @@
     <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ asset('css/nsfwhen.css') }}">
+    <!-- Assets are versioned by file mtime so browsers never keep a stale copy after deploy -->
+    <link rel="stylesheet" href="{{ asset('css/nsfwhen.css') }}?v={{ @filemtime(public_path('css/nsfwhen.css')) }}">
 
     <!-- Standalone Vue 3 Global Prod -->
-    <script src="{{ asset('vue.global.prod.js') }}"></script>
-    <script src="{{ asset('js/components/age-gate.js') }}"></script>
+    <script src="{{ asset('vue.global.prod.js') }}?v={{ @filemtime(public_path('vue.global.prod.js')) }}"></script>
+    <script src="{{ asset('js/components/age-gate.js') }}?v={{ @filemtime(public_path('js/components/age-gate.js')) }}"></script>
     @stack('scripts')
 </head>
 <body>

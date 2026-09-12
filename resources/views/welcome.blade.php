@@ -220,7 +220,7 @@
         <div style="font: 600 12px/1 var(--font-mono); color: var(--text-muted); letter-spacing: 0.14em; margin-bottom: 26px; text-transform: uppercase;">
             {{ __('welcome.how_it_works_title') }}
         </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 40px;">
             <!-- Step 01 -->
             <div style="display: flex; flex-direction: column; gap: 9px; padding-top: 14px; border-top: 1px solid var(--border-medium);">
                 <span style="font: 600 12px/1 var(--font-mono); color: var(--color-sex); letter-spacing: 0.08em;">
@@ -273,7 +273,7 @@
             </span>
         </div>
 
-        <div style="flex: 1; min-width: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px 36px;">
+        <div style="flex: 1 1 320px; min-width: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 16px 36px;">
             <div style="display: flex; gap: 11px;">
                 <span style="width: 14px; height: 14px; flex: none; margin-top: 3px; border: 1px solid #4a3033; border-radius: 2px; background: #231a1b; position: relative;">
                     <span style="position: absolute; top: 6px; left: 3px; width: 8px; height: 1.5px; background: #e8938e;"></span>
@@ -400,7 +400,7 @@
             </div>
         </div>
 
-        <div style="flex: none; display: flex; gap: 12px; flex-wrap: wrap;">
+        <div style="flex: 0 1 auto; max-width: 100%; display: flex; gap: 12px; flex-wrap: wrap;">
             <a href="{{ route('register') }}" class="btn btn-primary" style="padding: 12px 22px; font-size: 14px; font-weight: 600;">
                 {{ __('welcome.cta_register') }}
             </a>
