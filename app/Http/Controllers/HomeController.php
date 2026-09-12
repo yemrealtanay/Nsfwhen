@@ -145,6 +145,15 @@ class HomeController
             ->limit(4)
             ->get();
 
+        // Average review time from reviewed scenes (or — if none yet)
+        $reviewedScenes = Scene::whereNotNull('reviewed_at')->latest('reviewed_at')->limit(50)->get(['created_at', 'reviewed_at']);
+        $avgReviewTime = '—';
+        if ($reviewedScenes->isNotEmpty()) {
+            $totalSec = $reviewedScenes->sum(fn ($s) => max(1, $s->reviewed_at->diffInSeconds($s->created_at)));
+            $avgSec = (int) ($totalSec / $reviewedScenes->count());
+            $avgReviewTime = $avgSec < 60 ? "{$avgSec}s" : round($avgSec / 60).'m';
+        }
+
         return view('welcome', compact(
             'totalFilms',
             'totalMarks',
@@ -152,7 +161,8 @@ class HomeController
             'cleanVerifiedFilms',
             'cleanFilms',
             'previewFilm',
-            'tryFilms'
+            'tryFilms',
+            'avgReviewTime'
         ));
     }
 }

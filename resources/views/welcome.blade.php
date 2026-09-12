@@ -171,7 +171,7 @@
     <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); border-bottom: 1px solid var(--border-subtle);">
         <div style="padding: 22px 36px; border-right: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 5px;">
             <span style="font: 500 26px/1 var(--font-mono); color: #f2f4f6; letter-spacing: -0.02em;">
-                {{ number_format($totalFilms ?: 14882, 0, ',', ' ') }}
+                {{ number_format($totalFilms, 0, ',', ' ') }}
             </span>
             <span style="font: 400 11px/1.4 var(--font-sans); color: var(--text-muted);">
                 {{ __('welcome.stats_films_label') }}
@@ -180,7 +180,7 @@
 
         <div style="padding: 22px 36px; border-right: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 5px;">
             <span style="font: 500 26px/1 var(--font-mono); color: #f2f4f6; letter-spacing: -0.02em;">
-                {{ number_format($totalMarks ?: 63109, 0, ',', ' ') }}
+                {{ number_format($totalMarks, 0, ',', ' ') }}
             </span>
             <span style="font: 400 11px/1.4 var(--font-sans); color: var(--text-muted);">
                 {{ __('welcome.stats_marks_label') }}
@@ -189,7 +189,7 @@
 
         <div style="padding: 22px 36px; border-right: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 5px;">
             <span style="font: 500 26px/1 var(--font-mono); color: #f2f4f6; letter-spacing: -0.02em;">
-                {{ number_format($verifiedMarks ?: 9341, 0, ',', ' ') }}
+                {{ number_format($verifiedMarks, 0, ',', ' ') }}
             </span>
             <span style="font: 400 11px/1.4 var(--font-sans); color: var(--text-muted);">
                 {{ __('welcome.stats_verified_label') }}
@@ -198,7 +198,7 @@
 
         <div style="padding: 22px 36px; border-right: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 5px;">
             <span style="font: 500 26px/1 var(--font-mono); color: #f2f4f6; letter-spacing: -0.02em;">
-                {{ number_format($cleanVerifiedFilms ?: 2664, 0, ',', ' ') }}
+                {{ number_format($cleanVerifiedFilms, 0, ',', ' ') }}
             </span>
             <span style="font: 400 11px/1.4 var(--font-sans); color: var(--text-muted);">
                 {{ __('welcome.stats_clean_label') }}
@@ -207,7 +207,7 @@
 
         <div style="padding: 22px 36px; display: flex; flex-direction: column; gap: 5px;">
             <span style="font: 500 26px/1 var(--font-mono); color: #f2f4f6; letter-spacing: -0.02em;">
-                41s
+                {{ $avgReviewTime ?? '—' }}
             </span>
             <span style="font: 400 11px/1.4 var(--font-sans); color: var(--text-muted);">
                 {{ __('welcome.stats_review_time_label') }}
@@ -343,8 +343,8 @@
             <span style="font: 400 10px/1 var(--font-mono); color: var(--text-muted); letter-spacing: 0.04em;">
                 {{ __('welcome.clean_shelf_subtitle') }}
             </span>
-            <a href="{{ route('home', ['category' => 'clean']) }}" style="margin-left: auto; font: 500 11px/1 var(--font-sans); color: var(--color-blue-link);">
-                {{ __('welcome.clean_shelf_cta', ['count' => number_format($cleanVerifiedFilms ?: 2664, 0, ',', ' ')]) }}
+            <a href="{{ $cleanVerifiedFilms > 0 ? route('home', ['category' => 'clean']) : route('home') }}" style="margin-left: auto; font: 500 11px/1 var(--font-sans); color: var(--color-blue-link);">
+                {{ __('welcome.clean_shelf_cta', ['count' => number_format($cleanVerifiedFilms > 0 ? $cleanVerifiedFilms : $totalFilms, 0, ',', ' ')]) }}
             </a>
         </div>
 
