@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('reputation_score')->default(0);
             $table->boolean('is_editor')->default(false);
             $table->json('preferred_genres')->nullable();
-            $table->string('locale', 10)->default('tr');
+            $table->string('locale', 10)->default('en');
             $table->rememberToken();
             $table->timestamps();
         });

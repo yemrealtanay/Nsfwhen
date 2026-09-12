@@ -42,6 +42,14 @@
                         {{ $delistCandidatesCount }}
                     </span>
                 </a>
+
+                <a href="{{ route('editor.dashboard', ['tab' => 'users']) }}"
+                   style="display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-left: 3px solid {{ $currentTab === 'users' ? 'var(--color-blue-link)' : 'transparent' }}; background: {{ $currentTab === 'users' ? '#1a1f25' : 'transparent' }}; color: {{ $currentTab === 'users' ? '#fff' : 'var(--text-secondary)' }}; font-size: 12px; font-weight: 500;">
+                    <span>{{ __('editor.users_management') }}</span>
+                    <span style="margin-left: auto; font-family: var(--font-mono); font-size: 10px; padding: 2px 6px; border-radius: 2px; border: 1px solid #365880; background: #162436; color: #8fb8e0;">
+                        {{ $editorsCount }}
+                    </span>
+                </a>
             </div>
 
             <div style="font: 500 9px/1 var(--font-mono); color: var(--text-muted); letter-spacing: .09em; padding: 24px 16px 10px;">
@@ -281,6 +289,129 @@
                                 </div>
                             </div>
                         @endforeach
+                    </div>
+                @endif
+
+            <!-- 5. USERS & EDITORS MANAGEMENT TAB -->
+            @elseif($currentTab === 'users')
+                <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 14px; gap: 16px; flex-wrap: wrap;">
+                    <div>
+                        <h1 style="font: 600 18px/1 var(--font-sans); color: var(--text-primary); margin-bottom: 4px;">
+                            {{ __('editor.users_management') }}
+                        </h1>
+                        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">
+                            {{ __('editor.users_management_desc') }}
+                        </span>
+                    </div>
+
+                    <!-- Search Box -->
+                    <form action="{{ route('editor.dashboard') }}" method="GET" style="display: flex; gap: 8px; align-items: center;">
+                        <input type="hidden" name="tab" value="users">
+                        <input type="text" name="search" value="{{ request('search') }}" placeholder="{{ __('editor.search_users_placeholder') }}"
+                               style="background: #121519; border: 1px solid var(--border-medium); border-radius: 2px; padding: 6px 10px; color: var(--text-primary); font-size: 11px; width: 220px;">
+                        <button type="submit" class="btn btn-secondary" style="padding: 6px 12px; font-size: 11px;">
+                            {{ __('editor.search_button') }}
+                        </button>
+                        @if(request('search'))
+                            <a href="{{ route('editor.dashboard', ['tab' => 'users']) }}" style="font-size: 11px; color: var(--text-muted); text-decoration: underline;">
+                                {{ __('editor.clear_filter') }}
+                            </a>
+                        @endif
+                    </form>
+                </div>
+
+                @if($users && $users->isEmpty())
+                    <div style="padding: 36px; text-align: center; background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 3px; color: var(--text-muted); font-size: 12px;">
+                        {{ __('editor.no_users_found') }}
+                    </div>
+                @elseif($users)
+                    <div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 3px; overflow: hidden;">
+                        <div style="display: grid; grid-template-columns: 2fr 110px 140px 100px 110px 150px; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid var(--border-medium); font: 500 9px/1 var(--font-mono); color: var(--text-muted); letter-spacing: 0.08em;">
+                            <span>KULLANICI / USER</span>
+                            <span>ROL</span>
+                            <span>E-POSTA DURUMU</span>
+                            <span>İTİBAR</span>
+                            <span>KAYIT</span>
+                            <span style="text-align: right;">İŞLEM</span>
+                        </div>
+
+                        @foreach($users as $u)
+                            <div style="display: grid; grid-template-columns: 2fr 110px 140px 100px 110px 150px; align-items: center; gap: 12px; padding: 12px 14px; border-bottom: 1px solid var(--border-subtle); font-size: 12px;">
+                                <div style="display: flex; align-items: center; gap: 10px; min-width: 0;">
+                                    <span style="width: 28px; height: 28px; border-radius: 2px; background: #232a31; border: 1px solid var(--border-medium); display: inline-flex; align-items: center; justify-content: center; font-size: 11px; color: #8fb8e0; font-family: var(--font-mono); flex: none;">
+                                        {{ strtoupper(substr($u->name, 0, 1)) }}
+                                    </span>
+                                    <div style="min-width: 0;">
+                                        <div style="font-weight: 600; color: var(--text-primary); text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
+                                            {{ $u->name }}
+                                            @if($u->id === auth()->id())
+                                                <span style="font-size: 10px; color: var(--text-muted); font-weight: normal;">({{ __('editor.you') }})</span>
+                                            @endif
+                                        </div>
+                                        <div style="font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
+                                            {{ $u->email }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    @if($u->is_editor)
+                                        <span style="font-family: var(--font-mono); font-size: 10px; padding: 2px 6px; border-radius: 2px; background: #1a293c; border: 1px solid #3d6a9a; color: #8fb8e0; font-weight: 600;">
+                                            {{ __('editor.role_editor') }}
+                                        </span>
+                                    @else
+                                        <span style="font-family: var(--font-mono); font-size: 10px; padding: 2px 6px; border-radius: 2px; background: #1d2126; border: 1px solid var(--border-medium); color: var(--text-muted);">
+                                            {{ __('editor.role_member') }}
+                                        </span>
+                                    @endif
+                                </div>
+
+                                <div style="font-size: 11px;">
+                                    @if($u->hasVerifiedEmail())
+                                        <span style="color: #6fc27d; display: inline-flex; align-items: center; gap: 4px;">
+                                            <span style="font-size: 9px;">●</span> {{ __('editor.email_verified') }}
+                                        </span>
+                                    @else
+                                        <span style="color: #d19a4e; display: inline-flex; align-items: center; gap: 4px;">
+                                            <span style="font-size: 9px;">○</span> {{ __('editor.email_unverified') }}
+                                        </span>
+                                    @endif
+                                </div>
+
+                                <div style="font-family: var(--font-mono); font-size: 11px; color: #a2b0be;">
+                                    {{ $u->reputation_score }}
+                                </div>
+
+                                <div style="font-family: var(--font-mono); font-size: 10px; color: var(--text-muted);">
+                                    {{ $u->created_at ? $u->created_at->format('d.m.Y') : '—' }}
+                                </div>
+
+                                <div style="text-align: right;">
+                                    @if($u->id === auth()->id())
+                                        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">
+                                            {{ __('editor.you') }}
+                                        </span>
+                                    @else
+                                        <form action="{{ route('editor.users.toggle-role', $u) }}" method="POST" onsubmit="return confirm('{{ $u->is_editor ? __('editor.confirm_revoke') : __('editor.confirm_promote') }}');" style="display: inline-block;">
+                                            @csrf
+                                            @if($u->is_editor)
+                                                <button type="submit" class="btn" style="background: #271b1d; color: #e67d78; border: 1px solid #5a2e32; padding: 4px 9px; font-size: 11px; cursor: pointer;">
+                                                    {{ __('editor.revoke_editor') }}
+                                                </button>
+                                            @else
+                                                <button type="submit" class="btn btn-secondary" style="background: #172738; color: #7db7f0; border: 1px solid #355d88; padding: 4px 9px; font-size: 11px; cursor: pointer;">
+                                                    + {{ __('editor.make_editor') }}
+                                                </button>
+                                            @endif
+                                        </form>
+                                    @endif
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <div style="margin-top: 14px;">
+                        {{ $users->links() }}
                     </div>
                 @endif
             @endif

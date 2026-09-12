@@ -4,7 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Film;
 use App\Models\User;
-use Database\Seeders\DatabaseSeeder;
+use Database\Seeders\DemoSeeder;
 use Tests\TestCase;
 
 class PageRenderTest extends TestCase
@@ -12,7 +12,7 @@ class PageRenderTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->seed(DatabaseSeeder::class);
+        $this->seed(DemoSeeder::class);
     }
 
     public function test_welcome_page_renders_with_screen_1i_elements(): void
@@ -20,9 +20,9 @@ class PageRenderTest extends TestCase
         $response = $this->get(route('welcome'));
         $response->assertOk();
         $response->assertSee('POOR THINGS · 2:21:00');
-        $response->assertSee(__('messages.welcome_how_it_works'));
-        $response->assertSee(__('messages.welcome_never_title'));
-        $response->assertSee(__('messages.welcome_clean_shelf_title'));
+        $response->assertSee(__('welcome.how_it_works_title'));
+        $response->assertSee(__('welcome.never_do_title'));
+        $response->assertSee(__('welcome.clean_shelf_title'));
     }
 
     public function test_home_page_renders_with_seeded_films(): void

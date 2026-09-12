@@ -5,7 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'NSFWhen') }} — {{ __('messages.site_tagline') }}</title>
+    <title>@hasSection('title')@yield('title') — {{ config('app.name', 'NSFWhen') }}@else{{ config('app.name', 'NSFWhen') }} — {{ __('messages.site_tagline') }}@endif</title>
+
+    <meta name="description" content="@yield('meta_description', 'A minute-by-minute index of sexual content and nudity in mainstream films. Community-marked, editor-verified timestamps.')">
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="@yield('og_type', 'website')">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="@yield('title', config('app.name', 'NSFWhen').' — '.__('messages.site_tagline'))">
+    <meta property="og:description" content="@yield('meta_description', 'A minute-by-minute index of sexual content and nudity in mainstream films.')">
+    <meta property="og:image" content="@yield('og_image', asset('favicon.svg'))">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@yield('title', config('app.name', 'NSFWhen'))">
+    <meta name="twitter:description" content="@yield('meta_description', 'A minute-by-minute index of sexual content and nudity in mainstream films.')">
+    <meta name="twitter:image" content="@yield('og_image', asset('favicon.svg'))">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/nsfwhen.css') }}">
@@ -30,9 +49,9 @@
 
         <!-- Top Nav (Browse, Guidelines, How it works) -->
         <nav class="site-nav" style="display: flex; gap: 18px; font-size: 12px; font-weight: 500; color: #98a0a8; margin-left: 8px; flex: none;">
-            <a href="{{ route('home') }}" style="{{ request()->routeIs('home') ? 'color: #e6e8eb;' : 'color: #98a0a8;' }}">{{ __('messages.browse') }}</a>
-            <a href="{{ route('onboarding') }}" style="{{ request()->routeIs('onboarding') ? 'color: #e6e8eb;' : 'color: #98a0a8;' }}">{{ __('messages.guidelines') }}</a>
-            <a href="{{ route('welcome') }}" style="{{ request()->routeIs('welcome') ? 'color: #e6e8eb;' : 'color: #98a0a8;' }}">{{ __('messages.how_verification_works') }}</a>
+            <a href="{{ route('home') }}" style="{{ request()->routeIs('home') ? 'color: #e6e8eb;' : 'color: #98a0a8;' }}">{{ __('welcome.nav_browse') }}</a>
+            <a href="{{ route('guidelines') }}" style="{{ request()->routeIs('guidelines', 'terms', 'privacy') ? 'color: #e6e8eb;' : 'color: #98a0a8;' }}">{{ __('welcome.nav_guidelines') }}</a>
+            <a href="{{ route('welcome') }}" style="{{ request()->routeIs('welcome') ? 'color: #e6e8eb;' : 'color: #98a0a8;' }}">{{ __('welcome.nav_how_it_works') }}</a>
         </nav>
 
         <!-- Search Bar -->
@@ -113,10 +132,12 @@
             <p style="max-width: 720px; line-height: 1.5; color: #767e87;">
                 {{ __('messages.tmdb_attribution') }}
             </p>
-            <div style="margin-left: auto; display: flex; gap: 16px; font-size: 11px; color: #767e87;">
-                <a href="{{ route('home') }}">{{ __('messages.browse') }}</a>
-                <a href="{{ route('welcome') }}">{{ __('messages.how_verification_works') }}</a>
-                <a href="{{ route('onboarding') }}">{{ __('messages.guidelines') }}</a>
+            <div style="margin-left: auto; display: flex; gap: 16px; font-size: 11px; color: #767e87; flex-wrap: wrap;">
+                <a href="{{ route('home') }}">{{ __('welcome.nav_browse') }}</a>
+                <a href="{{ route('welcome') }}">{{ __('welcome.nav_how_it_works') }}</a>
+                <a href="{{ route('guidelines') }}">{{ __('welcome.nav_guidelines') }}</a>
+                <a href="{{ route('terms') }}">{{ __('messages.terms_of_service') }}</a>
+                <a href="{{ route('privacy') }}">{{ __('messages.privacy_policy') }}</a>
                 @auth
                     @if(auth()->user()->isEditor())
                         <a href="{{ route('editor.dashboard') }}">{{ __('messages.editor_dashboard') }}</a>

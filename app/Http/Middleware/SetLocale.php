@@ -18,7 +18,7 @@ class SetLocale
         }
 
         if (! $locale) {
-            $locale = config('app.locale', 'tr');
+            $locale = config('app.locale', 'en');
         }
 
         if (in_array($locale, ['tr', 'en'])) {

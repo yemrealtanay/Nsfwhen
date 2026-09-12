@@ -114,4 +114,22 @@ return [
     'welcome_scene_data_title' => 'SCENE DATA',
     'welcome_scene_data_desc' => 'Timestamps and categories are published under CC BY-SA with full revision history, and are available through our own read-only API.',
     'how_verification_works' => 'How verification works',
+
+    // Email Verification
+    'verify_email_title' => 'Verify your email address',
+    'verify_email_body' => 'Thanks for signing up! Before marking scenes or voting, please verify your email address by clicking the link we just sent you. If you did not receive it, click below to request another.',
+    'resend_verification_email' => 'Resend verification email',
+    'email_verified_success' => 'Your email has been verified! Welcome to NSFWhen.',
+    'verification_link_sent' => 'A new verification link has been sent to your email address.',
+
+    // Legal Documents, Guidelines & GDPR
+    'terms_of_service' => 'Terms of Service',
+    'privacy_policy' => 'Privacy & GDPR Policy',
+    'legal_eyebrow' => 'LEGAL & GUIDELINES',
+    'document_language' => 'Document Language',
+    'last_updated' => 'Last Updated',
+    'version' => 'Version',
+    'jurisdiction' => 'Jurisdiction',
+    'table_of_contents' => 'TABLE OF CONTENTS',
+    'register_terms_notice' => 'By creating an account you agree to our :terms and :privacy.',
 ];

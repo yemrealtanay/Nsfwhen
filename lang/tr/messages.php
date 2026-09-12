@@ -114,4 +114,22 @@ return [
     'welcome_scene_data_title' => 'SAHNE VERİLERİ',
     'welcome_scene_data_desc' => 'Zaman damgaları ve kategoriler CC BY-SA lisansı ile tam revizyon geçmişiyle sunulur ve salt-okunur API\'miz üzerinden erişilebilirdir.',
     'how_verification_works' => 'Doğrulama nasıl çalışır?',
+
+    // E-posta Doğrulama
+    'verify_email_title' => 'E-posta Adresinizi Doğrulayın',
+    'verify_email_body' => 'Kayıt olduğunuz için teşekkürler! Sahneleri işaretlemeden veya oy kullanmadan önce, az önce e-posta adresinize gönderdiğimiz bağlantıya tıklayarak hesabınızı doğrulayın. E-posta ulaşmadıysa aşağıdaki butondan yenisini talep edebilirsiniz.',
+    'resend_verification_email' => 'Tekrar Doğrulama E-postası Gönder',
+    'email_verified_success' => 'E-posta adresiniz başarıyla doğrulandı! NSFWhen\'e hoş geldiniz.',
+    'verification_link_sent' => 'Yeni bir doğrulama bağlantısı e-posta adresinize gönderildi.',
+
+    // Hukuki Belgeler, Kurallar & GDPR
+    'terms_of_service' => 'Kullanım Koşulları',
+    'privacy_policy' => 'Gizlilik & GDPR Politikası',
+    'legal_eyebrow' => 'HUKUKİ BELGELER & İLKELER',
+    'document_language' => 'Görüntüleme Dili',
+    'last_updated' => 'Son Güncelleme',
+    'version' => 'Sürüm',
+    'jurisdiction' => 'Yetkili Hukuk',
+    'table_of_contents' => 'İÇİNDEKİLER',
+    'register_terms_notice' => 'Kayıt olarak :terms ve :privacy metinlerini kabul etmiş olursunuz.',
 ];

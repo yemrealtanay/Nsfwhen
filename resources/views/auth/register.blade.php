@@ -49,6 +49,13 @@
                 {{ __('messages.register') }}
             </button>
 
+            <div style="font-size: 11px; color: var(--text-muted); line-height: 1.5; text-align: center;">
+                {!! __('messages.register_terms_notice', [
+                    'terms' => '<a href="'.route('terms').'" target="_blank" style="color: var(--color-blue-link); text-decoration: underline;">'.__('messages.terms_of_service').'</a>',
+                    'privacy' => '<a href="'.route('privacy').'" target="_blank" style="color: var(--color-blue-link); text-decoration: underline;">'.__('messages.privacy_policy').'</a>'
+                ]) !!}
+            </div>
+
             <div style="font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 6px;">
                 Already have an account? <a href="{{ route('login') }}" style="color: var(--color-blue-link);">{{ __('messages.login') }}</a>
             </div>

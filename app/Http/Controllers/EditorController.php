@@ -14,7 +14,7 @@ class EditorController
 {
     public function index(Request $request)
     {
-        $currentTab = $request->query('tab', 'pending'); // pending, reported_content, reported_users, delist_candidates
+        $currentTab = $request->query('tab', 'pending'); // pending, reported_content, reported_users, delist_candidates, users
 
         // 1. Pending Queue: unverified scenes ordered by confirm votes descending, then created_at
         $pendingScenes = Scene::where('verification_status', 'unverified')
@@ -46,11 +46,30 @@ class EditorController
             ->latest('updated_at')
             ->paginate(15, ['*'], 'delist_page');
 
+        // 5. Users List (User & Editor Management)
+        $users = null;
+        if ($currentTab === 'users') {
+            $usersQuery = User::query();
+            if ($search = $request->input('search')) {
+                $usersQuery->where(function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%")
+                        ->orWhere('email', 'like', "%{$search}%");
+                });
+            }
+            $users = $usersQuery
+                ->orderByDesc('is_editor')
+                ->orderByDesc('reputation_score')
+                ->latest('created_at')
+                ->paginate(20, ['*'], 'users_page')
+                ->withQueryString();
+        }
+
         // Queue counts for sidebar
         $pendingCount = Scene::where('verification_status', 'unverified')->count();
         $reportedContentCount = Report::where('status', 'pending')->where('reportable_type', Scene::class)->count();
         $reportedUsersCount = Report::where('status', 'pending')->where('reportable_type', User::class)->count();
         $delistCandidatesCount = Film::delistCandidates()->count();
+        $editorsCount = User::where('is_editor', true)->count();
 
         return view('editor.dashboard', compact(
             'currentTab',
@@ -58,10 +77,12 @@ class EditorController
             'reportedContent',
             'reportedUsers',
             'delistCandidates',
+            'users',
             'pendingCount',
             'reportedContentCount',
             'reportedUsersCount',
-            'delistCandidatesCount'
+            'delistCandidatesCount',
+            'editorsCount'
         ));
     }
 
@@ -147,5 +168,25 @@ class EditorController
         $delistService->rejectDelist($film);
 
         return back()->with('success', 'Delist candidate rejected. Film remains active.');
+    }
+
+    public function toggleEditorRole(Request $request, User $user)
+    {
+        if ($user->id === auth()->id()) {
+            return back()->with('error', __('editor.cannot_modify_own_role'));
+        }
+
+        $newStatus = ! $user->is_editor;
+        $user->is_editor = $newStatus;
+        if ($newStatus && ! $user->hasVerifiedEmail()) {
+            $user->email_verified_at = now();
+        }
+        $user->save();
+
+        $msg = $newStatus
+            ? __('editor.user_promoted_success', ['name' => $user->name])
+            : __('editor.user_demoted_success', ['name' => $user->name]);
+
+        return back()->with('success', $msg);
     }
 }

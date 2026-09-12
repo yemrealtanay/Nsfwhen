@@ -121,4 +121,27 @@ class TmdbService
             ];
         });
     }
+
+    public function discoverPopular(int $year, int $page = 1, int $minVoteCount = 100): array
+    {
+        try {
+            $response = $this->client()->get('/discover/movie', $this->queryParams([
+                'primary_release_year' => $year,
+                'sort_by' => 'popularity.desc',
+                'vote_count.gte' => $minVoteCount,
+                'include_adult' => false,
+                'include_video' => false,
+                'page' => $page,
+                'language' => 'en-US',
+            ]));
+
+            if ($response->successful()) {
+                return $response->json();
+            }
+        } catch (\Throwable $e) {
+            Log::warning("TMDb discoverPopular failed for year {$year}: ".$e->getMessage());
+        }
+
+        return ['results' => [], 'total_pages' => 0];
+    }
 }

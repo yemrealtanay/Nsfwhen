@@ -1,5 +1,12 @@
 @extends('layouts.app')
 
+@section('title', $film->title . ' (' . ($film->releaseYear() ?: '—') . ')')
+@section('meta_description', $film->title . ' content advisory: ' . $film->verdictSummary() . '. Minute-by-minute timeline of sexual content, nudity, and suggestive scenes.')
+@if($film->poster_url)
+    @section('og_image', $film->poster_url)
+@endif
+@section('og_type', 'video.movie')
+
 @section('content')
 <div class="app-container" style="padding-top: 12px;">
 

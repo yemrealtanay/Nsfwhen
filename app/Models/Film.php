@@ -254,4 +254,9 @@ class Film extends Model
             'fg' => '#98a0a8',
         ];
     }
+
+    public function verdictSummary(): string
+    {
+        return $this->verdict()['summary'] ?? '';
+    }
 }

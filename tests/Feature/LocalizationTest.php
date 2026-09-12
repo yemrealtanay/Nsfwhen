@@ -25,4 +25,13 @@ class LocalizationTest extends TestCase
         $user->refresh();
         $this->assertEquals('en', $user->locale);
     }
+
+    public function test_default_locale_is_english_for_guests(): void
+    {
+        $response = $this->get(route('welcome'));
+        $response->assertOk();
+        $this->assertEquals('en', app()->getLocale());
+        $response->assertSee('Know');
+        $response->assertSee('when');
+    }
 }
