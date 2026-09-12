@@ -352,22 +352,29 @@
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 16px;">
             @php
                 $cleanShelf = $cleanFilms && $cleanFilms->isNotEmpty() ? $cleanFilms : collect([
-                    (object)['title' => 'Arrival', 'release_date' => '2016-11-11', 'poster_url' => null, 'id' => null],
-                    (object)['title' => 'Dune: Part Two', 'release_date' => '2024-03-01', 'poster_url' => null, 'id' => null],
-                    (object)['title' => 'Past Lives', 'release_date' => '2023-06-02', 'poster_url' => null, 'id' => null],
-                    (object)['title' => 'Sicario', 'release_date' => '2015-10-02', 'poster_url' => null, 'id' => null],
-                    (object)['title' => 'The Zone of Interest', 'release_date' => '2023-12-15', 'poster_url' => null, 'id' => null],
-                    (object)['title' => 'Aftersun', 'release_date' => '2022-10-21', 'poster_url' => null, 'id' => null],
-                    (object)['title' => 'Prisoners', 'release_date' => '2013-09-20', 'poster_url' => null, 'id' => null],
-                    (object)['title' => 'Paddington 2', 'release_date' => '2017-11-10', 'poster_url' => null, 'id' => null],
+                    (object)['title' => 'Arrival', 'release_date' => '2016-11-11', 'poster_url' => 'https://image.tmdb.org/t/p/w500/x2FJsf1ElAgr63Y3PNPtJrcmpoe.jpg', 'id' => null],
+                    (object)['title' => 'Dune: Part Two', 'release_date' => '2024-03-01', 'poster_url' => 'https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg', 'id' => null],
+                    (object)['title' => 'Past Lives', 'release_date' => '2023-06-02', 'poster_url' => 'https://image.tmdb.org/t/p/w500/k3waqVXSnvCZWfJYNtdamTgTtTA.jpg', 'id' => null],
+                    (object)['title' => 'Sicario', 'release_date' => '2015-10-02', 'poster_url' => 'https://image.tmdb.org/t/p/w500/m67smI195Vi04IrjiCS52z99iHf.jpg', 'id' => null],
+                    (object)['title' => 'The Zone of Interest', 'release_date' => '2023-12-15', 'poster_url' => 'https://image.tmdb.org/t/p/w500/hUu9zyZmDD8VZAvQ2apEH4GQgaO.jpg', 'id' => null],
+                    (object)['title' => 'Aftersun', 'release_date' => '2022-10-21', 'poster_url' => 'https://image.tmdb.org/t/p/w500/mpBLXj92M76mK4b9b9BvK4Q93QG.jpg', 'id' => null],
+                    (object)['title' => 'Prisoners', 'release_date' => '2013-09-20', 'poster_url' => 'https://image.tmdb.org/t/p/w500/jsW60WbB11Lw26Y4wM4980yvYmR.jpg', 'id' => null],
+                    (object)['title' => 'Paddington 2', 'release_date' => '2017-11-10', 'poster_url' => 'https://image.tmdb.org/t/p/w500/go0K8s2kP905e4iB391295y5e4Q.jpg', 'id' => null],
                 ]);
             @endphp
             @foreach($cleanShelf->take(8) as $film)
                 <a href="{{ isset($film->id) && $film->id ? route('films.show', $film->id) : route('home', ['q' => $film->title]) }}" 
                    style="display: flex; flex-direction: column; gap: 7px; text-decoration: none;">
                     <div style="position: relative; aspect-ratio: 2/3; background: repeating-linear-gradient(135deg,#1b1f24 0 5px,#171b20 5px 10px); border: 1px solid var(--border-default); border-radius: 2px; overflow: hidden;">
-                        @if(!empty($film->poster_url))
-                            <img src="{{ $film->poster_url }}" alt="{{ $film->title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                        @php
+                            $poster = method_exists($film, 'posterUrl') ? $film->posterUrl() : ($film->poster_url ?? null);
+                        @endphp
+                        @if(!empty($poster))
+                            <img src="{{ $poster }}" alt="{{ $film->title }}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+                        @else
+                            <div style="display: flex; align-items: center; justify-content: center; height: 100%; font: 500 10px/1.2 var(--font-mono); color: var(--text-muted); text-align: center; padding: 8px;">
+                                {{ $film->title }}
+                            </div>
                         @endif
                         <span style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--color-clean);"></span>
                     </div>

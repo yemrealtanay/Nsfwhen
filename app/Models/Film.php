@@ -134,6 +134,11 @@ class Film extends Model
         return null;
     }
 
+    public function getPosterUrlAttribute(): ?string
+    {
+        return $this->posterUrl();
+    }
+
     public function categoryCounts(): array
     {
         $counts = [
