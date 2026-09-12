@@ -53,7 +53,7 @@
                             @endif
                             <div style="position: relative; flex: 1; display: flex; align-items: center;">
                                 <input type="text" name="q" value="{{ $search }}" 
-                                       placeholder="{{ app()->getLocale() === 'tr' ? 'Film adı veya yönetmen...' : 'Film title or director...' }}"
+                                       placeholder="{{ app()->getLocale() === 'tr' ? 'Film adı, oyuncu veya yönetmen...' : 'Film title, actor or director...' }}"
                                        style="width: 100%; background: var(--bg-input); border: 1px solid var(--border-medium); border-radius: 3px; padding: 7px 28px 7px 10px; font-size: 13px; color: var(--text-primary); outline: none;">
                                 @if($search)
                                     <a href="{{ route('home', array_merge(request()->query(), ['q' => null])) }}" 
@@ -267,6 +267,11 @@
                                         <span>{{ $film->releaseYear() }}</span>
                                         <span>{{ $film->shortRuntime() }}</span>
                                     </div>
+                                    @if(!empty($film->cast))
+                                        <div style="font-size: 11.5px; color: #828c96; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.3;" title="{{ implode(', ', $film->cast) }}">
+                                            {{ implode(', ', array_slice($film->cast, 0, 2)) }}
+                                        </div>
+                                    @endif
                                     <div style="display: flex; align-items: center; gap: 4px; margin-top: 4px;">
                                         <span style="width: 7px; height: 7px; border-radius: 1px; background: {{ $verdict['color'] }};"></span>
                                         <span style="font-size: 11.5px; font-weight: 500; color: {{ $verdict['fg'] }};">
@@ -310,8 +315,13 @@
                                         <div style="font: 600 14px/1.2 var(--font-serif); color: var(--text-primary); text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
                                             {{ $film->title }}
                                         </div>
-                                        <div style="font: 400 11.5px/1 var(--font-sans); color: var(--text-muted);">
-                                            {{ $film->director ?: '—' }}
+                                        <div style="font: 400 11.5px/1 var(--font-sans); color: var(--text-muted); text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
+                                            @if(!empty($film->cast))
+                                                <span style="color: #9aa3ac;">{{ implode(', ', array_slice($film->cast, 0, 3)) }}</span>
+                                                @if($film->director) · {{ $film->director }} @endif
+                                            @else
+                                                {{ $film->director ?: '—' }}
+                                            @endif
                                         </div>
                                     </div>
                                     <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);">
@@ -362,6 +372,12 @@
                                     <div style="font-size: 13.5px; color: var(--text-secondary); margin-top: 4px;">
                                         {{ $verdict['summary'] }}
                                     </div>
+                                    @if(!empty($film->cast))
+                                        <div style="font-size: 12px; color: #8a94a0; margin-top: 5px;">
+                                            <span style="font-family: var(--font-mono); font-size: 10.5px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">{{ app()->getLocale() === 'tr' ? 'OYUNCULAR:' : 'CAST:' }}</span>
+                                            {{ implode(', ', array_slice($film->cast, 0, 5)) }}
+                                        </div>
+                                    @endif
                                 </div>
 
                                 <!-- Intensity Meter -->

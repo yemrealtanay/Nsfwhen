@@ -85,9 +85,20 @@ class Film extends Model
         }
 
         return $query->where(function ($q) use ($term) {
-            $q->where('title', 'like', "%{$term}%")
-                ->orWhere('original_title', 'like', "%{$term}%")
-                ->orWhere('director', 'like', "%{$term}%");
+            $like = "%{$term}%";
+            $q->where('title', 'like', $like)
+                ->orWhere('original_title', 'like', $like)
+                ->orWhere('director', 'like', $like);
+
+            $driver = $q->getConnection()->getDriverName();
+            if ($driver === 'mysql' || $driver === 'mariadb') {
+                $q->orWhereRaw('LOWER(CAST(`cast` AS CHAR)) LIKE ?', ['%'.mb_strtolower($term).'%']);
+            } elseif ($driver === 'pgsql') {
+                $q->orWhereRaw('cast::text ILIKE ?', [$like]);
+            } else {
+                // SQLite and fallback
+                $q->orWhere('cast', 'like', $like);
+            }
         });
     }
 

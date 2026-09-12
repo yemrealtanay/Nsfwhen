@@ -65,6 +65,30 @@ class TmdbService
         });
     }
 
+    public function searchPerson(string $query, int $page = 1, string $language = 'en-US'): array
+    {
+        $cacheKey = 'tmdb_person_'.md5("{$query}_{$page}_{$language}");
+
+        return Cache::remember($cacheKey, 3600, function () use ($query, $page, $language) {
+            try {
+                $response = $this->client()->get('/search/person', $this->queryParams([
+                    'query' => $query,
+                    'page' => $page,
+                    'language' => $language,
+                    'include_adult' => false,
+                ]));
+
+                if ($response->successful()) {
+                    return $response->json();
+                }
+            } catch (\Throwable $e) {
+                Log::warning('TMDb person search failed: '.$e->getMessage());
+            }
+
+            return ['results' => [], 'total_results' => 0];
+        });
+    }
+
     public function getMovie(int $tmdbId, string $language = 'en-US'): ?array
     {
         $cacheKey = "tmdb_movie_{$tmdbId}_{$language}";

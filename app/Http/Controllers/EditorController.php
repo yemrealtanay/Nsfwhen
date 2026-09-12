@@ -79,6 +79,20 @@ class EditorController
             } else {
                 $res = $tmdbService->search($tmdbSearch);
                 $tmdbResults = $res['results'] ?? [];
+
+                // If movie search returns no results, check if query matches an actor / person
+                if (empty($tmdbResults) && method_exists($tmdbService, 'searchPerson')) {
+                    $personRes = $tmdbService->searchPerson($tmdbSearch);
+                    $existingIds = [];
+                    foreach ($personRes['results'] ?? [] as $person) {
+                        foreach ($person['known_for'] ?? [] as $kfMovie) {
+                            if (($kfMovie['media_type'] ?? 'movie') === 'movie' && ! in_array($kfMovie['id'], $existingIds)) {
+                                $existingIds[] = $kfMovie['id'];
+                                $tmdbResults[] = $kfMovie;
+                            }
+                        }
+                    }
+                }
             }
 
             foreach ($tmdbResults as &$movie) {

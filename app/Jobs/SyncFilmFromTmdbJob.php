@@ -39,7 +39,7 @@ class SyncFilmFromTmdbJob implements ShouldQueue
 
         $castList = [];
         if (! empty($data['credits']['cast'])) {
-            foreach (array_slice($data['credits']['cast'], 0, 5) as $actor) {
+            foreach (array_slice($data['credits']['cast'], 0, 12) as $actor) {
                 $castList[] = $actor['name'];
             }
         }
