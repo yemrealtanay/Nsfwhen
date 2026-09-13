@@ -14,8 +14,10 @@ class LegalPagesTest extends TestCase
         $response->assertSee('1. NSFWhen Nedir');
         $response->assertSee('2. Uygunluk (Yaş Şartı)');
         $response->assertSee('10. Sorumluluğun Sınırlandırılması');
-        $response->assertSee('Yunus Emre Altanay');
-        $response->assertSee('y.emrealtanay@gmail.com');
+        $response->assertSee('NSFWhen Legal Team');
+        $response->assertSee('legal@nsfwhen.com');
+        $response->assertDontSee('Yunus Emre Altanay');
+        $response->assertDontSee('y.emrealtanay@gmail.com');
         $response->assertSee('Creative Commons Attribution-ShareAlike (CC BY-SA)');
         $response->assertSee('TR ve UK');
     }
@@ -29,8 +31,10 @@ class LegalPagesTest extends TestCase
         $response->assertSee('1. What is NSFWhen');
         $response->assertSee('2. Eligibility (Age Requirement)');
         $response->assertSee('10. Limitation of Liability');
-        $response->assertSee('Yunus Emre Altanay');
-        $response->assertSee('y.emrealtanay@gmail.com');
+        $response->assertSee('NSFWhen Legal Team');
+        $response->assertSee('legal@nsfwhen.com');
+        $response->assertDontSee('Yunus Emre Altanay');
+        $response->assertDontSee('y.emrealtanay@gmail.com');
         $response->assertSee('Creative Commons Attribution-ShareAlike (CC BY-SA)');
     }
 
@@ -47,8 +51,10 @@ class LegalPagesTest extends TestCase
         $response->assertOk();
         $response->assertSee('Gizlilik & GDPR Politikası');
         $response->assertSee('1. Veri Sorumlusu');
-        $response->assertSee('Yunus Emre Altanay');
-        $response->assertSee('y.emrealtanay@gmail.com');
+        $response->assertSee('NSFWhen Legal Team');
+        $response->assertSee('legal@nsfwhen.com');
+        $response->assertDontSee('Yunus Emre Altanay');
+        $response->assertDontSee('y.emrealtanay@gmail.com');
         $response->assertSee('GDPR');
         $response->assertSee('KVKK');
         $response->assertSee('8. Veri Sahibi Hakları');
@@ -60,8 +66,10 @@ class LegalPagesTest extends TestCase
         $response->assertOk();
         $response->assertSee('Privacy & GDPR Policy');
         $response->assertSee('1. Data Controller');
-        $response->assertSee('Yunus Emre Altanay');
-        $response->assertSee('y.emrealtanay@gmail.com');
+        $response->assertSee('NSFWhen Legal Team');
+        $response->assertSee('legal@nsfwhen.com');
+        $response->assertDontSee('Yunus Emre Altanay');
+        $response->assertDontSee('y.emrealtanay@gmail.com');
         $response->assertSee('General Data Protection Regulation');
         $response->assertSee('8. Your Data Protection Rights');
     }

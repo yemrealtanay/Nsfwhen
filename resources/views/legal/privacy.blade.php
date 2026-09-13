@@ -44,9 +44,9 @@
         <h2 style="font: 600 18px/1.3 var(--font-serif); color: #f2f4f6; margin-bottom: 8px;">1. Veri Sorumlusu</h2>
         <p>GDPR Madde 4(7) ve KVKK Madde 3 uyarınca, kişisel verilerinizin işlenmesinden sorumlu Veri Sorumlusu:</p>
         <div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 3px; padding: 12px 16px; margin-top: 8px; font-family: var(--font-mono); font-size: 12px;">
-            <b>İsim / Temsilci:</b> Yunus Emre Altanay<br>
+            <b>İsim / Temsilci:</b> NSFWhen Legal Team<br>
             <b>Hizmet Adı:</b> NSFWhen (nsfwhen.com)<br>
-            <b>İletişim & Veri Koruma E-Postası:</b> <a href="mailto:y.emrealtanay@gmail.com" style="color: var(--color-blue-link);">y.emrealtanay@gmail.com</a>
+            <b>İletişim & Veri Koruma E-Postası:</b> <a href="mailto:legal@nsfwhen.com" style="color: var(--color-blue-link);">legal@nsfwhen.com</a>
         </div>
     </section>
 
@@ -151,8 +151,8 @@
         <h2 style="font: 600 18px/1.3 var(--font-serif); color: #f2f4f6; margin-bottom: 8px;">10. İletişim ve Veri Sahibi Başvuruları</h2>
         <p>Yukarıda belirtilen haklarınızı kullanmak, veri silme talebinde bulunmak veya gizlilikle ilgili sorularınızı iletmek için bize doğrudan e-posta gönderebilirsiniz:</p>
         <div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 3px; padding: 14px 18px; margin-top: 8px; font-family: var(--font-mono); font-size: 12px;">
-            <b>Veri Koruma İletişim:</b> <a href="mailto:y.emrealtanay@gmail.com" style="color: var(--color-blue-link);">y.emrealtanay@gmail.com</a><br>
-            <b>Temsilci:</b> Yunus Emre Altanay<br>
+            <b>Veri Koruma İletişim:</b> <a href="mailto:legal@nsfwhen.com" style="color: var(--color-blue-link);">legal@nsfwhen.com</a><br>
+            <b>Temsilci:</b> NSFWhen Legal Team<br>
             <i>Başvurularınız yasal mevzuat gereğince en geç 30 gün içinde ücretsiz olarak sonuçlandırılacaktır.</i>
         </div>
     </section>
@@ -170,9 +170,9 @@
         <h2 style="font: 600 18px/1.3 var(--font-serif); color: #f2f4f6; margin-bottom: 8px;">1. Data Controller</h2>
         <p>Pursuant to Article 4(7) of the GDPR and applicable data protection legislation, the Data Controller responsible for your personal data is:</p>
         <div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 3px; padding: 12px 16px; margin-top: 8px; font-family: var(--font-mono); font-size: 12px;">
-            <b>Name / Representative:</b> Yunus Emre Altanay<br>
+            <b>Name / Representative:</b> NSFWhen Legal Team<br>
             <b>Service:</b> NSFWhen (nsfwhen.com)<br>
-            <b>Data Protection Contact Email:</b> <a href="mailto:y.emrealtanay@gmail.com" style="color: var(--color-blue-link);">y.emrealtanay@gmail.com</a>
+            <b>Data Protection Contact Email:</b> <a href="mailto:legal@nsfwhen.com" style="color: var(--color-blue-link);">legal@nsfwhen.com</a>
         </div>
     </section>
 
@@ -277,8 +277,8 @@
         <h2 style="font: 600 18px/1.3 var(--font-serif); color: #f2f4f6; margin-bottom: 8px;">10. Contact and Data Requests</h2>
         <p>To exercise your statutory rights or submit questions regarding privacy practices:</p>
         <div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 3px; padding: 14px 18px; margin-top: 8px; font-family: var(--font-mono); font-size: 12px;">
-            <b>Data Protection Inquiries:</b> <a href="mailto:y.emrealtanay@gmail.com" style="color: var(--color-blue-link);">y.emrealtanay@gmail.com</a><br>
-            <b>Representative:</b> Yunus Emre Altanay<br>
+            <b>Data Protection Inquiries:</b> <a href="mailto:legal@nsfwhen.com" style="color: var(--color-blue-link);">legal@nsfwhen.com</a><br>
+            <b>Representative:</b> NSFWhen Legal Team<br>
             <i>Requests are processed without fee within 30 days.</i>
         </div>
     </section>

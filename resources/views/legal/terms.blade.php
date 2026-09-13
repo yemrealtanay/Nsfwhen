@@ -145,7 +145,7 @@
     <section id="sec-10" style="margin-bottom: 28px; scroll-margin-top: 30px;">
         <h2 style="font: 600 18px/1.3 var(--font-serif); color: #f2f4f6; margin-bottom: 8px;">10. Sorumluluğun Sınırlandırılması</h2>
         <div style="background: #171a1e; border: 1px solid var(--border-strong); padding: 12px 16px; border-radius: 3px; font-family: var(--font-mono); font-size: 11px; color: #a2b0be; letter-spacing: .02em;">
-            YÜRÜRLÜKTEKİ HUKUKUN İZİN VERDİĞİ AZAMİ ÖLÇÜDE, YUNUS EMRE ALTANAY, HİZMETİN KULLANIMINDAN VEYA KULLANILAMAMASINDAN, HERHANGİ BİR SAHNE İŞARETİNİN DOĞRULUĞUNA DUYULAN GÜVEN DAHİL, DOĞAN DOLAYLI, ARIZİ, ÖZEL VEYA CEZAİ ZARARLARDAN SORUMLU TUTULAMAZ.
+            YÜRÜRLÜKTEKİ HUKUKUN İZİN VERDİĞİ AZAMİ ÖLÇÜDE, NSFWHEN YÖNETİMİ, HİZMETİN KULLANIMINDAN VEYA KULLANILAMAMASINDAN, HERHANGİ BİR SAHNE İŞARETİNİN DOĞRULUĞUNA DUYULAN GÜVEN DAHİL, DOĞAN DOLAYLI, ARIZİ, ÖZEL VEYA CEZAİ ZARARLARDAN SORUMLU TUTULAMAZ.
         </div>
     </section>
 
@@ -158,7 +158,7 @@
     <!-- 12. Telif Hakkı Şikâyetleri -->
     <section id="sec-12" style="margin-bottom: 28px; scroll-margin-top: 30px;">
         <h2 style="font: 600 18px/1.3 var(--font-serif); color: #f2f4f6; margin-bottom: 8px;">12. Telif Hakkı Şikâyetleri</h2>
-        <p>Sitede telif hakkınızı ihlal eden bir içerik olduğunu düşünüyorsanız, <a href="mailto:y.emrealtanay@gmail.com" style="color: var(--color-blue-link); font-family: var(--font-mono);">y.emrealtanay@gmail.com</a> adresine aşağıdaki bilgileri içeren bir bildirimle başvurun:</p>
+        <p>Sitede telif hakkınızı ihlal eden bir içerik olduğunu düşünüyorsanız, <a href="mailto:legal@nsfwhen.com" style="color: var(--color-blue-link); font-family: var(--font-mono);">legal@nsfwhen.com</a> adresine aşağıdaki bilgileri içeren bir bildirimle başvurun:</p>
         <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 4px; margin-top: 6px;">
             <li>(a) Telif hakkına konu eserin tanımı,</li>
             <li>(b) İhlal iddiasına konu materyal ve sitedeki tam konumu (URL),</li>
@@ -197,8 +197,8 @@
         <h2 style="font: 600 18px/1.3 var(--font-serif); color: #f2f4f6; margin-bottom: 8px;">17. İletişim</h2>
         <p>Bu Koşullarla ilgili tüm sorularınız ve bildirimleriniz için:</p>
         <div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 3px; padding: 12px 16px; margin-top: 8px; font-family: var(--font-mono); font-size: 12px;">
-            E-posta: <a href="mailto:y.emrealtanay@gmail.com" style="color: var(--color-blue-link);">y.emrealtanay@gmail.com</a><br>
-            Yetkili / Temsilci: Yunus Emre Altanay
+            E-posta: <a href="mailto:legal@nsfwhen.com" style="color: var(--color-blue-link);">legal@nsfwhen.com</a><br>
+            Yetkili / Temsilci: NSFWhen Legal Team
         </div>
     </section>
 
@@ -302,7 +302,7 @@
     <section id="sec-10" style="margin-bottom: 28px; scroll-margin-top: 30px;">
         <h2 style="font: 600 18px/1.3 var(--font-serif); color: #f2f4f6; margin-bottom: 8px;">10. Limitation of Liability</h2>
         <div style="background: #171a1e; border: 1px solid var(--border-strong); padding: 12px 16px; border-radius: 3px; font-family: var(--font-mono); font-size: 11px; color: #a2b0be; letter-spacing: .02em;">
-            TO THE MAXIMUM EXTENT PERMITTED BY LAW, YUNUS EMRE ALTANAY SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING OUT OF OR IN CONNECTION WITH YOUR USE OF OR INABILITY TO USE THE SERVICE, INCLUDING ANY RELIANCE PLACED UPON THE ACCURACY OF SCENE TIMESTAMPS.
+            TO THE MAXIMUM EXTENT PERMITTED BY LAW, NSFWHEN MANAGEMENT SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING OUT OF OR IN CONNECTION WITH YOUR USE OF OR INABILITY TO USE THE SERVICE, INCLUDING ANY RELIANCE PLACED UPON THE ACCURACY OF SCENE TIMESTAMPS.
         </div>
     </section>
 
@@ -315,7 +315,7 @@
     <!-- 12. Copyright Complaints -->
     <section id="sec-12" style="margin-bottom: 28px; scroll-margin-top: 30px;">
         <h2 style="font: 600 18px/1.3 var(--font-serif); color: #f2f4f6; margin-bottom: 8px;">12. Copyright Complaints</h2>
-        <p>If you believe content on the Site infringes your copyright, please notify <a href="mailto:y.emrealtanay@gmail.com" style="color: var(--color-blue-link); font-family: var(--font-mono);">y.emrealtanay@gmail.com</a> with:</p>
+        <p>If you believe content on the Site infringes your copyright, please notify <a href="mailto:legal@nsfwhen.com" style="color: var(--color-blue-link); font-family: var(--font-mono);">legal@nsfwhen.com</a> with:</p>
         <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 4px; margin-top: 6px;">
             <li>(a) Description of the copyrighted work,</li>
             <li>(b) Description and URL of the allegedly infringing material,</li>
@@ -354,8 +354,8 @@
         <h2 style="font: 600 18px/1.3 var(--font-serif); color: #f2f4f6; margin-bottom: 8px;">17. Contact</h2>
         <p>For inquiries regarding these Terms:</p>
         <div style="background: var(--bg-card); border: 1px solid var(--border-default); border-radius: 3px; padding: 12px 16px; margin-top: 8px; font-family: var(--font-mono); font-size: 12px;">
-            Email: <a href="mailto:y.emrealtanay@gmail.com" style="color: var(--color-blue-link);">y.emrealtanay@gmail.com</a><br>
-            Controller / Representative: Yunus Emre Altanay
+            Email: <a href="mailto:legal@nsfwhen.com" style="color: var(--color-blue-link);">legal@nsfwhen.com</a><br>
+            Controller / Representative: NSFWhen Legal Team
         </div>
     </section>
 @endif
